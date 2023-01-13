@@ -2,17 +2,16 @@
 {% load static %}
 
   {% block content %}
-      <section id="hero-animated" class="hero-animated d-flex align-items-center">
-        <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-          <img src="{% static 'assets/img/hero-carousel/hero-carousel-3.svg' %}" class="img-fluid animated">
-          <h2>Welcome to <span>Shalom Baptist Church</span></h2>
-          <p>The Home Of Possibilities</p>
-          <div class="d-flex">
-            <a href="#about" class="btn-get-started scrollto">Join Now</a>
-            <a href="https://www.youtube.com/watch?v=VT6Oi77YnU4" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Latest Sermon</span></a>
-          </div>
+      <section id="hero-fullscreen" class="hero-fullscreen d-flex align-items-center">
+      <div class="container d-flex flex-column align-items-center position-relative" data-aos="zoom-out">
+        <h2>Welcome to <span>Shalom Baptist Church</span></h2>
+        <p>Home of Possibilities</p>
+        <div class="d-flex">
+          <a href="{% url 'join' %}" class="btn-get-started scrollto">Become a Member</a>
+          <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Latest Sermon Video</span></a>
         </div>
-  </section>
+      </div>
+    </section>
 
     <main id="main">
 
@@ -20,40 +19,17 @@
     <section id="featured-services" class="featured-services">
       <div class="container">
 
+
         <div class="row gy-4">
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out">
-            <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-activity icon"></i></div>
-              <h4><a href="" class="stretched-link">Men's Fellowship</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
+          {% for aux in auxiliaries %}
           <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="200">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-              <h4><a href="" class="stretched-link">Women's Fellowship</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <div class="icon"><i class="bi bi-activity icon"></i></div>
+              <h4><a href="" class="stretched-link">{{aux.name}}'s Fellowship</a></h4>
+              <p>{{aux.description}}</p>
             </div>
           </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-              <h4><a href="" class="stretched-link">Youth</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-              <h4><a href="" class="stretched-link">Children</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div><!-- End Service Item -->
-
+          {% endfor %}
         </div>
 
       </div>
@@ -65,7 +41,8 @@
 
         <div class="section-header">
           <h2>About Shalom</h2>
-          <p>Architecto nobis eos vel nam quidem vitae temporibus voluptates qui hic deserunt iusto omnis nam voluptas asperiores sequi tenetur dolores incidunt enim voluptatem magnam cumque fuga.</p>
+          <p>Shalom Baptist Church springged from Ash-Town Baptist church. In May 1994, the church
+was started at the Wesco Practice School.</p>
         </div>
 
         <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
@@ -285,7 +262,7 @@
           <li class="nav-item col-6 col-md-4 col-lg-2">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-6">
               <i class="bi bi-map color-orange"></i>
-              <h4>Reprehit</h4>
+              <h4>Mercy</h4>
             </a>
           </li><!-- End Tab 6 Nav -->
 
@@ -422,7 +399,7 @@
           <div class="tab-pane" id="tab-6">
             <div class="row gy-4">
               <div class="col-lg-8 order-2 order-lg-1">
-                <h3>Reprehit</h3>
+                <h3>Mercy</h3>
                 <p>
                   Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
                   velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in

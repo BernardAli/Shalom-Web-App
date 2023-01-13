@@ -29,12 +29,12 @@
 
   <!-- Variables CSS Files. Uncomment your preferred color scheme -->
   <link href="{% static 'assets/css/variables.css' %}" rel="stylesheet">
-  <!-- <link href="assets/css/variables-blue.css" rel="stylesheet"> -->
-  <!-- <link href="assets/css/variables-green.css" rel="stylesheet"> -->
-  <!-- <link href="assets/css/variables-orange.css" rel="stylesheet"> -->
-  <!-- <link href="assets/css/variables-purple.css" rel="stylesheet"> -->
-  <!-- <link href="assets/css/variables-red.css" rel="stylesheet"> -->
-  <!-- <link href="assets/css/variables-pink.css" rel="stylesheet"> -->
+   <link href="{% static 'assets/css/variables-blue.css' %}" rel="stylesheet">
+<!--   <link href="{% static 'assets/css/variables-green.css' %}" rel="stylesheet">-->
+<!--   <link href="{% static 'assets/css/variables-orange.css' %}" rel="stylesheet">-->
+<!--   <link href="{% static 'assets/css/variables-purple.css' %}" rel="stylesheet">-->
+<!--   <link href="{% static 'assets/css/variables-red.css' %}" rel="stylesheet">-->
+<!--   <link href="{% static 'assets/css/variables-pink.css' %}" rel="stylesheet">-->
 
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
@@ -47,7 +47,7 @@
   <header id="header" class="header fixed-top" data-scrollto-offset="0">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1>SB<span>C.</span></h1>
@@ -56,7 +56,7 @@
       <nav id="navbar" class="navbar">
         <ul>
 
-          <li><a href="#"><span>Home</span></a>
+          <li><a href="{% url 'home' %}"><span>Home</span></a>
           </li>
           <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
           <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
@@ -73,7 +73,7 @@
               </li>
               <li>
                 <a href="#">Joy</a>
-                <a href="#">Column 3 link 2</a>
+                <a href="#">Mercy</a>
               </li>
             </ul>
           </li>
@@ -93,15 +93,43 @@
           </li>
           <li><a class="nav-link scrollto" href="#">Gallery</a></li>
           <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+          {% if user.is_authenticated%}
+           <li class="dropdown"><a><span>{{user.username}}</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="{% url 'profile' request.user %}">Profile</a></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
 
-      <a class="btn-getstarted scrollto" href="index.html#about">Register Now</a>
+      {% if not user.is_authenticated %}
+        <a class="btn-getstarted scrollto" href="{% url 'join' %}">Join Now</a>
+      {% else %}
+        <a class="btn-getstarted scrollto" href="{% url 'join' %}">Join Now</a>
+      {% endif %}
 
     </div>
   </header><!-- End Header -->
 
+        {% if messages %}
+              <ul class="messages">
+                     {% for message in messages %}
+                      <section id="team" class="team">
+                        <div class="container" data-aos="fade-up">
+                          <div class="alert border-primary alert-dismissible fade show" role="alert">
+                              {{ message }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         </div>
+                          </div>
+                      </section>
+                     {% endfor %}
+             </ul>
+          {% endif %}
   {% block content %}
   {% endblock content %}
 
@@ -132,6 +160,9 @@
               <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Gallery</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              {% if user.is_authenticated and  user.is_staff %}
+                <li><i class="bi bi-chevron-right"></i> <a href="{% url 'join_accepted' %}">New Members</a></li>
+              {% endif %}
             </ul>
           </div>
 
