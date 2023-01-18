@@ -4,19 +4,55 @@
 
 
 {% block content %}
-<section id="featured-services" class="featured-services">
-    <div class="container" data-aos="fade-up">
-        <div class="section-header">
-          <h2>{{ profile.user.username }}</h2>
-          <p>Fill the form below to be part of the Shalom Family.</p>
-            {% if user.is_authenticated %}
-                    <a href="{% url 'edit_profile' profile.user %}" class="btn-profile">Edit Profile</a>
-                {% endif %}
+<!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>{{ profile.full_name }} (SBS-00{{profile.id}})</h2>
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>{{ profile.user.username }}</li>
+          </ol>
         </div>
 
-        <div>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-out">
+
+        <div class="row g-5">
+
+          <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
+            <h3><em>{{ profile.full_name }}</em> (SBS-00{{ profile.id }})</h3>
+            <p>{{ profile.family }}</p>
+            <p>{{ profile.phone_no }}</p>
+
+            {% if profile.full_name %}
+              {% if user.is_authenticated %}
+              <a class="cta-btn align-self-start" href="{% url 'edit_profile' profile.user %}">Edit Profile</a>
+              {% endif %}
+            {% else %}
+              <p>Complete your profile</p>
+              {% if user.is_authenticated %}
+              <a class="cta-btn align-self-start" href="{% url 'edit_profile' profile.user %}">Complete Profile</a>
+              {% endif %}
+            {% endif %}
+          </div>
+
+          <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
+            <div class="img">
+              <img src="{{ profile.image.url }}" alt="" class="img-fluid">
+            </div>
+          </div>
+
         </div>
-    </div>
-</section>
+
+      </div>
+    </section>
+      <!-- End Call To Action Section -->
 
 {% endblock content %}

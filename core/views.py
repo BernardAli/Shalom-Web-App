@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from mysite.settings import EMAIL_HOST_USER
-from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries
+from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
+    AuxiliaryMeetings, UpcomingEvents
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm
 
 # Create your views here.
@@ -11,10 +12,45 @@ from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm
 
 def home_page(request):
     auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    upcoming_events = UpcomingEvents.objects.filter(completed=False)
     context = {
-        'auxiliaries': auxiliaries
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries
     }
     return render(request, 'core/home.html', context)
+
+
+def gallery(request):
+    return render(request, 'core/gallery.html')
+
+
+def aux_details(request, id):
+    auxiliary = get_object_or_404(Auxiliaries, pk=id)
+    meeting_time = AuxiliaryMeetings.objects.get(auxiliary=auxiliary.id)
+    context = {
+        'auxiliary': auxiliary,
+        'meeting_time': meeting_time
+    }
+    return render(request, 'core/auxiliary_detail.html', context)
+
+
+def fam_details(request, id):
+    family = Family.objects.get(id=id)
+    context = {
+        'family': family
+    }
+    return render(request, 'core/family_detail.html', context)
+
+
+def min_details(request, id):
+    ministry = Ministries.objects.get(id=id)
+    context = {
+        'ministry': ministry
+    }
+    return render(request, 'core/ministry_detail.html', context)
 
 
 def join_view(request):

@@ -15,25 +15,25 @@
 
     <main id="main">
 
-    <!-- ======= Featured Services Section ======= -->
-    <section id="featured-services" class="featured-services">
-      <div class="container">
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-out">
 
-
-        <div class="row gy-4">
-          {% for aux in auxiliaries %}
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-activity icon"></i></div>
-              <h4><a href="" class="stretched-link">{{aux.name}}'s Fellowship</a></h4>
-              <p>{{aux.description}}</p>
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            {% for fam in  families %}
+            <div class="swiper-slide">
+              <a href="{{fam.get_absolute_url}}">
+                <img src="{% static 'assets/img/shalom_logo.png' %}" class="img-fluid" alt="">
+                <p class="text-center">{{fam.name}}</p>
+              </a>
             </div>
-          </div><!-- End Service Item -->
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
 
       </div>
-    </section><!-- End Featured Services Section -->
+    </section><!-- End Clients Section -->
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
@@ -42,7 +42,7 @@
         <div class="section-header">
           <h2>About Shalom</h2>
           <p>Shalom Baptist Church springged from Ash-Town Baptist church. In May 1994, the church
-was started at the Wesco Practice School.</p>
+            was started at the Wesco Practice School.</p>
         </div>
 
         <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
@@ -147,25 +147,6 @@ was started at the Wesco Practice School.</p>
       </div>
     </section><!-- End About Section -->
 
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-      <div class="container" data-aos="zoom-out">
-
-        <div class="clients-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-1.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-2.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-3.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-4.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-5.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-7.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/client-8.png' %}" class="img-fluid" alt=""></div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
 
     <!-- ======= Call To Action Section ======= -->
     <section id="cta" class="cta">
@@ -188,7 +169,8 @@ was started at the Wesco Practice School.</p>
         </div>
 
       </div>
-    </section><!-- End Call To Action Section -->
+    </section>
+      <!-- End Call To Action Section -->
 
     <!-- ======= On Focus Section ======= -->
     <section id="onfocus" class="onfocus">
@@ -202,15 +184,16 @@ was started at the Wesco Practice School.</p>
             <div class="content d-flex flex-column justify-content-center h-100">
               <h3>Upcoming Events</h3>
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                The following are the upcoming events
               </p>
               <ul>
-                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                {% for event in upcoming_events %}
+                  <li><i class="bi bi-check-circle"></i>{{event.event}} on {{event.date}}</li>
+                {% empty %}
+                  <p>No upcoming events</p>
+                {% endfor %}
               </ul>
-              <a href="#" class="read-more align-self-start"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+              <a href="#" class="read-more align-self-start"><span>Sunday Service</span><i class="bi bi-download"></i></a>
             </div>
           </div>
         </div>
@@ -223,206 +206,15 @@ was started at the Wesco Practice School.</p>
       <div class="container" data-aos="fade-up">
 
         <ul class="nav nav-tabs row gy-4 d-flex">
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+          {% for aux in auxiliaries %}
+            <li class="nav-item col-6 col-md-4 col-lg-2">
+            <a  href="{{ aux.get_absolute_url }}" class="nav-link">
               <i class="bi bi-binoculars color-cyan"></i>
-              <h4>Faith</h4>
+              <h4>{{aux.name}}</h4>
             </a>
           </li><!-- End Tab 1 Nav -->
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-              <i class="bi bi-box-seam color-indigo"></i>
-              <h4>Grace</h4>
-            </a>
-          </li><!-- End Tab 2 Nav -->
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-              <i class="bi bi-brightness-high color-teal"></i>
-              <h4>Hope</h4>
-            </a>
-          </li><!-- End Tab 3 Nav -->
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-              <i class="bi bi-command color-red"></i>
-              <h4>Peace</h4>
-            </a>
-          </li><!-- End Tab 4 Nav -->
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
-              <i class="bi bi-easel color-blue"></i>
-              <h4>Joy</h4>
-            </a>
-          </li><!-- End Tab 5 Nav -->
-
-          <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-6">
-              <i class="bi bi-map color-orange"></i>
-              <h4>Mercy</h4>
-            </a>
-          </li><!-- End Tab 6 Nav -->
-
+          {% endfor %}
         </ul>
-
-        <div class="tab-content">
-
-          <div class="tab-pane active show" id="tab-1">
-            <div class="row gy-4">
-              <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-                <h3>Faith</h3>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-              </div>
-              <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                <img src="assets/img/features-1.svg" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End Tab Content 1 -->
-
-          <div class="tab-pane" id="tab-2">
-            <div class="row gy-4">
-              <div class="col-lg-8 order-2 order-lg-1">
-                <h3>Grace</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul>
-              </div>
-              <div class="col-lg-4 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-2.svg" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End Tab Content 2 -->
-
-          <div class="tab-pane" id="tab-3">
-            <div class="row gy-4">
-              <div class="col-lg-8 order-2 order-lg-1">
-                <h3>Hope</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                </ul>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-              </div>
-              <div class="col-lg-4 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-3.svg" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End Tab Content 3 -->
-
-          <div class="tab-pane" id="tab-4">
-            <div class="row gy-4">
-              <div class="col-lg-8 order-2 order-lg-1">
-                <h3>Peace</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul>
-              </div>
-              <div class="col-lg-4 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-4.svg" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End Tab Content 4 -->
-
-          <div class="tab-pane" id="tab-5">
-            <div class="row gy-4">
-              <div class="col-lg-8 order-2 order-lg-1">
-                <h3>Joy</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul>
-              </div>
-              <div class="col-lg-4 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-5.svg" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End Tab Content 5 -->
-
-          <div class="tab-pane" id="tab-6">
-            <div class="row gy-4">
-              <div class="col-lg-8 order-2 order-lg-1">
-                <h3>Mercy</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul>
-              </div>
-              <div class="col-lg-4 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-6.svg" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div><!-- End Tab Content 6 -->
-
-        </div>
-
       </div>
     </section><!-- End Features Section -->
 
@@ -432,7 +224,7 @@ was started at the Wesco Practice School.</p>
 
         <div class="section-header">
           <h2>Our Services</h2>
-          <p>These are the various services held by the church every week.</p>
+          <p>These are the various services held by the church every week if there is no major event.</p>
         </div>
 
         <div class="row gy-5">
@@ -447,9 +239,10 @@ was started at the Wesco Practice School.</p>
                   <i class="bi bi-activity"></i>
                 </div>
                 <a href="#" class="stretched-link">
-                  <h3>Sunday 1st Service</h3>
+                  <h3>Sunday (English) 1st Service</h3>
                 </a>
-                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.</p>
+                <p>7:00am - 8:30am</p>
+                <p>Sundays</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -464,9 +257,10 @@ was started at the Wesco Practice School.</p>
                   <i class="bi bi-broadcast"></i>
                 </div>
                 <a href="#" class="stretched-link">
-                  <h3>Sunday 2nd Service</h3>
+                  <h3>Sunday Main (2nd) Service</h3>
                 </a>
-                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+                <p>9:30am - 11:30am</p>
+                <p>Sundays</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -481,9 +275,10 @@ was started at the Wesco Practice School.</p>
                   <i class="bi bi-easel"></i>
                 </div>
                 <a href="#" class="stretched-link">
-                  <h3>Monday Prayer</h3>
+                  <h3>Prayer Tower</h3>
                 </a>
-                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+                <p>6:00pm - 8:00pm</p>
+                <p>Mondays</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -498,9 +293,10 @@ was started at the Wesco Practice School.</p>
                   <i class="bi bi-bounding-box-circles"></i>
                 </div>
                 <a href="#" class="stretched-link">
-                  <h3>Youth Meetings</h3>
+                  <h3>Youth Meeting</h3>
                 </a>
-                <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+                <p>6:00pm - 8:00pm</p>
+                <p>Tuesdays</p>
                 <a href="#" class="stretched-link"></a>
               </div>
             </div>
@@ -516,9 +312,10 @@ was started at the Wesco Practice School.</p>
                   <i class="bi bi-calendar4-week"></i>
                 </div>
                 <a href="#" class="stretched-link">
-                  <h3>Wednesday Prayers</h3>
+                  <h3>Moment of Change Prayers</h3>
                 </a>
-                <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+                <p>9:00am - 1:00pm</p>
+                <p>Wednesdays</p>
                 <a href="#" class="stretched-link"></a>
               </div>
             </div>
@@ -527,7 +324,7 @@ was started at the Wesco Practice School.</p>
           <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="700">
             <div class="service-item">
               <div class="img">
-                <img src="{% static 'assets/img/services-6.jpg' %}" class="img-fluid" alt="">
+                <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/326155812_1574790036295353_2524713629735207655_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeGXDvjqQdjvUkQV1jTd2HeSl4z-Ww_ivQyXjP5bD-K9DBqAolGjQ--fRSUOowkVFUSs67uYLWJFgW7SNuHLyneN&_nc_ohc=8QKtnhdqBGUAX-dnJqs&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&oh=00_AfCwHxQaUAKaC-4IvHDHNQF8I7nRrE9VFEpSrYmNWOCmYw&oe=63CE1796" class="img-fluid" alt="">
               </div>
               <div class="details position-relative">
                 <div class="icon">
@@ -536,7 +333,8 @@ was started at the Wesco Practice School.</p>
                 <a href="#" class="stretched-link">
                   <h3>Mid Week Service</h3>
                 </a>
-                <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
+                <p>6:00pm - 8:00pm</p>
+                <p>Wednesdays</p>
                 <a href="#" class="stretched-link"></a>
               </div>
             </div>
@@ -707,11 +505,12 @@ was started at the Wesco Practice School.</p>
 
           </div>
 
-          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("{% static 'assets/img/faq.jpg' %}");'>&nbsp;</div>
+          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url(https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/323433741_869601024181022_7038569199525901540_n.jpg?stp=dst-jpg_s960x960&_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeFy1T2ohWmAwBI_YzwINItyD9n1HvQUzI8P2fUe9BTMjxvFu5QkVvbpANXdWVOcyX_wr3-XWQnOqvgy6u1P9cqH&_nc_ohc=kXiK07xKNNoAX-IKlUT&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&oh=00_AfDcv8SAqJBNmll8M-Ie7G0NUKCDIl7AreBUicZIrcuJfg&oe=63CC8937' %}");'>&nbsp;</div>
         </div>
 
       </div>
-    </section><!-- End F.A.Q Section -->
+    </section>
+      <!-- End F.A.Q Section -->
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
@@ -781,7 +580,8 @@ was started at the Wesco Practice School.</p>
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section>
+      <!-- End Team Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">

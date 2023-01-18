@@ -6,6 +6,6 @@ from .models import Profile
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'first_name', 'last_name', 'phone', 'family', 'auxiliaries')
-    list_filter = ('family', 'auxiliaries')
-    search_fields = ('first_name', 'last_name', 'user__username')
+    list_display = ('user', 'full_name', 'phone_no', 'family', 'auxiliary')
+    list_filter = ('family', 'auxiliary')
+    search_fields = ('user__username', )

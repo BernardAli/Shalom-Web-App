@@ -58,41 +58,32 @@
 
           <li><a href="{% url 'home' %}"><span>Home</span></a>
           </li>
-          <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
-          <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="index.html#team">Leadership</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}#team">Leadership</a></li>
           <li class="dropdown megamenu"><a href="#"><span>Families</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li>
-                <a href="#">Faith</a>
-                <a href="#">Grace</a>
-              </li>
-              <li>
-                <a href="#">Hope</a>
-                <a href="#">Peace</a>
-              </li>
-              <li>
-                <a href="#">Joy</a>
-                <a href="#">Mercy</a>
-              </li>
+              {% for fam in families %}
+                  <li><a href="{{ fam.get_absolute_url }}">{{fam.name}}</a></li>
+              {% endfor %}
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Auxiliaries</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="#">Men's Fellowship</a></li>
-              <li><a href="#">Women's Fellowship</a></li>
-              <li class="dropdown"><a href="#"><span>Youth</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Youth</a></li>
-                  <li><a href="#">Young Men</a></li>
-                  <li><a href="#">Young Ladies</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Children</a></li>
+              {% for aux in auxiliaries %}
+                  <li><a href="{{ aux.get_absolute_url }}">{{aux.name}}</a></li>
+              {% endfor %}
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+          <li class="dropdown"><a href="#"><span>Ministries</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              {% for min in ministries %}
+                  <li><a href="{{ min.get_absolute_url }}">{{min.name}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}#contact">Contact</a></li>
           {% if user.is_authenticated%}
            <li class="dropdown"><a><span>{{user.username}}</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>

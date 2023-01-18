@@ -36,11 +36,11 @@ class InterestedMemberAcceptance(models.Model):
 class Family(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(default='group.png', upload_to='blog_pics')
+    image = models.ImageField(default='group.png', upload_to='family')
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('Family', args=[str(self.id)])
+        return reverse('family_details', args=[str(self.id)])
 
     def __str__(self):
         return self.name
@@ -60,11 +60,11 @@ class Auxiliaries(models.Model):
     name = models.CharField(max_length=255)
     designation = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(default='group.png', upload_to='blog_pics')
+    image = models.ImageField(default='group.png', upload_to='auxiliaries')
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('Auxiliaries', args=[str(self.id)])
+        return reverse('aux_details', args=[str(self.id)])
 
     def __str__(self):
         return self.name
@@ -78,3 +78,44 @@ class Auxiliaries(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+class AuxiliaryMeetings(models.Model):
+    days = models.CharField(max_length=50, blank=True, null=True)
+    time = models.CharField(max_length=50, blank=True, null=True)
+    auxiliary = models.ForeignKey(Auxiliaries, on_delete=models.DO_NOTHING, related_name='auxiliary_meeting')
+
+    def __str__(self):
+        return self.auxiliary.name
+
+
+class Ministries(models.Model):
+    name = models.CharField(max_length=255)
+    designation = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(default='group.png', upload_to='ministries')
+
+    def get_absolute_url(self):
+        return reverse('min_details', args=[str(self.id)])
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        super(Ministries, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 600 or img.width > 500:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+
+
+class UpcomingEvents(models.Model):
+    event = models.CharField(max_length=255, blank=True, null=True)
+    date = models.DateField(blank=True, null=True)
+    completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.event
