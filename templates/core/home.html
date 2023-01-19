@@ -49,7 +49,7 @@
 
           <div class="col-lg-5">
             <div class="about-img">
-              <img src="{% static 'assets/img/about.jpg' %}" class="img-fluid" alt="">
+              <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/241016194_1503216550011376_8074841351483880300_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeHefg8N4v9UpkobUtmV60BKx_XaMgfmzBzH9doyB-bMHOSlUOCO_bslaWp3h3z4L1RRunYnafZwOfNh-JMWedzt&_nc_ohc=CO_hZri22WQAX-Lk_y0&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&oh=00_AfA7Fj_Puva2RCyTjDxbntZDVlYByDtOMpUFkPXu2mP8Dg&oe=63CF02F2" class="img-fluid" alt="">
             </div>
           </div>
 
@@ -638,14 +638,18 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{% url 'home' %}" method="post" role="form" class="php-email-form">
+              {% csrf_token %}
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="text" id="text" placeholder="Your Phone Number" required>
+                  <input type="text" class="form-control" name="phone" id="text" placeholder="Your Phone Number" required>
                 </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
               </div>
               <div class="form-group mt-3">
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>

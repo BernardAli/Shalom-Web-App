@@ -15,10 +15,30 @@ def home_page(request):
     families = Family.objects.all()
     ministries = Ministries.objects.all()
     upcoming_events = UpcomingEvents.objects.filter(completed=False)
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        number = request.POST['phone']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        message = f"Name: {name} \n" \
+                  f"Number: {number} \n" \
+                  f"Email: {email} \n" \
+                  f"Message: {message}"
+
+        recipient = EMAIL_HOST_USER
+
+        send_mail(subject, message, email, [recipient], fail_silently=False)
+        messages.success(request, f'Message Successfully sent')
+        return redirect("home")
+
     context = {
         'auxiliaries': auxiliaries,
         'families': families,
-        'ministries': ministries
+        'ministries': ministries,
+        'upcoming_events': upcoming_events
     }
     return render(request, 'core/home.html', context)
 
