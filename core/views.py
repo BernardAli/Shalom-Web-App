@@ -4,13 +4,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from mysite.settings import EMAIL_HOST_USER
 from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
-    AuxiliaryMeetings, UpcomingEvents
+    AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm
 
 # Create your views here.
 
 
 def home_page(request):
+    faqs = FAQ.objects.all()
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
     ministries = Ministries.objects.all()
@@ -38,7 +39,8 @@ def home_page(request):
         'auxiliaries': auxiliaries,
         'families': families,
         'ministries': ministries,
-        'upcoming_events': upcoming_events
+        'upcoming_events': upcoming_events,
+        'faqs': faqs
     }
     return render(request, 'core/home.html', context)
 
@@ -50,9 +52,13 @@ def gallery(request):
 def aux_details(request, id):
     auxiliary = get_object_or_404(Auxiliaries, pk=id)
     meeting_time = AuxiliaryMeetings.objects.get(auxiliary=auxiliary.id)
+    executives = AuxiliaryExecutives.objects.filter(auxiliary=auxiliary.id)
+    faqs = AuxiliariesFAQ.objects.filter(auxiliary=auxiliary.id)
     context = {
         'auxiliary': auxiliary,
-        'meeting_time': meeting_time
+        'meeting_time': meeting_time,
+        'executives': executives,
+        'faqs': faqs
     }
     return render(request, 'core/auxiliary_detail.html', context)
 

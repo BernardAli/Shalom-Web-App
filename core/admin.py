@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import InterestedMember, InterestedMemberAcceptance, Family, Auxiliaries, Ministries, \
-    AuxiliaryMeetings, UpcomingEvents
+    AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ
 
 # Register your models here.
 
@@ -12,3 +12,7 @@ admin.site.register(Auxiliaries)
 admin.site.register(Ministries)
 admin.site.register(AuxiliaryMeetings)
 admin.site.register(UpcomingEvents)
+admin.site.register(AuxiliaryExecutives)
+admin.site.register(FAQ)
+admin.site.register(AuxiliariesFAQ)
+admin.site.register(FamilyFAQ)

@@ -9,7 +9,7 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>{{ profile.full_name }} (SBS-00{{profile.id}})</h2>
+          <h2>{{ profile.full_name }} (SBC-00{{profile.id}})</h2>
           <ol>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li>{{ profile.user.username }}</li>
@@ -27,7 +27,7 @@
         <div class="row g-5">
 
           <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-            <h3><em>{{ profile.full_name }}</em> (SBS-00{{ profile.id }})</h3>
+            <h3><em>{{ profile.full_name }}</em> (SBC-00{{ profile.id }})</h3>
             <p>{{ profile.family }}</p>
             <p>{{ profile.phone_no }}</p>
 

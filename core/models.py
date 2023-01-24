@@ -2,6 +2,15 @@ from PIL import Image
 from django.db import models
 from django.urls import reverse
 
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=250)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question
+
+
 # Create your models here.
 MEMBER_CHOICE = (
     ('Already a Member', 'Already a Member'),
@@ -35,8 +44,11 @@ class InterestedMemberAcceptance(models.Model):
 
 class Family(models.Model):
     name = models.CharField(max_length=255)
-    code = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(default='group.png', upload_to='family')
+    vision = models.TextField(blank=True, null=True)
+    mission = models.TextField(blank=True, null=True)
+    speech = models.TextField(blank=True, null=True)
+    deacon = models.ImageField(default='group.png', upload_to='auxiliaries')
+    group_img = models.ImageField(default='group.png', upload_to='auxiliaries')
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     def get_absolute_url(self):
@@ -60,7 +72,8 @@ class Auxiliaries(models.Model):
     name = models.CharField(max_length=255)
     designation = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(default='group.png', upload_to='auxiliaries')
+    deacon = models.ImageField(default='group.png', upload_to='auxiliaries')
+    group_img = models.ImageField(default='group.png', upload_to='auxiliaries')
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     def get_absolute_url(self):
@@ -87,6 +100,46 @@ class AuxiliaryMeetings(models.Model):
 
     def __str__(self):
         return self.auxiliary.name
+
+
+class AuxiliaryExecutives(models.Model):
+    auxiliary = models.ForeignKey(Auxiliaries, on_delete=models.DO_NOTHING, related_name='auxiliary_executives')
+    full_name = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics', null=True, blank=True)
+    phone_no = models.CharField(max_length=20, null=True, blank=True)
+    facebook = models.CharField(max_length=20, null=True, blank=True)
+
+    def __str__(self):
+        return self.auxiliary.name
+
+    def save(self, *args, **kwargs):
+        super(AuxiliaryExecutives, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 600 or img.width > 500:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+
+
+class AuxiliariesFAQ(models.Model):
+    auxiliary = models.ForeignKey(Auxiliaries, on_delete=models.DO_NOTHING, related_name='auxiliary_faqs')
+    question = models.CharField(max_length=250)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question
+
+
+class FamilyFAQ(models.Model):
+    family = models.ForeignKey(Auxiliaries, on_delete=models.DO_NOTHING, related_name='family_faqs')
+    question = models.CharField(max_length=250)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question
 
 
 class Ministries(models.Model):
