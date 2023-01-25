@@ -22,4 +22,11 @@ urlpatterns = [
     path('inflows_items/<str:pk>/', views.inflows_items, name="inflows_items"),
     path('outflows_items/<str:pk>/', views.outflows_items, name="outflows_items"),
     path('list_history/', views.list_history, name='list_history'),
+
+    # cash
+    path('cash_items/', views.cash_item, name='cash_items'),
+    path('cash_detail/<str:pk>/', views.cash_detail, name="cash_detail"),
+    path('issue_cash/<str:pk>/', views.issue_cash, name="issue_cash"),
+    path('receive_cash/<str:pk>/', views.receive_cash, name="receive_cash"),
+    path('cash_history/', views.cash_history, name='cash_history'),
 ]

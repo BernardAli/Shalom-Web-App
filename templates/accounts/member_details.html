@@ -125,7 +125,7 @@
               <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales</h5>
+                  <h5 class="card-title">Recent Payments</h5>
 
                   <table class="table table-borderless datatable table-hover">
                     <thead>
@@ -133,64 +133,16 @@
                         <th scope="col">#</th>
                         <th scope="col">Date</th>
                         <th scope="col">Product</th>
-                        <th scope="col">Price (GHS)</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total Price</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Amount (GHS)</th>
                       </tr>
                     </thead>
                     <tbody>
-                    {% for item in recent_activities%}
+                    {% for item in payments %}
                       <tr>
                         <th scope="row">{{forloop.counter}}</th>
                         <td>{{item.created_on}}</td>
                         <td>{{item.item_name}}</td>
-                        <td>{{item.unit_sale_price|intcomma}}</td>
-                        <td>{{item.sale_quantity}}</td>
-                        <td>{{item.total_sale_price|intcomma}}</td>
-                        <td>
-                          {% if item.payment_status == 'Full Payment' %}
-                            <span class="badge bg-success">{{item.payment_status}}</span>
-                          {% else %}
-                            <span class="badge bg-warning">{{item.payment_status}}</span>
-                          {% endif %}
-                        </td>
-                      </tr>
-                    {% endfor %}
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div>
-            <!-- End Recent Sales -->
-
-            <!-- Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                <div class="card-body">
-                  <h5 class="card-title">Debtors</h5>
-
-                  <table class="table table-border table-hover datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Detail</th>
-                        <th scope="col">Amount</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    {% for item in recent_cash_activities%}
-                      <tr>
-                        <th scope="row">{{forloop.counter}}</th>
-                        <td>{{item.created_on}}</td>
-                        <td>{{item.category}}</td>
-                        <td>{{item.detail}}</td>
-                        <td>{{item.amount_in}}</td>
+                        <td>{{item.amount|intcomma}}</td>
                       </tr>
                     {% endfor %}
                     </tbody>

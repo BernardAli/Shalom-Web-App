@@ -49,3 +49,42 @@ class CashFlowHistory(models.Model):
 
     def __str__(self):
         return self.item_name
+
+
+CASH_CHOICE = (
+    ('Bank', 'Bank'),
+    ('Cash', 'Cash'),
+    ('Momo', 'Momo'),
+)
+
+
+class Cash(models.Model):
+    category = models.CharField(max_length=50, blank=True, null=True, choices=CASH_CHOICE)
+    recipient = models.CharField(max_length=50)
+    detail = models.TextField(max_length=50)
+    created_on = models.DateTimeField(auto_now_add=True)
+    amount_in = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    amount_out = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    issue_by = models.CharField(max_length=50, blank=True, null=True)
+    export_to_CSV = models.BooleanField(default=False)
+    last_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.category}"
+
+
+class CashHistory(models.Model):
+    category = models.CharField(max_length=50, blank=True, null=True, choices=CASH_CHOICE)
+    recipient = models.CharField(max_length=50)
+    detail = models.TextField(max_length=50)
+    created_on = models.DateTimeField(auto_now_add=True)
+    amount_in = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    amount_out = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    issue_by = models.CharField(max_length=50, blank=True, null=True)
+    export_to_CSV = models.BooleanField(default=False)
+    last_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.category}"

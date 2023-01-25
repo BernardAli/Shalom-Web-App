@@ -3,6 +3,7 @@ from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse, reverse
 from django.contrib.auth.models import User, auth
 
+from accounts.models import CashFlowHistory
 from core.models import Auxiliaries, Family, Ministries
 from mysite.settings import EMAIL_HOST_USER
 from authy.models import Profile
@@ -91,13 +92,13 @@ def profile(request, username):
     ministries = Ministries.objects.all()
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
-    # queryset, created = Contribution.objects.get_or_create(member=profile.user, defaults={'family': user.profile.family})
+    payment_summary = CashFlowHistory.objects.values('item_name').annotate(dcount=Sum('amount')).filter(received_from=profile)
     context = {
         'profile': profile,
-        # 'queryset': queryset,
         'auxiliaries': auxiliaries,
         'families': families,
         'ministries': ministries,
+        'payment_summary': payment_summary
     }
 
     return render(request, 'authy/profile.html', context)

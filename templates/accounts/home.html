@@ -85,8 +85,7 @@
               </div>
             </div>
                 <!-- End Revenue Card -->
-
-                <div class="col-xxl-3 col-md-3">
+                  <div class="col-xxl-3 col-md-3">
               <div class="card info-card revenue-card">
 
 
@@ -110,8 +109,40 @@
             </div>
                 <!-- End Revenue Card -->
 
-
           </div>
+                <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="card-body">
+                  <h5 class="card-title">Balances</h5>
+
+                  <table class="table table-borderless datatable table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Cash Center</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Balance (GHS)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in cash_flow%}
+                        <tr>
+                        <th scope="row"><a href="#">{{ forloop.counter }}</a></th>
+                        <td>{{item.category}}</td>
+                        <td><a href="{% url 'update_items' item.pk %}" class="text-primary">{{item.item_name}}</a></td>
+                        <td><a href="{% url 'cashflow_detail' item.pk %}">{{item.balance}}</a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
+            <!-- End Recent Sales -->
           </div>
 
           <div class="col-lg-4">
