@@ -28,12 +28,13 @@
 
           <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
             <h3><em>{{ profile.full_name }}</em> (SBC-00{{ profile.id }})</h3>
-            <p>{{ profile.family }}</p>
+            <p><a href="{{ profile.family.get_absolute_url }}">{{ profile.family }}</a></p>
             <p>{{ profile.phone_no }}</p>
 
             {% if profile.full_name %}
               {% if user.is_authenticated %}
               <a class="cta-btn align-self-start" href="{% url 'edit_profile' profile.user %}">Edit Profile</a>
+              <a class="cta-btn align-self-start" href="">Contribute</a>
               {% endif %}
             {% else %}
               <p>Complete your profile</p>
@@ -54,5 +55,52 @@
       </div>
     </section>
       <!-- End Call To Action Section -->
+
+
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>My Contributions</h2>
+          <p>Below are the summary of all your contributions.</p>
+        </div>
+        <ul class="nav nav-tabs row gy-4 d-flex">
+            <li class="nav-item col-6 col-md-4 col-lg-3">
+            <a  class="nav-link">
+              <i class="bi bi-cash color-cyan"></i>
+<!--              <img src="{{ aux.group_img.url }}" alt="" height="75">-->
+              <h4>Tithes</h4>
+              <p>GHS 5,000.00</p>
+            </a>
+          </li>
+
+            <li class="nav-item col-6 col-md-4 col-lg-3">
+            <a class="nav-link">
+              <i class="bi bi-cash color-cyan"></i>
+<!--              <img src="{{ aux.group_img.url }}" alt="" height="75">-->
+              <h4>Building</h4>
+              <p>GHS 5,000.00</p>
+            </a>
+          </li>
+
+            <li class="nav-item col-6 col-md-4 col-lg-3">
+            <a  class="nav-link">
+              <i class="bi bi-cash color-cyan"></i>
+<!--              <img src="{{ aux.group_img.url }}" alt="" height="75">-->
+              <h4>Family</h4>
+              <p>GHS 5,000.00</p>
+            </a>
+          </li>
+
+            <li class="nav-item col-6 col-md-4 col-lg-3">
+            <a class="nav-link">
+              <i class="bi bi-cash color-cyan"></i>
+<!--              <img src="{{ aux.group_img.url }}" alt="" height="75">-->
+              <h4>Auxiliary</h4>
+              <p>GHS 5,000.00</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section><!-- End Features Section -->
 
 {% endblock content %}

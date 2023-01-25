@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from mysite.settings import EMAIL_HOST_USER
 from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
-    AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ
-from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm
+    AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers
+from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm, SubscribeForm
+
 
 # Create your views here.
 
@@ -16,6 +17,21 @@ def home_page(request):
     families = Family.objects.all()
     ministries = Ministries.objects.all()
     upcoming_events = UpcomingEvents.objects.filter(completed=False)
+
+    form = SubscribeForm()
+    if request.method == 'POST':
+        form = SubscribeForm(request.POST)
+        if form.is_valid():
+            subject = 'Thanks for subscribing to Real Estates'
+            message = "We'll update you on all latest developments"
+            recipient = form.cleaned_data.get('email')
+            # print(recipient)
+            send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
+            form = Subscribers.objects.create(email=recipient)
+            form.save()
+            messages.success(request, f'Subscription successful!')
+        else:
+            sub = SubscribeForm(request.POST)
 
     if request.method == 'POST':
         name = request.POST['name']
@@ -40,16 +56,52 @@ def home_page(request):
         'families': families,
         'ministries': ministries,
         'upcoming_events': upcoming_events,
-        'faqs': faqs
+        'faqs': faqs,
+    }
+    return render(request, 'core/home.html', context)
+
+
+def subscribers(request):
+    form = SubscribeForm()
+    if request.method == 'POST':
+        form = SubscribeForm(request.POST)
+        if form.is_valid():
+            subject = 'Thanks for subscribing to Shalom Baptist Church'
+            message = "We'll update you on all latest developments"
+            recipient = form.cleaned_data.get('email')
+            # print(recipient)
+            send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
+            if Subscribers.objects.filter(email=recipient).exists():
+                messages.success(request, f'Already subscribed!')
+            else:
+                form = Subscribers.objects.create(email=recipient)
+                form.save()
+                messages.success(request, f'Subscription successful!')
+        else:
+            sub = SubscribeForm(request.POST)
+    context = {
+        'form': form,
     }
     return render(request, 'core/home.html', context)
 
 
 def gallery(request):
-    return render(request, 'core/gallery.html')
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/gallery.html', context)
 
 
 def aux_details(request, id):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
     auxiliary = get_object_or_404(Auxiliaries, pk=id)
     meeting_time = AuxiliaryMeetings.objects.get(auxiliary=auxiliary.id)
     executives = AuxiliaryExecutives.objects.filter(auxiliary=auxiliary.id)
@@ -58,28 +110,48 @@ def aux_details(request, id):
         'auxiliary': auxiliary,
         'meeting_time': meeting_time,
         'executives': executives,
-        'faqs': faqs
+        'faqs': faqs,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
     }
     return render(request, 'core/auxiliary_detail.html', context)
 
 
 def fam_details(request, id):
-    family = Family.objects.get(id=id)
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    family = get_object_or_404(Family, pk=id)
+    faqs = FamilyFAQ.objects.filter(family=family.id)
     context = {
-        'family': family
+        'family': family,
+        'faqs': faqs,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
     }
     return render(request, 'core/family_detail.html', context)
 
 
 def min_details(request, id):
     ministry = Ministries.objects.get(id=id)
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
     context = {
-        'ministry': ministry
+        'ministry': ministry,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
     }
     return render(request, 'core/ministry_detail.html', context)
 
 
 def join_view(request):
+    ministries = Ministries.objects.all()
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
     form = InterestedMemberForm()
     if request.method == 'POST':
         form = InterestedMemberForm(request.POST)
@@ -121,7 +193,10 @@ def join_view(request):
         else:
             form = InterestedMemberForm(request.POST)
     context = {
-        'form': form
+        'form': form,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
     }
     return render(request, 'core/join.html', context)
 

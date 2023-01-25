@@ -209,7 +209,8 @@
           {% for aux in auxiliaries %}
             <li class="nav-item col-6 col-md-4 col-lg-2">
             <a  href="{{ aux.get_absolute_url }}" class="nav-link">
-              <i class="bi bi-binoculars color-cyan"></i>
+<!--              <i class="bi bi-binoculars color-cyan"></i>-->
+              <img src="{{ aux.group_img.url }}" alt="" height="75">
               <h4>{{aux.name}}</h4>
             </a>
           </li><!-- End Tab 1 Nav -->
@@ -379,7 +380,7 @@
 
               <div class="pricing-header">
                 <h3>Family Meeting</h3>
-                <h4>8:30<sup>am</sup><span> to 9:00</span></h4>
+                <h4>8:30<sup>am</sup><span> to 9:30</span></h4>
               </div>
 
               <ul>
@@ -396,7 +397,7 @@
 
               <div class="pricing-header">
                 <h3>Sunday 2nd Service</h3>
-                <h4>9:00<sup>am</sup><span> to 11:30</span></h4>
+                <h4>9:30<sup>am</sup><span> to 11:30</span></h4>
               </div>
 
               <ul>

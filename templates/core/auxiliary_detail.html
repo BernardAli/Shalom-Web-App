@@ -26,14 +26,14 @@
 
         <div class="section-header">
           <h2>About {{auxiliary.name}}</h2>
-          <p>{{ auxiliary.profile_set.count }} members</p>
+          <p>{{auxiliary.name}}</p>
         </div>
 
         <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-5">
             <div class="about-img">
-              <img src="{{ auxiliary.deacon.url }}" class="img-fluid" alt="">
+              <img src="{{auxiliary.deacon.url}}" class="img-fluid" alt="">
             </div>
           </div>
 
@@ -44,7 +44,7 @@
             <ul class="nav nav-pills mb-3">
               <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Vision</a></li>
               <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Mission</a></li>
-              <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">{{auxiliary.name}} Leader's Speech</a></li>
+              <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">{{family.name}} Leader's Speech</a></li>
             </ul><!-- End Tabs -->
 
             <!-- Tab Content -->
@@ -52,74 +52,34 @@
 
               <div class="tab-pane fade show active" id="tab1">
 
-                <p class="fst-italic">Vision inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+                <p class="fst-italic">Vision</p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                  <h4>{{auxiliary.vision}}</h4>
                 </div>
-                <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-                </div>
-                <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
               </div><!-- End Tab 1 Content -->
 
               <div class="tab-pane fade show" id="tab2">
 
-                <p class="fst-italic">Mission inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+                <p class="fst-italic">Mission</p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                  <h4>{{auxiliary.mission}}</h4>
                 </div>
-                <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-                </div>
-                <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
               </div><!-- End Tab 2 Content -->
 
               <div class="tab-pane fade show" id="tab3">
 
-                <p class="fst-italic">Head Pastor's Speech inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+                <p class="fst-italic">
+                  Speech
+                </p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                  <h4>{{auxiliary.speech}}</h4>
                 </div>
-                <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-                </div>
-                <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
               </div><!-- End Tab 3 Content -->
 
             </div>
@@ -247,26 +207,6 @@
       </div>
     </section>
       <!-- End Team Section -->
-
-  <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-      <div class="container" data-aos="zoom-out">
-
-        <div class="clients-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            {% for fam in  families %}
-            <div class="swiper-slide">
-              <a href="{{fam.get_absolute_url}}">
-                <img src="{% static 'assets/img/shalom_logo.png' %}" class="img-fluid" alt="">
-                <p class="text-center">{{fam.name}}</p>
-              </a>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
 
     <section class="inner-page">
       <div class="container" data-aos="fade-up">

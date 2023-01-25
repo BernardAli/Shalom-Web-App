@@ -146,10 +146,10 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Gallery</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}#about">About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}#services">Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'gallery' %}">Gallery</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
               {% if user.is_authenticated and  user.is_staff %}
                 <li><i class="bi bi-chevron-right"></i> <a href="{% url 'join_accepted' %}">New Members</a></li>
@@ -158,21 +158,21 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Our Auxiliaries</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Sunday Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Midweek Service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Wednesday Prayers</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Youth Meeting</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Monday Prayers</a></li>
+              {% for aux in auxiliaries%}
+              <li><i class="bi bi-chevron-right"></i> <a href="{{aux.get_absolute_url}}">{{aux.name}}</a></li>
+              {% endfor %}
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Subscribe to our weekly newsletters</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+            <form action="{% url 'subscribers' %}" method="post">
+              {% csrf_token %}
+              <input type="email" name="email" placeholder="Enter Your Email">
+              <input type="submit" value="Subscribe">
             </form>
 
           </div>

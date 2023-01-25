@@ -3,6 +3,13 @@ from django.db import models
 from django.urls import reverse
 
 
+class Subscribers(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email
+
+
 class FAQ(models.Model):
     question = models.CharField(max_length=250)
     answer = models.TextField()
@@ -71,7 +78,9 @@ class Family(models.Model):
 class Auxiliaries(models.Model):
     name = models.CharField(max_length=255)
     designation = models.CharField(max_length=255, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
+    vision = models.TextField(blank=True, null=True)
+    mission = models.TextField(blank=True, null=True)
+    speech = models.TextField(blank=True, null=True)
     deacon = models.ImageField(default='group.png', upload_to='auxiliaries')
     group_img = models.ImageField(default='group.png', upload_to='auxiliaries')
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
@@ -144,8 +153,9 @@ class FamilyFAQ(models.Model):
 
 class Ministries(models.Model):
     name = models.CharField(max_length=255)
-    designation = models.CharField(max_length=255, blank=True, null=True)
+    goal = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    speech = models.TextField(blank=True, null=True)
     image = models.ImageField(default='group.png', upload_to='ministries')
 
     def get_absolute_url(self):

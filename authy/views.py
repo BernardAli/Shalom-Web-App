@@ -2,6 +2,8 @@ from django.core.mail import send_mail
 from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse, reverse
 from django.contrib.auth.models import User, auth
+
+from core.models import Auxiliaries, Family, Ministries
 from mysite.settings import EMAIL_HOST_USER
 from authy.models import Profile
 from django.contrib import messages
@@ -11,6 +13,9 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 
 def register(request, *args, **kwargs):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
@@ -49,7 +54,12 @@ def register(request, *args, **kwargs):
             messages.error(request, "Passwords do not match")
             return redirect('register')
     else:
-        return render(request, 'authy/register.html')
+        context = {
+            'auxiliaries': auxiliaries,
+            'families': families,
+            'ministries': ministries,
+        }
+        return render(request, 'authy/register.html', context)
 
 
 # @login_required
@@ -76,18 +86,27 @@ def register(request, *args, **kwargs):
 
 @login_required
 def profile(request, username):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
     # queryset, created = Contribution.objects.get_or_create(member=profile.user, defaults={'family': user.profile.family})
     context = {
         'profile': profile,
         # 'queryset': queryset,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
     }
 
     return render(request, 'authy/profile.html', context)
 
 
 def login(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
 
     if request.method == "POST":
         username = request.POST['username']
@@ -103,10 +122,18 @@ def login(request):
             messages.info(request, "Credentials Invalid")
             return redirect(f'home')
     else:
-        return render(request, 'authy/login.html')
+        context = {
+            'auxiliaries': auxiliaries,
+            'families': families,
+            'ministries': ministries,
+        }
+        return render(request, 'authy/login.html', context)
 
 
 def edit_profile(request, username):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
 
@@ -151,6 +178,9 @@ def edit_profile(request, username):
     context = {
         'u_form': u_form,
         'p_form': p_form,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
     }
 
     return render(request, 'authy/edit_profile.html', context)
