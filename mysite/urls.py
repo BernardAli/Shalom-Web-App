@@ -23,6 +23,7 @@ from authy import views as authy_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include('accounts.urls')),
     path('register/', authy_views.register, name='register'),
     path('login/', authy_views.login, name='login'),
     # path('login/', auth_views.LoginView.as_view(template_name='authy/login.html'), name='login'),

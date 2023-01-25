@@ -150,9 +150,9 @@
               <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}#about">About us</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}#services">Services</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="{% url 'gallery' %}">Gallery</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
               {% if user.is_authenticated and  user.is_staff %}
                 <li><i class="bi bi-chevron-right"></i> <a href="{% url 'join_accepted' %}">New Members</a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="{% url 'account_home' %}">Accounts</a></li>
               {% endif %}
             </ul>
           </div>
@@ -198,9 +198,10 @@
         </div>
 
         <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+          <a href="tel:+233244627253" class="google-plus"><i class="bi bi-phone"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=233244627253" class="google-plus"><i class="bi bi-whatsapp"></i></a>
           <a href="#" class="google-plus"><i class="bi bi-youtube"></i></a>
           <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         </div>
 
       </div>

@@ -1,0 +1,208 @@
+{% extends 'accounts/base.html' %}
+{% load humanize %}
+
+{% block content %}
+
+     <div class="pagetitle">
+      <h1>{{member.full_name}}</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'account_home' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'member_list' %}">Members</a></li>
+          <li class="breadcrumb-item active">{{member.full_name}}</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+     <section class="section dashboard">
+
+         <div class="row">
+           <div class="col-xxl-2 col-md-2">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">{{member.full_name}}</h5>
+                  <img src="{{member.image.url}}" alt="" height="150">
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+         </div>
+
+         <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-3 col-md-3">
+              <div class="card info-card sales-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Phone No.
+                  </h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-phone"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><small></small>{{member.phone_no}}</h6></div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Revenue Card -->
+            <div class="col-xxl-3 col-md-3">
+              <div class="card info-card revenue-card">
+
+
+                <div class="card-body">
+                  <h5 class="card-title">Location</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-map"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{member.place_of_residence}}</h6>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Revenue Card -->
+
+            <div class="col-xxl-3 col-md-3">
+              <div class="card info-card revenue-card">
+
+
+                <div class="card-body">
+                  <h5 class="card-title">Marital Status</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{member.marital_status}}</h6>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+                <!-- End Revenue Card -->
+
+                <div class="col-xxl-3 col-md-3">
+              <div class="card info-card revenue-card">
+
+
+                <div class="card-body">
+                  <h5 class="card-title">Family</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cash"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{member.family}}</h6>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+                <!-- End Revenue Card -->
+
+
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="card-body">
+                  <h5 class="card-title">Sales</h5>
+
+                  <table class="table table-borderless datatable table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price (GHS)</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in recent_activities%}
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{item.created_on}}</td>
+                        <td>{{item.item_name}}</td>
+                        <td>{{item.unit_sale_price|intcomma}}</td>
+                        <td>{{item.sale_quantity}}</td>
+                        <td>{{item.total_sale_price|intcomma}}</td>
+                        <td>
+                          {% if item.payment_status == 'Full Payment' %}
+                            <span class="badge bg-success">{{item.payment_status}}</span>
+                          {% else %}
+                            <span class="badge bg-warning">{{item.payment_status}}</span>
+                          {% endif %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
+            <!-- End Recent Sales -->
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="card-body">
+                  <h5 class="card-title">Debtors</h5>
+
+                  <table class="table table-border table-hover datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Detail</th>
+                        <th scope="col">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in recent_cash_activities%}
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{item.created_on}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.detail}}</td>
+                        <td>{{item.amount_in}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
+            <!-- End Recent Sales -->
+
+          </div>
+    </section>
+
+{% endblock content %}
