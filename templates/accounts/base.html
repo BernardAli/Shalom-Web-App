@@ -75,17 +75,40 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>Categories</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-gem"></i><span>Cash Centers</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>List Categories</span>
+            <a href="{% url 'category_list' %}">
+              <i class="bi bi-circle"></i><span>List Cash Centers</span>
             </a>
           </li>
           <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>Add New Categories</span>
+            <a href="{% url 'new_category' %}">
+              <i class="bi bi-circle"></i><span>Add New Cash Centers</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Icons Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-inventory" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people"></i><span>Cash Flow</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-inventory" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'list_items' %}">
+              <i class="bi bi-circle"></i><span>Cash Flow List</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'add_items' %}">
+              <i class="bi bi-circle"></i><span>Add New Cash Flow</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'list_history' %}">
+              <i class="bi bi-circle"></i><span>History</span>
             </a>
           </li>
         </ul>

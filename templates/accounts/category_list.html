@@ -1,0 +1,61 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+     <div class="pagetitle">
+      <h1>Cash Centers</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'account_home' %}">Home</a></li>
+          <li class="breadcrumb-item active">Cash Centers</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+     <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-10">
+          <div class="row">
+            <!-- Sales Card -->
+            <div class="card recent-sales overflow-auto">
+
+                <div class="card-body">
+                  <h5 class="card-title">Cash Centers</h5>
+
+                  <table class="table table-borderless datatable table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Center</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                   {%for items in categories%}
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{items.name}}</td>
+                        <td>{{items.description}}</td>
+                        <td><a href="{% url 'category_edit' items.pk %}"><i class="bi bi-tags btn btn-primary"></i></a></td>
+                        <td><a href="{% url 'category_delete' items.pk %}"><i class="bi bi-tags btn btn-danger"></i></a></td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+
+          </div>
+        </div><!-- End Left side columns -->
+
+      </div>
+    </section>
+
+{% endblock content %}

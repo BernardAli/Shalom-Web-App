@@ -1,0 +1,51 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+     <div class="pagetitle">
+      <h1>Current Balances</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item active">Balances</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+     <section class="section dashboard">
+         <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="card-body">
+                  <h5 class="card-title">Current Balances<span></span></h5>
+
+                  <table class="table table-borderless datatable table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Cash Center</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Balance (GHS)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in queryset%}
+                        <tr>
+                        <th scope="row"><a href="#">{{ forloop.counter }}</a></th>
+                        <td>{{item.category}}</td>
+                        <td><a href="{% url 'update_items' item.pk %}" class="text-primary">{{item.item_name}}</a></td>
+                        <td><a href="{% url 'cashflow_detail' item.pk %}">{{item.balance}}</a></td>>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+    </section>
+
+{% endblock content %}
