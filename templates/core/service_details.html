@@ -52,17 +52,18 @@
           <p>Below are the past sermons. You can listen to the audio or download them</p>
         </div>
         <ul class="nav nav-tabs row gy-4 d-flex">
-            {% for payments in payment_summary %}
-            <li class="nav-item col-6 col-md-4 col-lg-3">
-            <a  class="nav-link">
-              <i class="bi bi-cash color-cyan"></i>
+            {% for sermon in sermons %}
+            <li class="nav-item col-6 col-md-6 col-lg-4">
+            <a  class="nav-link" href="{{sermon.file.url}}" target="_blank">
+              <i class="bi bi-cassette color-cyan"></i>
 <!--              <img src="{{ aux.group_img.url }}" alt="" height="75">-->
-              <h4>{{payments.item_name}}</h4>
-              <p>GHS {{payments.dcount}}</p>
+              <h4>{{sermon.title}}</h4>
+              <p>By: {{sermon.preacher}}</p>
+              <p>On: {{sermon.date}}</p>
             </a>
           </li>
             {% empty %}
-              <p>No payments recorded</p>
+              <p>No Sermon Added</p>
             {% endfor %}
         </ul>
       </div>

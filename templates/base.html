@@ -137,7 +137,7 @@
               <p>
                 Adwuman, Kenyase-Fawode Stretch, <br>
                 Kumasi, Ghana<br><br>
-                <strong>Phone:</strong> +233 244 526273<br>
+                <strong>Phone:</strong> +233 244 627253<br>
                 <strong>Email:</strong> info@example.com<br>
               </p>
             </div>
@@ -198,10 +198,14 @@
         </div>
 
         <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-          <a href="tel:+233244627253" class="google-plus"><i class="bi bi-phone"></i></a>
+          {% if user.is_authenticated %}
+            <a href="tel:+233244627253" class="google-plus"><i class="bi bi-phone"></i></a>
+          {% else %}
+            <a href="tel:+233244627253" class="google-plus"><i class="bi bi-phone"></i></a>
+          {% endif %}
           <a href="https://api.whatsapp.com/send?phone=233244627253" class="google-plus"><i class="bi bi-whatsapp"></i></a>
-          <a href="#" class="google-plus"><i class="bi bi-youtube"></i></a>
-          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.youtube.com/@shalombaptistchurch6140/videos" class="google-plus" target="_blank"><i class="bi bi-youtube"></i></a>
+          <a href="https://web.facebook.com/baptistshalom?_rdc=1&_rdr" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
         </div>
 
       </div>

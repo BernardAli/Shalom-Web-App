@@ -4,7 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from mysite.settings import EMAIL_HOST_USER
 from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
-    AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, Services
+    AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
+    Services, Sermon
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm, SubscribeForm
 
 
@@ -64,9 +65,17 @@ def home_page(request):
 
 
 def service_details(request, id):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
     service = get_object_or_404(Services, pk=id)
+    sermons = Sermon.objects.filter(service=service)
     context = {
-        'service': service
+        'service': service,
+        'sermons': sermons,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
     }
     return render(request, 'core/service_details.html', context)
 

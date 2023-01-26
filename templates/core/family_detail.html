@@ -26,7 +26,9 @@
 
         <div class="section-header">
           <h2>About {{family.name}}</h2>
-          <p>{{family.name}}</p>
+          {% if family.contact%}
+            <p>{{family.contact}}</p>
+          {% endif %}
         </div>
 
         <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">

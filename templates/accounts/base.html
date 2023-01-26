@@ -74,6 +74,19 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-members" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gem"></i><span>Members</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-members" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'member_list' %}">
+              <i class="bi bi-circle"></i><span>All members</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Icons Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Cash Centers</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -113,6 +126,7 @@
           </li>
         </ul>
       </li><!-- End Icons Nav -->
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">

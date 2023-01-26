@@ -87,7 +87,7 @@ class Profile(models.Model):
     next_of_kin_contact = models.CharField(max_length=20, null=True, blank=True)
     date_joined = models.DateField(null=True, blank=True)
     baptism = models.CharField(max_length=10, choices=BAPTISM_CHOICES, default='Not Yet')
-    family = models.ForeignKey(Family, on_delete=models.DO_NOTHING, null=True, blank=True)
+    family = models.ForeignKey(Family, on_delete=models.DO_NOTHING, null=True, blank=True, related_name='family')
     auxiliary = models.ForeignKey(Auxiliaries, on_delete=models.DO_NOTHING, null=True, blank=True)
     ministry = models.ForeignKey(Ministries, on_delete=models.DO_NOTHING, null=True, blank=True)
 

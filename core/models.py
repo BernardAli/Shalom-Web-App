@@ -29,6 +29,7 @@ class Sermon(models.Model):
     date = models.DateField()
     preacher = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
+    file = models.FileField()
 
     def __str__(self):
         return self.title
@@ -75,6 +76,7 @@ class InterestedMemberAcceptance(models.Model):
 
 class Family(models.Model):
     name = models.CharField(max_length=255)
+    contact = models.CharField(max_length=13, blank=True, null=True)
     vision = models.TextField(blank=True, null=True)
     mission = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
