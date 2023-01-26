@@ -10,6 +10,30 @@ class Subscribers(models.Model):
         return self.email
 
 
+class Services(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics', null=True, blank=True)
+    times = models.CharField(max_length=255, blank=True, null=True)
+    days = models.CharField(max_length=255, blank=True, null=True)
+    descriptions = models.TextField(blank=True, null=True)
+
+    def get_absolute_url(self):
+        return reverse('service_details', args=[str(self.id)])
+
+    def __str__(self):
+        return self.name
+
+
+class Sermon(models.Model):
+    service = models.ForeignKey(Services, on_delete=models.DO_NOTHING)
+    date = models.DateField()
+    preacher = models.CharField(max_length=255, blank=True, null=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
 class FAQ(models.Model):
     question = models.CharField(max_length=250)
     answer = models.TextField()

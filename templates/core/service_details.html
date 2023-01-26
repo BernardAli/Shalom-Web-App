@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>{{ service.name }}</h2>
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>{{ service.name }}</li>
+          </ol>
+        </div>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-out">
+
+        <div class="row g-5">
+
+          <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
+            <h3><em>{{ service.name }}</em></h3>
+            <p>{{ service.times }}</p>
+            <p>{{ service.days }}</p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
+            <div class="img">
+              <img src="{{ service.image.url }}" alt="" class="img-fluid">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+      <!-- End Call To Action Section -->
+
+
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Sermon Collections</h2>
+          <p>Below are the past sermons. You can listen to the audio or download them</p>
+        </div>
+        <ul class="nav nav-tabs row gy-4 d-flex">
+            {% for payments in payment_summary %}
+            <li class="nav-item col-6 col-md-4 col-lg-3">
+            <a  class="nav-link">
+              <i class="bi bi-cash color-cyan"></i>
+<!--              <img src="{{ aux.group_img.url }}" alt="" height="75">-->
+              <h4>{{payments.item_name}}</h4>
+              <p>GHS {{payments.dcount}}</p>
+            </a>
+          </li>
+            {% empty %}
+              <p>No payments recorded</p>
+            {% endfor %}
+        </ul>
+      </div>
+    </section><!-- End Features Section -->
+
+{% endblock content %}

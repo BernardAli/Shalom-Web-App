@@ -49,7 +49,7 @@
 
           <div class="col-lg-5">
             <div class="about-img">
-              <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/241016194_1503216550011376_8074841351483880300_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeHefg8N4v9UpkobUtmV60BKx_XaMgfmzBzH9doyB-bMHOSlUOCO_bslaWp3h3z4L1RRunYnafZwOfNh-JMWedzt&_nc_ohc=CO_hZri22WQAX-Lk_y0&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&oh=00_AfA7Fj_Puva2RCyTjDxbntZDVlYByDtOMpUFkPXu2mP8Dg&oe=63CF02F2" class="img-fluid" alt="">
+              <img src="{% static 'assets/img/head_pastor.jpeg' %}" class="img-fluid" alt="">
             </div>
           </div>
 
@@ -229,7 +229,7 @@
         </div>
 
         <div class="row gy-5">
-
+          {% for service in services %}
           <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
             <div class="service-item">
               <div class="img">
@@ -237,110 +237,19 @@
               </div>
               <div class="details position-relative">
                 <div class="icon">
-                  <i class="bi bi-activity"></i>
+                  <i class="bi bi-book"></i>
                 </div>
-                <a href="#" class="stretched-link">
-                  <h3>Sunday (English) 1st Service</h3>
+                <a href="{{service.get_absolute_url}}" class="stretched-link">
+                  <h3>{{service.name}}</h3>
                 </a>
-                <p>7:00am - 8:30am</p>
-                <p>Sundays</p>
+                <p>{{service.times}}</p>
+                <p>{{service.days}}</p>
               </div>
             </div>
           </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="service-item">
-              <div class="img">
-                <img src="{% static 'assets/img/services-2.jpg' %}" class="img-fluid" alt="">
-              </div>
-              <div class="details position-relative">
-                <div class="icon">
-                  <i class="bi bi-broadcast"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Sunday Main (2nd) Service</h3>
-                </a>
-                <p>9:30am - 11:30am</p>
-                <p>Sundays</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-            <div class="service-item">
-              <div class="img">
-                <img src="{% static 'assets/img/services-3.jpg' %}" class="img-fluid" alt="">
-              </div>
-              <div class="details position-relative">
-                <div class="icon">
-                  <i class="bi bi-easel"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Prayer Tower</h3>
-                </a>
-                <p>6:00pm - 8:00pm</p>
-                <p>Mondays</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
-            <div class="service-item">
-              <div class="img">
-                <img src="{% static 'assets/img/services-4.jpg' %}" class="img-fluid" alt="">
-              </div>
-              <div class="details position-relative">
-                <div class="icon">
-                  <i class="bi bi-bounding-box-circles"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Youth Meeting</h3>
-                </a>
-                <p>6:00pm - 8:00pm</p>
-                <p>Tuesdays</p>
-                <a href="#" class="stretched-link"></a>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
-            <div class="service-item">
-              <div class="img">
-                <img src="{% static 'assets/img/services-5.jpg' %}" class="img-fluid" alt="">
-              </div>
-              <div class="details position-relative">
-                <div class="icon">
-                  <i class="bi bi-calendar4-week"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Moment of Change Prayers</h3>
-                </a>
-                <p>9:00am - 1:00pm</p>
-                <p>Wednesdays</p>
-                <a href="#" class="stretched-link"></a>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="700">
-            <div class="service-item">
-              <div class="img">
-                <img src="{% static 'assets/img/services-1.jpg' %}" class="img-fluid" alt="">
-              </div>
-              <div class="details position-relative">
-                <div class="icon">
-                  <i class="bi bi-chat-square-text"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Mid Week Service</h3>
-                </a>
-                <p>6:00pm - 8:00pm</p>
-                <p>Wednesdays</p>
-                <a href="#" class="stretched-link"></a>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
+          {% empty %}
+          <p>No service added yet</p>
+          {% endfor %}
         </div>
 
       </div>
