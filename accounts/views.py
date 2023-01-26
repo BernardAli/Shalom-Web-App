@@ -1,6 +1,7 @@
 import csv
 
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
@@ -13,6 +14,9 @@ from core.models import Family, Auxiliaries, Ministries
 from authy.models import User, Profile
 
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
+
+from mysite.settings import EMAIL_HOST_USER
+
 
 # Create your views here.
 
@@ -137,6 +141,15 @@ def inflows_items(request, pk):
             # instance.purchased_quantity = 0
             instance.balance += instance.amount
             messages.success(request, f"GHS {instance.amount} received successfully!")
+
+            # email alert
+            subject = 'Contributions Received Successfully'
+            message = f"Shalom Baptist has received GHS{instance.amount} as {instance.item_name} contribution\n\n" \
+                      f"May God bless God \n\n\n" \
+                      f"visit https://shalombaptist.pythonanywhere.com/login to check your profile"
+            recipient = instance.received_from.user.email
+            send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
+
             instance.save()
             cashflow_history = CashFlowHistory(
                 category_id=instance.category_id,
@@ -171,6 +184,11 @@ def outflows_items(request, pk):
             # instance.purchased_quantity = 0
             instance.balance -= instance.amount
             messages.success(request, f"GHS {instance.amount} issued successfully!")
+            subject = 'Withdrawal Issued Successfully'
+            message = f"Shalom Baptist has issued GHS{instance.amount} to {instance.returned_to}\n\n\n " \
+                      f"visit https://shalombaptist.pythonanywhere.com/accounts to check outstanding balances"
+            recipient = 'alibernard.coding@gmail.com'
+            send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
             instance.save()
             cashflow_history = CashFlowHistory(
                 last_updated=instance.last_updated,
