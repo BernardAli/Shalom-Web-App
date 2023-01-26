@@ -1,4 +1,5 @@
 {% extends 'accounts/base.html' %}
+{% load humanize %}
 
 {% block content %}
 
@@ -146,6 +147,39 @@
           </div>
 
           <div class="col-lg-4">
+            <!-- Recent Activity -->
+          <div class="card">
+
+            <div class="card-body">
+              <h5 class="card-title">Recent Cash Activity</h5>
+
+              <div class="activity">
+
+                {% for recent in  cash_flow_items%}
+                  {% if recent.received_from %}
+                    <div class="activity-item d-flex">
+                      <div class="activite-label">{{recent.last_updated|naturaltime}}</div>
+                      <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                      <div class="activity-content">
+                        GHS {{recent.amount}} received for {{recent.item_name}}
+                      </div>
+                    </div><!-- End activity item-->
+                  {% else %}
+                    <div class="activity-item d-flex">
+                      <div class="activite-label">{{recent.last_updated|naturaltime}}</div>
+                      <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                      <div class="activity-content">
+                        We paid <a href="#" class="fw-bold text-dark">GHS{{recent.amount}}</a> to {{recent.returned_to}}
+                      </div>
+                    </div><!-- End activity item-->
+                  {% endif %}
+                {% empty %}
+                {% endfor %}
+
+              </div>
+
+            </div>
+          </div><!-- End Recent Activity -->
           </div>
 
       </div>

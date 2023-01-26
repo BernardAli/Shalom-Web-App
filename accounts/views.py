@@ -27,12 +27,14 @@ def accounts_home(request):
     auxiliary_count = Auxiliaries.objects.all().count()
     ministry_count = Auxiliaries.objects.all().count()
     cash_flow = CashFlow.objects.all()
+    cash_flow_items = CashFlowHistory.objects.all().order_by('-created_on')[:5]
     context = {
         "member_count": member_count,
         "family_count": family_count,
         'auxiliary_count': auxiliary_count,
         'ministry_count': ministry_count,
-        'cash_flow': cash_flow
+        'cash_flow': cash_flow,
+        'cash_flow_items': cash_flow_items
     }
     return render(request, 'accounts/home.html', context)
 
@@ -308,6 +310,12 @@ def issue_cash(request, pk):
             instance.issue_by = str(request.user)
             messages.success(request, "Issued SUCCESSFULLY. " + str(instance.balance) + " " + str(
                 instance.category) + " balance left")
+            subject = 'Withdrawal Issued Successfully'
+            message = f"Shalom Baptist has issued GHS{instance.amount_out} to {instance.recipient} for {instance.detail} \n" \
+                      f"The balance of {instance.category} is {instance.balance}\n\n " \
+                      f"visit https://shalombaptist.pythonanywhere.com/accounts to check outstanding balances"
+            recipient = 'alibernard.coding@gmail.com'
+            send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
             instance.save()
             cash_issue_history = CashHistory(
                 last_updated=instance.last_updated,
@@ -341,6 +349,12 @@ def receive_cash(request, pk):
         instance.balance += instance.amount_in
         messages.success(request, "Received SUCCESSFULLY. " + str(instance.balance) + " " + str(
             instance.category) + " balance left")
+        subject = 'Received Successfully'
+        message = f"Shalom Baptist has received GHS{instance.amount_in} for {instance.detail} \n" \
+                  f"The balance {instance.category} is GHS{instance.balance}\n\n " \
+                  f"visit https://shalombaptist.pythonanywhere.com/accounts to check outstanding balances"
+        recipient = 'alibernard.coding@gmail.com'
+        send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
         instance.save()
         cash_receive_history = CashHistory(
             last_updated=instance.last_updated,
