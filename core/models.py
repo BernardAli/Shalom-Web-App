@@ -80,8 +80,8 @@ class Family(models.Model):
     vision = models.TextField(blank=True, null=True)
     mission = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
-    deacon = models.ImageField(default='group.png', upload_to='auxiliaries')
-    group_img = models.ImageField(default='group.png', upload_to='auxiliaries')
+    deacon = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
+    group_img = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     def get_absolute_url(self):
@@ -107,8 +107,8 @@ class Auxiliaries(models.Model):
     vision = models.TextField(blank=True, null=True)
     mission = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
-    deacon = models.ImageField(default='group.png', upload_to='auxiliaries')
-    group_img = models.ImageField(default='group.png', upload_to='auxiliaries')
+    deacon = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
+    group_img = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
     def get_absolute_url(self):
@@ -120,12 +120,12 @@ class Auxiliaries(models.Model):
     def save(self, *args, **kwargs):
         super(Auxiliaries, self).save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
+        img = Image.open(self.group_img.path)
 
         if img.height > 600 or img.width > 500:
             output_size = (300, 300)
             img.thumbnail(output_size)
-            img.save(self.image.path)
+            img.save(self.group_img.path)
 
 
 class AuxiliaryMeetings(models.Model):

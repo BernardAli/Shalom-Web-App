@@ -578,7 +578,7 @@ section {
 .hero-animated {
   width: 100%;
   min-height: 50vh;
-  background: url("../img/shalom_2023.jpg") center center;
+  background: url("../img/hero-bg.png") center center;
   background-size: cover;
   position: relative;
   padding: 120px 0 60px;
@@ -711,7 +711,7 @@ section {
   min-height: 60vh;
   padding: 0;
   background: var(--color-black);
-  background: url("../img/shalom_2023.jpg") center center;
+  background: url("../img/hero-bg.png") center center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -731,8 +731,8 @@ section {
 .hero h2 {
   color: var(--color-secondary);
   margin-bottom: 25px;
-  font-size: 48px;
-  font-weight: 300;
+  font-size: 53px;
+  font-weight: 600;
   -webkit-animation: fadeInDown 1s both 0.2s;
   animation: fadeInDown 1s both 0.2s;
 }
@@ -745,6 +745,7 @@ section {
 
 .hero p {
   color: var(--color-secondary-light);
+  font-size: 1.4rem;
   -webkit-animation: fadeInDown 1s both 0.4s;
   animation: fadeInDown 1s both 0.4s;
   font-weight: 500;
@@ -950,7 +951,7 @@ section {
 .hero-fullscreen {
   width: 100%;
   min-height: 100vh;
-  background: url("../img/shalom_2023.jpg") center center;
+  background: url("../img/hero-fullscreen-bg.jpg") center center;
   background-size: cover;
   position: relative;
   padding: 120px 0 60px;

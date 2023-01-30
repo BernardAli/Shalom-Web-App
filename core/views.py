@@ -64,6 +64,18 @@ def home_page(request):
     return render(request, 'core/home.html', context)
 
 
+def history(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/history.html', context)
+
+
 def service_details(request, id):
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
@@ -239,7 +251,7 @@ def join_accepted(request):
                           f"1. Create your account \n" \
                           f"To create your account, please click on the link below to submit your username and create " \
                           f"a unique password for your account.\n" \
-                          f"Create your account with this link http://127.0.0.1:8000/register/\n\n" \
+                          f"Create your account with this link https://shalombaptist.pythonanywhere.com/register/\n\n" \
                           f"2. Update your profile \n" \
                           f"After successfully creating your login details, kindly login on the website and Update " \
                           f"your profile.\n\n" \

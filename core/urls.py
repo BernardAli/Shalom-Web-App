@@ -12,4 +12,5 @@ urlpatterns = [
     path('family_details/<int:id>/', views.fam_details, name='family_details'),
     path('gallery/', views.gallery, name='gallery'),
     path('subscribers/', views.subscribers, name='subscribers'),
+    path('history/', views.history, name='history'),
 ]

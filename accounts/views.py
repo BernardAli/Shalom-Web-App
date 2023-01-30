@@ -25,7 +25,7 @@ def accounts_home(request):
     member_count = User.objects.all().count()
     family_count = Family.objects.all().count()
     auxiliary_count = Auxiliaries.objects.all().count()
-    ministry_count = Auxiliaries.objects.all().count()
+    ministry_count = Ministries.objects.all().count()
     cash_flow = CashFlow.objects.all()
     cash_flow_items = CashFlowHistory.objects.all().order_by('-created_on')[:5]
     context = {
@@ -159,7 +159,7 @@ def inflows_items(request, pk):
                 item_name=instance.item_name,
                 received_from=instance.received_from,
                 amount=instance.amount,
-                balance=instance.balance,
+                balance=instance.balance
             )
             cashflow_history.save()
 
@@ -325,6 +325,7 @@ def issue_cash(request, pk):
                 issue_by=instance.issue_by,
                 amount_out=instance.amount_out,
                 created_on=instance.created_on,
+                receipt_no=instance.receipt_no,
                 balance=instance.balance,
             )
             cash_issue_history.save()
@@ -363,6 +364,7 @@ def receive_cash(request, pk):
             issue_by=instance.issue_by,
             amount_in=instance.amount_in,
             created_on=instance.created_on,
+            receipt_no=instance.receipt_no,
             balance=instance.balance,
         )
         cash_receive_history.save()
@@ -402,6 +404,7 @@ def cash_history(request):
             writer = csv.writer(response)
             writer.writerow(
                 ['CATEGORY',
+                 'RECEIPT No.'
                  'RECIPIENT',
                  'DETAIL',
                  'RECEIVED AMOUNT',
@@ -413,6 +416,7 @@ def cash_history(request):
             for stock in instance:
                 writer.writerow(
                     [stock.category,
+                     stock.receipt_no,
                      stock.recipient,
                      stock.detail,
                      stock.amount_in,

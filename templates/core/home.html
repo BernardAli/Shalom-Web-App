@@ -2,16 +2,85 @@
 {% load static %}
 
   {% block content %}
-      <section id="hero-fullscreen" class="hero-fullscreen d-flex align-items-center">
-      <div class="container d-flex flex-column align-items-center position-relative" data-aos="zoom-out">
-        <h2>Welcome to <span>Shalom Baptist Church</span></h2>
-        <p>Home of Possibilities</p>
-        <div class="d-flex">
-          <a href="{% url 'join' %}" class="btn-get-started scrollto">Become a Member</a>
-          <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Latest Sermon Video</span></a>
+<!--      <section id="hero-fullscreen" class="hero-fullscreen d-flex align-items-center">-->
+<!--      <div class="container d-flex flex-column align-items-center position-relative" data-aos="zoom-out">-->
+<!--        <h2>Welcome to <span>Shalom Baptist Church</span></h2>-->
+<!--        <p>Home of Possibilities</p>-->
+<!--        <div class="d-flex">-->
+<!--          <a href="{% url 'join' %}" class="btn-get-started scrollto">Become a Member</a>-->
+<!--          <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Latest Sermon Video</span></a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero carousel  carousel-fade" data-bs-ride="carousel" data-bs-interval="7000">
+
+    <div class="carousel-item active">
+      <div class="container">
+        <div class="row justify-content-center gy-6">
+
+          <div class="col-lg-6 col-md-8">
+            <img src="{% static 'assets/img/shalom_2023.jpg' %}" alt="" class="img-fluid img">
+          </div>
+
+          <div class="col-lg-9 text-center">
+            <h2>Shalom Baptist Church</h2>
+            <p>Home of Possibilities</p>
+            <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="btn-get-started btn-watch-video align-items-center"><i class="bi bi-play-circle"></i><span> The Shalom Baptist Church</span></a>
+          </div>
+
         </div>
       </div>
-    </section>
+    </div><!-- End Carousel Item -->
+
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row justify-content-center gy-6">
+
+          <div class="col-lg-6 col-md-8">
+            <img src="{% static 'assets/img/shalom_2023.jpg' %}" alt="" class="img-fluid img">
+          </div>
+
+          <div class="col-lg-9 text-center">
+            <h2>2023</h2>
+            <p>My Year of Tangibility</p>
+            <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="btn-get-started btn-watch-video align-items-center"><i class="bi bi-play-circle"></i><span> Latest Sermon Video</span></a>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- End Carousel Item -->
+
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row justify-content-center gy-6">
+
+          <div class="col-lg-6 col-md-8">
+            <img src="{% static 'assets/img/shalom_2023.jpg' %}" alt="" class="img-fluid img">
+          </div>
+
+          <div class="col-lg-9 text-center">
+            <h2>Lets All Gather to Build</h2>
+            <p>Arise & Let Us Build</p>
+            <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="btn-get-started btn-watch-video align-items-center"><i class="bi bi-play-circle"></i><span> Building Project</span></a>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- End Carousel Item -->
+
+    <a class="carousel-control-prev" href="#hero" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#hero" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    </a>
+
+    <ol class="carousel-indicators"></ol>
+
+  </section><!-- End Hero Section -->
 
     <main id="main">
 
@@ -41,7 +110,7 @@
 
         <div class="section-header">
           <h2>About Shalom</h2>
-          <p>Shalom Baptist Church springged from Ash-Town Baptist church. In May 1994, the church
+          <p>Shalom Baptist Church sprang from Ash-Town Baptist church. In May 1994, the church
             was started at the Wesco Practice School.</p>
         </div>
 
@@ -54,12 +123,11 @@
           </div>
 
           <div class="col-lg-7">
-            <h3 class="pt-0 pt-lg-5">Neque officiis dolore maiores et exercitationem quae est seda lidera pat claero</h3>
-
+            <h3 class="pt-0 pt-lg-5">Background Information</h3>
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
-              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Vision</a></li>
-              <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Mission</a></li>
+              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Vision & Mission</a></li>
+              <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Goals & Objectives</a></li>
               <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">Head Pastor's Speech</a></li>
             </ul><!-- End Tabs -->
 
@@ -68,49 +136,69 @@
 
               <div class="tab-pane fade show active" id="tab1">
 
-                <p class="fst-italic">Vision inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+                <p class="fst-italic">Vision and Mission.</p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                  <h4>Mission</h4>
                 </div>
-                <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
+                <p>
+                  Our purpose is to exalt God and to honour our Lord and Saviour Jesus Christ, carry out his command to
+                  make disciples of all nations and also teach them to obey all that He commands (Matt 28:18-20) and to
+                  grow into maturity.
+                </p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>Incidunt non veritatis illum ea ut nisi</h4>
+                  <h4>Vision</h4>
                 </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-                </div>
-                <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
+                <p>
+                  Be people-friendly, creative and have inspiring worship through teaching and preaching that is biblical
+                  and relevant to life. Have vital and supportive fellowship through the creation of outreach opportunities
+                  into the communities, district, municipality, metropolis, and nation in service and evangelism. Also have
+                  an auditorium designed to minister to the total person-spiritually, emotionally, physically and socially set
+                  in a peaceful inspiring garden.
+                </p>
 
               </div><!-- End Tab 1 Content -->
 
               <div class="tab-pane fade show" id="tab2">
 
-                <p class="fst-italic">Mission inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+                <p class="fst-italic">Goals and Objectives</p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                  <h4>To build Shalom Baptist into a mega church with its annexes in various new residential areas all over
+the nation and beyond.</h4>
                 </div>
-                <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>Incidunt non veritatis illum ea ut nisi</h4>
+                  <h4>Train and develop leaders to oversee the various ministries in the church and the new churches
+which will be planted.</h4>
                 </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+                  <h4>Build counselling and retreat centre where people can refresh and energize themselves to look into
+the future with vision and focus.</h4>
                 </div>
-                <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
+                <div class="d-flex align-items-center mt-4">
+                  <i class="bi bi-check2"></i>
+                  <h4>With the Grace of God and the power of the Holy Spirit leadership, the church will establish a school
+to the University level, a Development and Career centre, Orphanage Home and a Hospital.</h4>
+                </div>
+                <div class="d-flex align-items-center mt-4">
+                  <i class="bi bi-check2"></i>
+                  <h4>To empower members through teaching, preaching, workshop and seminars for members to be
+independent financially, to have abundance in their socio-economic life and look healthy.</h4>
+                </div>
+                <div class="d-flex align-items-center mt-4">
+                  <i class="bi bi-check2"></i>
+                  <h4>Raise membership to 80,000 and run five services.</h4>
+                </div>
+                <div class="d-flex align-items-center mt-4">
+                  <i class="bi bi-check2"></i>
+                  <h4>Raise offering and tithe to about GHS 10,000.00<sup>*</sup> to GHS 50,000.00<sup>*</sup> every Sunday.</h4>
+                </div>
 
               </div><!-- End Tab 2 Content -->
 
@@ -156,8 +244,8 @@
 
           <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
             <h3>Our <em>Evangelism</em> Team</h3>
-            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <a class="cta-btn align-self-start" href="#">Call To Action</a>
+            <p> The prophet Isaiah wrote: “Seek the LORD while He may be found, call upon Him while He is near. Let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the LORD, and He will have mercy on him; and to our God, for He will abundantly pardon” (Isaiah 55:6-7).</p>
+            <a class="cta-btn align-self-start" href="{% static 'assets/Evangelism-Tracts.pdf' %}">How Can I Stop This? <i class="bi bi-download"></i></a>
           </div>
 
           <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
@@ -276,9 +364,10 @@
               </div>
 
               <ul>
-                <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</span></li>
+                <li><i class="bi bi-dot"></i> <span>Worship & Praise</span></li>
+                <li><i class="bi bi-dot"></i> <span>Tithe and Offering</span></li>
+                <li><i class="bi bi-dot"></i> <span>Sermon</span></li>
+                <li><i class="bi bi-dot"></i> <span>Announcement(s)</span></li>
               </ul>
 
             </div>
@@ -293,9 +382,9 @@
               </div>
 
               <ul>
-                <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
-                  <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</span></li>
+                <li><i class="bi bi-dot"></i> <span>Introduction</span></li>
+                <li><i class="bi bi-dot"></i> <span>Bible Studies</span></li>
+                  <li><i class="bi bi-dot"></i> <span>Announcement(s)</span></li>
               </ul>
 
             </div>
@@ -310,9 +399,10 @@
               </div>
 
               <ul>
-                <li><i class="bi bi-dot"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-dot"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-dot"></i> <span>Nulla at volutpat diam uteera</span></li>
+                <li><i class="bi bi-dot"></i> <span>Worship & Praise</span></li>
+                <li><i class="bi bi-dot"></i> <span>Tithe and Offering</span></li>
+                <li><i class="bi bi-dot"></i> <span>Sermon</span></li>
+                <li><i class="bi bi-dot"></i> <span>Announcement(s)</span></li>
               </ul>
 
             </div>
@@ -334,7 +424,7 @@
             <div class="content px-xl-5">
               <h3>Frequently Asked <strong>Questions</strong></h3>
               <p>
-                Here are some answers to some common asked questions and answers.
+                Here are some answers to some commonly asked questions and answers.
               </p>
             </div>
 
@@ -486,7 +576,7 @@
                 <i class="bi bi-phone flex-shrink-0"></i>
                 <div>
                   <h4>Call:</h4>
-                  <p>+233 244 526273</p>
+                  <p>+233 244 627253</p>
                 </div>
               </div><!-- End Info Item -->
 

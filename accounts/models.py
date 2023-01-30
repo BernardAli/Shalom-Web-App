@@ -62,6 +62,7 @@ class Cash(models.Model):
     category = models.CharField(max_length=50, blank=True, null=True, choices=CASH_CHOICE)
     recipient = models.CharField(max_length=50)
     detail = models.TextField(max_length=50)
+    receipt_no = models.IntegerField()
     created_on = models.DateTimeField(auto_now_add=True)
     amount_in = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     amount_out = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)

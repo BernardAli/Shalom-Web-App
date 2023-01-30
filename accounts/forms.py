@@ -19,25 +19,25 @@ class CashFlowUpdateForm(forms.ModelForm):
 class InflowForm(forms.ModelForm):
     class Meta:
         model = CashFlow
-        fields = ['received_from', 'amount']
+        fields = ['received_from', 'receipt_no', 'amount']
 
 
 class OutflowForm(forms.ModelForm):
     class Meta:
         model = CashFlow
-        fields = ['returned_to', 'receipt_no', 'amount']
+        fields = ['returned_to', 'amount']
 
 
 class IssueCashForm(forms.ModelForm):
     class Meta:
         model = Cash
-        fields =["recipient", "detail", "amount_out"]
+        fields =["recipient", "detail", 'receipt_no', "amount_out"]
 
 
 class ReceiveCashForm(forms.ModelForm):
     class Meta:
         model = Cash
-        fields = ["issue_by", "detail", "amount_in"]
+        fields = ["issue_by", "detail", 'receipt_no', "amount_in"]
 
 
 class CashSearchForm(forms.ModelForm):
