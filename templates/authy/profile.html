@@ -29,6 +29,7 @@
           <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
             <h3><em>{{ profile.full_name }}</em> (SBC-00{{ profile.id }})</h3>
             <p><a href="{{ profile.family.get_absolute_url }}">{{ profile.family }}</a></p>
+            <p><a href="{{ profile.auxiliary.get_absolute_url }}">{{ profile.auxiliary }}</a></p>
             <p>{{ profile.phone_no }}</p>
 
             {% if profile.full_name %}

@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from mysite.settings import EMAIL_HOST_USER
 from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
     AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
-    Services, Sermon, Subscribers
+    Services, Sermon, Subscribers, Gallery, GalleryCategory
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm, SubscribeForm
 
 
@@ -17,7 +17,7 @@ def home_page(request):
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
     ministries = Ministries.objects.all()
-    services = Services.objects.all().order_by('-name')
+    services = Services.objects.all()
     upcoming_events = UpcomingEvents.objects.filter(completed=False)
 
     form = SubscribeForm()
@@ -120,11 +120,15 @@ def gallery(request):
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
     ministries = Ministries.objects.all()
+    gallery_cat = GalleryCategory.objects.all()
+    galleries = Gallery.objects.all()
 
     context = {
         'auxiliaries': auxiliaries,
         'families': families,
         'ministries': ministries,
+        'galleries': galleries,
+        'gallery_cat': gallery_cat
     }
     return render(request, 'core/gallery.html', context)
 

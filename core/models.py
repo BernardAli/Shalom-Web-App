@@ -93,12 +93,12 @@ class Family(models.Model):
     def save(self, *args, **kwargs):
         super(Family, self).save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
+        img = Image.open(self.group_img.path)
 
         if img.height > 600 or img.width > 500:
             output_size = (300, 300)
             img.thumbnail(output_size)
-            img.save(self.image.path)
+            img.save(self.group_img.path)
 
 
 class Auxiliaries(models.Model):
@@ -209,3 +209,37 @@ class UpcomingEvents(models.Model):
 
     def __str__(self):
         return self.event
+
+
+GALLERY_CATEGORY = (
+    ('Services', 'Service'),
+    ('Youth', 'Youth'),
+    ('Projects', 'Projects'),
+    ('Others', 'Others'),
+)
+
+
+class GalleryCategory(models.Model):
+    category = models.CharField(max_length=50, choices=GALLERY_CATEGORY)
+
+    def __str__(self):
+        return self.category
+
+
+class Gallery(models.Model):
+    category = models.ForeignKey(GalleryCategory, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics', null=True, blank=True)
+    detail = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.detail
+
+    def save(self, *args, **kwargs):
+        super(Gallery, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 800 or img.width > 700:
+            output_size = (500, 500)
+            img.thumbnail(output_size)
+            img.save(self.image.path)

@@ -38,133 +38,22 @@
 
           <ul class="portfolio-flters">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-service">Services</li>
-            <li data-filter=".filter-youth">Youth</li>
-            <li data-filter=".filter-projects">Projects</li>
-            <li data-filter=".filter-others">Others</li>
+            {% for gallery in  gallery_cat %}
+              <li data-filter=".filter-{{gallery.category}}">{{gallery.category}}</li>
+            {% endfor %}
           </ul><!-- End Portfolio Filters -->
 
           <div class="row g-0 portfolio-container">
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-youth">
-              <img src="{% static 'assets/img/portfolio/product-1.jpg' %}" class="img-fluid" alt="">
+            {% for gallery in  galleries %}
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-{{gallery.category}}">
+              <img src="{{gallery.image.url}}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Product 1</h4>
-                <a href="{% static 'assets/img/portfolio/product-1.jpg' %}" title="Product 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <h4>{{gallery.detail}}</h4>
+                <a href="{{gallery.image.url}}" title="{{gallery.detail}}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
+            {% endfor %}
 
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-projects">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 1</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-others">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Family Get Together</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Family Get Together" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-service">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Sunday Service</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Sunday Service" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-youth">
-              <img src="{% static 'assets/img/portfolio/product-2.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 2</h4>
-                <a href="{% static 'assets/img/portfolio/product-2.jpg' %}" title="Product 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-projects">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Church Building</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Church Building" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-others">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Media Personnel</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Media Personnel" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-service">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Cross Over</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Cross Over" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-service">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Sunday Service</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Lord's Supper" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-service">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Sunday Service</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Lord's Supper" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-youth">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Mr. Dennis Bofah</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Mr. Dennis Bofah" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-projects">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Church Project</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Church Project" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-others">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Worship Service</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Worship Service" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-others">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Children's Department</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Children" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-others">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Leaders</h4>
-                <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" title="Leaders" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
 
           </div><!-- End Portfolio Container -->
 
