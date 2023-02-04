@@ -15,7 +15,6 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserUpdateForm(forms.ModelForm):
-
     class Meta:
         model = User
         fields = ['username']
@@ -24,6 +23,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     birth_date = forms.DateTimeField(widget=forms.widgets.DateInput(attrs={'type': 'date'}),
                                      required=False, initial=timezone.now)
+
     class Meta:
         model = Profile
-        fields = "__all__"
+        exclude = ('user', )

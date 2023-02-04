@@ -1,11 +1,11 @@
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
 
 from mysite.settings import EMAIL_HOST_USER
 from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
     AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
-    Services, Sermon
+    Services, Sermon, Subscribers
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm, SubscribeForm
 
 
@@ -292,3 +292,33 @@ def join_accepted(request):
         'form': form,
     }
     return render(request, 'core/join_accepted.html', context)
+
+
+def subscribers_mail(request):
+    subscribers = Subscribers.objects.all()
+    if request.method == 'POST':
+        subject = request.POST['subject']
+        message = request.POST['message']
+        file = request.POST['file']
+
+        message = f"Message: {message}"
+        # message.attach(file)
+
+        recipient = EMAIL_HOST_USER
+
+        # send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
+
+        email = EmailMessage(
+            subject,
+            message,
+            EMAIL_HOST_USER,
+            to=[[subs.email] for subs in subscribers.all()],
+            headers={'Message-ID': 'foo'},
+        )
+        # email.attach(file)
+        email.send(fail_silently=False)
+
+        messages.success(request, f'Message Successfully sent')
+        return redirect("home")
+
+    return render(request, 'core/sub_mail.html')

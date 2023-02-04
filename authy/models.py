@@ -65,8 +65,8 @@ BLOOD_CHOICES = (
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     full_name = models.CharField(max_length=50)
-    gender = models.CharField(max_length=50, choices=GENDER_CHOICES)
-    blood_group = models.CharField(max_length=50, choices=BLOOD_CHOICES)
+    gender = models.CharField(max_length=50, choices=GENDER_CHOICES, null=True, blank=True)
+    blood_group = models.CharField(max_length=50, choices=BLOOD_CHOICES, null=True, blank=True)
     place_of_residence = models.CharField(max_length=50)
     birth_date = models.DateField(null=True, blank=True)
     work_status = models.CharField(max_length=50, choices=WORK_STATUS_CHOICES, default='Student')

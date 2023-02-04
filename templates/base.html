@@ -154,6 +154,7 @@
               {% if user.is_authenticated and  user.is_staff %}
                 <li><i class="bi bi-chevron-right"></i> <a href="{% url 'join_accepted' %}">New Members</a></li>
                 <li><i class="bi bi-chevron-right"></i> <a href="{% url 'account_home' %}">Accounts</a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="{% url 'subscribers_mail' %}">Subscribers Email</a></li>
               {% endif %}
             </ul>
           </div>
@@ -228,6 +229,7 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'assets/js/script.js' %}"></script>
 
 </body>
 

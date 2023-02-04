@@ -13,4 +13,5 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('subscribers/', views.subscribers, name='subscribers'),
     path('history/', views.history, name='history'),
+    path('subscribers_mail/', views.subscribers_mail, name='subscribers_mail'),
 ]

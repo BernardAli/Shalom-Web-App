@@ -1,3 +1,5 @@
+from datetime import date, datetime
+
 from django.core.mail import send_mail
 from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse, reverse
@@ -93,6 +95,18 @@ def profile(request, username):
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
     payment_summary = CashFlowHistory.objects.values('item_name').annotate(dcount=Sum('amount')).filter(received_from=profile)
+    birth_date = profile.birth_date == date.today() and datetime.now().hour == 12 and datetime.now().minute == 3
+    if birth_date:
+        subject = 'Happy Birthday'
+        message = f"Hi {profile.full_name} \n\n" \
+                  "We bless God for adding another year to you. Shalom Baptist is happy to spend" \
+                  "this day with you. \n" \
+                  "May God continue to bless you.\n\n\n" \
+                  "Shalom Baptist Church"
+
+        recipient = profile.user.email
+
+        send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
     context = {
         'profile': profile,
         'auxiliaries': auxiliaries,
@@ -139,12 +153,12 @@ def edit_profile(request, username):
     profile = Profile.objects.get(user=user)
 
     if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
+        # u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
                                    instance=request.user.profile)
-        if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
+        if p_form.is_valid():
+            # u_form.save()
             p_form.save()
             email = user.email
             subject = 'Profile Page Edited'
@@ -177,7 +191,7 @@ def edit_profile(request, username):
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
-        'u_form': u_form,
+        # 'u_form': u_form,
         'p_form': p_form,
         'auxiliaries': auxiliaries,
         'families': families,

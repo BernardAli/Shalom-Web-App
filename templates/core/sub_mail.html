@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Subscribers Email</h2>
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Subscribers Email</li>
+          </ol>
+        </div>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+<section id="featured-services" class="featured-services">
+    <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Subscribers Email</h2>
+          <p>Write a new email to subscribers.</p>
+        </div>
+
+        <div>
+            <div>
+            <form action="" method="POST" role="form" class="register">
+                {% csrf_token %}
+                <input type="text" class="box" placeholder="subject" name="subject">
+                <textarea name="message" placeholder="Message" required rows="10" cols="68">
+
+                </textarea>
+                <input type="file" name="file">
+                <button class="btn btn-primary" type="submit">Send <i class="bi bi-envelope"></i></button>
+
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+          </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

@@ -4,20 +4,34 @@
 
 
 {% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Edit Profile</h2>
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Edit Profile</li>
+          </ol>
+        </div>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
 
 <section id="featured-services" class="featured-services">
     <div class="container" data-aos="fade-up">
         <div class="section-header">
-          <h2>Join Us</h2>
-          <p>Fill the form below to be part of the Shalom Family.</p>
+          <h2>Update Profile</h2>
+          <p>Fill the form below to complete your registration.</p>
         </div>
 
         <div>
             <form action="" method="post">
                 {% csrf_token%}
-                {{ u_form|crispy }}
                 {{ p_form|crispy }}
-                <div class="text-center"><button type="submit">Update</button></div>
+                <div class="text-center"><button type="submit" class="btn btn-primary">Update</button></div>
             </form>
         </div>
     </div>

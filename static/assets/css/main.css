@@ -2454,6 +2454,30 @@ section {
 .contact .php-email-form button[type=submit]:hover {
   background: rgba(var(--color-primary-rgb), 0.85);
 }
+.register {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.85);
+    box-shadow: 0.5rem 1.5rem 1.5rem #ccc;
+}
+
+.register input{
+  font-size: 16px;
+  padding: 10px 10px;
+  width: 40rem;
+  margin: 10px auto;
+  display: block;
+}
+
+.register input:focus{
+  border-color: var(--color-secondary-light);
+}
+
+@media (max-width: 500px) {
+  .register input{
+  width: 90%;
+}
+}
 
 @-webkit-keyframes animate-loading {
   0% {

@@ -104,7 +104,7 @@ class Family(models.Model):
 class Auxiliaries(models.Model):
     name = models.CharField(max_length=255)
     designation = models.CharField(max_length=255, blank=True, null=True)
-    vision = models.TextField(blank=True, null=True)
+    about_us = models.TextField(blank=True, null=True)
     mission = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
     deacon = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
@@ -144,6 +144,7 @@ class AuxiliaryExecutives(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics', null=True, blank=True)
     phone_no = models.CharField(max_length=20, null=True, blank=True)
     facebook = models.CharField(max_length=20, null=True, blank=True)
+    whatsapp = models.CharField(max_length=20, null=True, blank=True)
 
     def __str__(self):
         return self.auxiliary.name

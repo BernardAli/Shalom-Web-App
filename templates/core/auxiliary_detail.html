@@ -38,11 +38,9 @@
           </div>
 
           <div class="col-lg-7">
-            <h3 class="pt-0 pt-lg-5">Neque officiis dolore maiores et exercitationem quae est seda lidera pat claero</h3>
-
             <!-- Tabs -->
             <ul class="nav nav-pills mb-3">
-              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Vision</a></li>
+              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">About Us</a></li>
               <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Mission</a></li>
               <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">{{family.name}} Leader's Speech</a></li>
             </ul><!-- End Tabs -->
@@ -52,17 +50,13 @@
 
               <div class="tab-pane fade show active" id="tab1">
 
-                <p class="fst-italic">Vision</p>
-
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
-                  <h4>{{auxiliary.vision}}</h4>
+                  <h4>{{auxiliary.about_us}}</h4>
                 </div>
               </div><!-- End Tab 1 Content -->
 
               <div class="tab-pane fade show" id="tab2">
-
-                <p class="fst-italic">Mission</p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
@@ -71,10 +65,6 @@
               </div><!-- End Tab 2 Content -->
 
               <div class="tab-pane fade show" id="tab3">
-
-                <p class="fst-italic">
-                  Speech
-                </p>
 
                 <div class="d-flex align-items-center mt-4">
                   <i class="bi bi-check2"></i>
@@ -191,7 +181,12 @@
               <div class="member-info">
                 <div class="social">
                   <a href="tel:+233{{executive.phone_no}}"><i class="bi bi-phone"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
+                  {% if executive.facebook %}
+                    <a href="https://api.whatsapp.com/send?phone=233{{executive.whatsapp}}" class="google-plus"><i class="bi bi-whatsapp"></i></a>
+                  {% endif %}
+                  {% if executive.facebook %}
+                    <a href="{{executive.facebook}}"><i class="bi bi-facebook"></i></a>
+                  {% endif %}
                 </div>
                 <h4>{{executive.full_name}}</h4>
                 <span>{{executive.position}}</span>
@@ -200,7 +195,7 @@
           </div>
           <!-- End Team Member -->
           {% empty %}
-            <p>No executive added yet</p>
+            <p class="text text-center">No executive added yet</p>
           {% endfor %}
         </div>
 
@@ -216,6 +211,7 @@
           <p>Below are the {{auxiliary.name}} lists</p>
         </div>
 
+        {% if member in auxiliary.profile_set.all %}
         <table class="table table-hover table-bordered">
           <thead>
             <tr>
@@ -239,6 +235,9 @@
             {% endfor %}
           </tbody>
         </table>
+        {% else %}
+          <p class="text text-center">No member registered yet</p>
+        {% endif %}
 
       </div>
     </section><!-- End Inner Page --
