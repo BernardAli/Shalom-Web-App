@@ -13,78 +13,75 @@
 
   <!-- Favicons -->
   <link href="{% static 'assets/img/shalom_logo.png' %}" rel="icon">
-  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="{% static 'assets/img/shalom_logo.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
-  <!-- Variables CSS Files. Uncomment your preferred color scheme -->
-  <link href="{% static 'assets/css/variables.css' %}" rel="stylesheet">
-   <link href="{% static 'assets/css/variables-blue.css' %}" rel="stylesheet">
-<!--   <link href="{% static 'assets/css/variables-green.css' %}" rel="stylesheet">-->
-<!--   <link href="{% static 'assets/css/variables-orange.css' %}" rel="stylesheet">-->
-<!--   <link href="{% static 'assets/css/variables-purple.css' %}" rel="stylesheet">-->
-<!--   <link href="{% static 'assets/css/variables-red.css' %}" rel="stylesheet">-->
-<!--   <link href="{% static 'assets/css/variables-pink.css' %}" rel="stylesheet">-->
-
   <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top" data-scrollto-offset="0">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="{% url 'home' %}">SBC<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="{% static 'assets/img/logo.png' %}" alt=""></a>-->
 
-      <a href="{% url 'home' %}" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>SB<span>C.</span></h1>
-      </a>
-
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-
-          <li><a href="{% url 'home' %}"><span>Home</span></a>
-          </li>
-          <li><a class="nav-link scrollto" href="{% url 'home' %}#about">About</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'home' %}#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'home' %}#team">Leadership</a></li>
-          <li class="dropdown megamenu"><a href="#"><span>Families</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li><a href="{% url 'home' %}#hero">Home</a></li>
+          <li><a href="{% url 'home' %}#about">About Us</a></li>
+          <li><a href="{% url 'home' %}#services">Services</a></li>
+          <li><a href="{% url 'home' %}#team">Leadership</a></li>
+          <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              {% for fam in families %}
-                  <li><a href="{{ fam.get_absolute_url }}">{{fam.name}}</a></li>
-              {% endfor %}
+              <li><a href="{% url 'gallery' %}">Pictures</a></li>
+              <li><a href="#">Videos</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Auxiliaries</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              {% for aux in auxiliaries %}
-                  <li><a href="{{ aux.get_absolute_url }}">{{aux.name}}</a></li>
-              {% endfor %}
+              <li><a href="#">Church Council</a></li>
+              <li><a href="#">Deacons</a></li>
+              <li class="dropdown"><a href="#"><span>Families</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  {% for fam in families %}
+                      <li><a href="{{ fam.get_absolute_url }}">{{fam.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Auxiliaries</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  {% for aux in auxiliaries %}
+                      <li><a href="{{ aux.get_absolute_url }}">{{aux.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Ministries</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  {% for min in ministries %}
+                      <li><a href="{{ min.get_absolute_url }}">{{min.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Ministries</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              {% for min in ministries %}
-                  <li><a href="{{ min.get_absolute_url }}">{{min.name}}</a></li>
-              {% endfor %}
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="{% url 'gallery' %}">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'home' %}#contact">Contact</a></li>
-          {% if user.is_authenticated%}
+          <li><a href="{% url 'home' %}#contact">Contact Us</a></li>
+           {% if user.is_authenticated%}
            <li class="dropdown"><a><span>{{user.username}}</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="{% url 'profile' request.user %}">Profile</a></li>
@@ -95,19 +92,16 @@
           <li><a href="{% url 'login' %}">Login</a></li>
           {% endif %}
         </ul>
-        <i class="bi bi-list mobile-nav-toggle d-none"></i>
+        <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
-      {% if not user.is_authenticated %}
-        <a class="btn-getstarted scrollto" href="{% url 'join' %}">Join Now</a>
+      {% if user.is_authenticated%}
       {% else %}
-        <a class="btn-getstarted scrollto" href="{% url 'join' %}">Join Now</a>
+        <a href="#about" class="get-started-btn scrollto">Join Now</a>
       {% endif %}
-
     </div>
   </header><!-- End Header -->
 
-        {% if messages %}
+  {% if messages %}
               <ul class="messages">
                      {% for message in messages %}
                       <section id="team" class="team">
@@ -124,83 +118,77 @@
   {% block content %}
   {% endblock content %}
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
 
-    <div class="footer-content">
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h3>Shalom Baptist Church</h3>
-              <p>
-                Adwuman, Kenyase-Fawode Stretch, <br>
-                Kumasi, Ghana<br><br>
-                <strong>Phone:</strong> +233 244 627253<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-            </div>
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>SBC<span>.</span></h3>
+            <p>
+              Meduma New Site <br>
+              Kumasi, Fawoade - Kenyasi Stretch<br>
+              Ghana. <br><br>
+              <strong>Phone:</strong> +233 24 462 7253<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}#about">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}#services">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'gallery' %}">Gallery</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'history' %}">History</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'gallery' %}">Gallery</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'history' %}">History</a></li>
               {% if user.is_authenticated and  user.is_staff %}
-                <li><i class="bi bi-chevron-right"></i> <a href="{% url 'join_accepted' %}">New Members</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="{% url 'account_home' %}">Accounts</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="{% url 'subscribers_mail' %}">Subscribers Email</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'join_accepted' %}">New Members</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'account_home' %}">Accounts</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'subscribers_mail' %}">Subscribers Email</a></li>
               {% endif %}
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Auxiliaries</h4>
+            <h4>Our Services</h4>
             <ul>
               {% for aux in auxiliaries%}
-              <li><i class="bi bi-chevron-right"></i> <a href="{{aux.get_absolute_url}}">{{aux.name}}</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{aux.get_absolute_url}}">{{aux.name}}</a></li>
               {% endfor %}
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Subscribe to our weekly newsletters</p>
+            <h4>Join Our Newsletter</h4>
+            <p>Subscribe to receive our newsletters</p>
             <form action="{% url 'subscribers' %}" method="post">
               {% csrf_token %}
               <input type="email" name="email" placeholder="Enter Your Email">
               <input type="submit" value="Subscribe">
             </form>
-
           </div>
 
         </div>
       </div>
     </div>
 
-    <div class="footer-legal text-center">
-      <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+    <div class="container d-md-flex py-4">
 
-        <div class="d-flex flex-column align-items-center align-items-lg-start">
-          <div class="copyright">
-            &copy; Copyright <strong><span>SBC</span></strong>. All Rights Reserved
-          </div>
-          <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-            Designed by <a href="">Allgift Technologies LTD</a>
-          </div>
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>SBC</span></strong>. All Rights Reserved
         </div>
-
-        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-          {% if user.is_authenticated %}
+        <div class="credits">
+          Designed by <a href="https://allgifttechnologies.com/">Allgift Technolgies</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-end pt-3 pt-md-0">
+        {% if user.is_authenticated %}
             <a href="tel:+233244627253" class="google-plus"><i class="bi bi-phone"></i></a>
           {% else %}
             <a href="tel:+233244627253" class="google-plus"><i class="bi bi-phone"></i></a>
@@ -208,20 +196,16 @@
           <a href="https://api.whatsapp.com/send?phone=233244627253" class="google-plus"><i class="bi bi-whatsapp"></i></a>
           <a href="https://www.youtube.com/@shalombaptistchurch6140/videos" class="google-plus" target="_blank"><i class="bi bi-youtube"></i></a>
           <a href="https://web.facebook.com/baptistshalom?_rdc=1&_rdr" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
-        </div>
-
       </div>
     </div>
-
   </footer><!-- End Footer -->
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
   <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
   <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
@@ -229,7 +213,6 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
-  <script src="{% static 'assets/js/script.js' %}"></script>
 
 </body>
 

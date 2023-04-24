@@ -2,255 +2,123 @@
 {% load static %}
 
   {% block content %}
-<!--      <section id="hero-fullscreen" class="hero-fullscreen d-flex align-items-center">-->
-<!--      <div class="container d-flex flex-column align-items-center position-relative" data-aos="zoom-out">-->
-<!--        <h2>Welcome to <span>Shalom Baptist Church</span></h2>-->
-<!--        <p>Home of Possibilities</p>-->
-<!--        <div class="d-flex">-->
-<!--          <a href="{% url 'join' %}" class="btn-get-started scrollto">Become a Member</a>-->
-<!--          <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Latest Sermon Video</span></a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </section>-->
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
 
-<!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero carousel  carousel-fade" data-bs-ride="carousel" data-bs-interval="7000">
-
-    <div class="carousel-item active">
-      <div class="container">
-        <div class="row justify-content-center gy-6">
-
-          <div class="col-lg-6 col-md-8">
-            <img src="{% static 'assets/img/shalom_2023.jpg' %}" alt="" class="img-fluid img">
-          </div>
-
-          <div class="col-lg-9 text-center">
-            <h2>Shalom Baptist Church</h2>
-            <p>Home of Possibilities</p>
-            <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="btn-get-started btn-watch-video align-items-center"><i class="bi bi-play-circle"></i><span> The Shalom Baptist Church</span></a>
-          </div>
-
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <div class="row">
+        <div class="col-xl-6">
+          <h1>Shalom Baptist Church</h1>
+          <h2>Home of Possibilities</h2>
+          <a href="#about" class="btn-get-started scrollto">Join Now</a>
         </div>
       </div>
-    </div><!-- End Carousel Item -->
+    </div>
 
-    <div class="carousel-item">
-      <div class="container">
-        <div class="row justify-content-center gy-6">
+  </section><!-- End Hero -->
 
-          <div class="col-lg-6 col-md-8">
-            <img src="{% static 'assets/img/shalom_2023.jpg' %}" alt="" class="img-fluid img">
-          </div>
-
-          <div class="col-lg-9 text-center">
-            <h2>2023</h2>
-            <p>My Year of Tangibility</p>
-            <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="btn-get-started btn-watch-video align-items-center"><i class="bi bi-play-circle"></i><span> Latest Sermon Video</span></a>
-          </div>
-
-        </div>
-      </div>
-    </div><!-- End Carousel Item -->
-
-    <div class="carousel-item">
-      <div class="container">
-        <div class="row justify-content-center gy-6">
-
-          <div class="col-lg-6 col-md-8">
-            <img src="{% static 'assets/img/shalom_2023.jpg' %}" alt="" class="img-fluid img">
-          </div>
-
-          <div class="col-lg-9 text-center">
-            <h2>Lets All Gather to Build</h2>
-            <p>Arise & Let Us Build</p>
-            <a href="https://www.youtube.com/watch?v=VTw_46m6RxM" class="btn-get-started btn-watch-video align-items-center"><i class="bi bi-play-circle"></i><span> Building Project</span></a>
-          </div>
-
-        </div>
-      </div>
-    </div><!-- End Carousel Item -->
-
-    <a class="carousel-control-prev" href="#hero" role="button" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-    </a>
-
-    <a class="carousel-control-next" href="#hero" role="button" data-bs-slide="next">
-      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-    </a>
-
-    <ol class="carousel-indicators"></ol>
-
-  </section><!-- End Hero Section -->
-
-    <main id="main">
+  <main id="main">
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
-      <div class="container" data-aos="zoom-out">
+      <div class="container" data-aos="zoom-in">
 
         <div class="clients-slider swiper">
           <div class="swiper-wrapper align-items-center">
             {% for fam in  families %}
-            <div class="swiper-slide">
-              <a href="{{fam.get_absolute_url}}">
-                <img src="{% static 'assets/img/shalom_logo.png' %}" class="img-fluid" alt="">
-                <p class="text-center">{{fam.name}}</p>
-              </a>
-            </div>
+              <div class="swiper-slide">
+                <a href="{{fam.get_absolute_url}}">
+                  <img src="{% static 'assets/img/clients/client-1.png' %}" class="img-fluid" alt="">
+                </a>
+              </div>
             {% endfor %}
           </div>
+          <div class="swiper-pagination"></div>
         </div>
 
       </div>
     </section><!-- End Clients Section -->
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section id="about" class="about section-bg">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>About Shalom</h2>
-          <p>Shalom Baptist Church sprang from Ash-Town Baptist church. In May 1994, the church
-            was started at the Wesco Practice School.</p>
-        </div>
-
-        <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-5">
-            <div class="about-img">
-              <img src="{% static 'assets/img/pastor.jpeg' %}" class="img-fluid" alt="">
+        <div class="row no-gutters">
+          <div class="content col-xl-5 d-flex align-items-stretch">
+            <div class="content">
+              <h3>About Shalom Baptist Church</h3>
+              <p>
+                Shalom Baptist Church sprang from Ash-Town Baptist church. In May 1994, the church was started at the Wesco Practice School.
+              </p>
+              <a href="{% url 'history' %}" class="about-btn"><span>Our History</span> <i class="bx bx-chevron-right"></i></a>
             </div>
           </div>
-
-          <div class="col-lg-7">
-            <h3 class="pt-0 pt-lg-5">Background Information</h3>
-            <!-- Tabs -->
-            <ul class="nav nav-pills mb-3">
-              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Vision & Mission</a></li>
-              <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Goals & Objectives</a></li>
-              <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">Head Pastor's Speech</a></li>
-            </ul><!-- End Tabs -->
-
-            <!-- Tab Content -->
-            <div class="tab-content">
-
-              <div class="tab-pane fade show active" id="tab1">
-
-                <p class="fst-italic">Vision and Mission.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Mission</h4>
+          <div class="col-xl-7 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                  <i class="bx bx-receipt"></i>
+                  <h4>Mision</h4>
+                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
                 </div>
-                <p>
-                  Our purpose is to exalt God and to honour our Lord and Saviour Jesus Christ, carry out his command to
-                  make disciples of all nations and also teach them to obey all that He commands (Matt 28:18-20) and to
-                  grow into maturity.
-                </p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bx bx-cube-alt"></i>
                   <h4>Vision</h4>
+                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
                 </div>
-                <p>
-                  Be people-friendly, creative and have inspiring worship through teaching and preaching that is biblical
-                  and relevant to life. Have vital and supportive fellowship through the creation of outreach opportunities
-                  into the communities, district, municipality, metropolis, and nation in service and evangelism. Also have
-                  an auditorium designed to minister to the total person-spiritually, emotionally, physically and socially set
-                  in a peaceful inspiring garden.
-                </p>
-
-              </div><!-- End Tab 1 Content -->
-
-              <div class="tab-pane fade show" id="tab2">
-
-                <p class="fst-italic">Goals and Objectives</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>To build Shalom Baptist into a mega church with its annexes in various new residential areas all over
-the nation and beyond.</h4>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bx bx-images"></i>
+                  <h4>Labore consequatur</h4>
+                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
                 </div>
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Train and develop leaders to oversee the various ministries in the church and the new churches
-which will be planted.</h4>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bx bx-shield"></i>
+                  <h4>Beatae veritatis</h4>
+                  <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
                 </div>
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Build counselling and retreat centre where people can refresh and energize themselves to look into
-the future with vision and focus.</h4>
-                </div>
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>With the Grace of God and the power of the Holy Spirit leadership, the church will establish a school
-to the University level, a Development and Career centre, Orphanage Home and a Hospital.</h4>
-                </div>
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>To empower members through teaching, preaching, workshop and seminars for members to be
-independent financially, to have abundance in their socio-economic life and look healthy.</h4>
-                </div>
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Raise membership to 80,000 and run five services.</h4>
-                </div>
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Raise offering and tithe to about GHS 10,000.00<sup>*</sup> to GHS 50,000.00<sup>*</sup> every Sunday.</h4>
-                </div>
-
-              </div><!-- End Tab 2 Content -->
-
-              <div class="tab-pane fade show" id="tab3">
-
-                <p class="fst-italic">Head Pastor's Speech inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-                </div>
-                <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-                </div>
-                <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
-              </div><!-- End Tab 3 Content -->
-
-            </div>
-
+              </div>
+            </div><!-- End .content-->
           </div>
-
         </div>
 
       </div>
     </section><!-- End About Section -->
 
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
 
-    <!-- ======= Call To Action Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-out">
+        <div class="row">
 
-        <div class="row g-5">
-
-          <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-            <h3>Our <em>Evangelism</em> Team</h3>
-            <p> The prophet Isaiah wrote: “Seek the LORD while He may be found, call upon Him while He is near. Let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the LORD, and He will have mercy on him; and to our God, for He will abundantly pardon” (Isaiah 55:6-7).</p>
-            <a class="cta-btn align-self-start" href="{% static 'assets/Evangelism-Tracts.pdf' %}">How Can I Stop This? <i class="bi bi-download"></i></a>
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Branches</p>
+            </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
-            <div class="img">
-              <img src="{% static 'assets/img/cta.jpg' %}" alt="" class="img-fluid">
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-start="0" data-purecounter-end="250" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Members</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Ministries</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Staff</p>
             </div>
           </div>
 
@@ -258,349 +126,454 @@ independent financially, to have abundance in their socio-economic life and look
 
       </div>
     </section>
-      <!-- End Call To Action Section -->
+    <!-- End Counts Section -->
 
-    <!-- ======= On Focus Section ======= -->
-    <section id="onfocus" class="onfocus">
-      <div class="container-fluid p-0" data-aos="fade-up">
+    <!-- ======= Tabs Section ======= -->
+    <section id="tabs" class="tabs">
+      <div class="container" data-aos="fade-up">
 
-        <div class="row g-0">
-          <div class="col-lg-6 video-play position-relative">
-            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+        <ul class="nav nav-tabs row d-flex">
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+              <i class="ri-gps-line"></i>
+              <h4 class="d-none d-lg-block">Head Pastor's Speech</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+              <i class="ri-body-scan-line"></i>
+              <h4 class="d-none d-lg-block">Our Evangelism Team</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+              <i class="ri-sun-line"></i>
+              <h4 class="d-none d-lg-block">Upcoming Events</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+              <i class="ri-store-line"></i>
+              <h4 class="d-none d-lg-block">This Weeks Birthdays</h4>
+            </a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active show" id="tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                <img src="{% static 'assets/img/tabs-1.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
           </div>
-          <div class="col-lg-6">
-            <div class="content d-flex flex-column justify-content-center h-100">
-              <h3>Upcoming Events</h3>
-              <p class="fst-italic">
-                The following are the upcoming events
-              </p>
-              <ul>
-                {% for event in upcoming_events %}
-                  <li><i class="bi bi-check-circle"></i>{{event.event}} on {{event.date}}</li>
-                {% empty %}
-                  <p>No upcoming events</p>
-                {% endfor %}
-              </ul>
-              <a href="#" class="read-more align-self-start"><span>Sunday Service</span><i class="bi bi-download"></i></a>
+          <div class="tab-pane" id="tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
+                <p>
+                  The prophet Isaiah wrote: “Seek the LORD while He may be found, call upon Him while He is near. Let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the LORD, and He will have mercy on him; and to our God, for He will abundantly pardon” (Isaiah 55:6-7).
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-2.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                </ul>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-3.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-4">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-4.jpg' %}" alt="" class="img-fluid">
+              </div>
             </div>
           </div>
         </div>
 
       </div>
-    </section><!-- End On Focus Section -->
-
-    <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
-      <div class="container" data-aos="fade-up">
-
-        <ul class="nav nav-tabs row gy-4 d-flex">
-          {% for aux in auxiliaries %}
-            <li class="nav-item col-6 col-md-4 col-lg-2">
-            <a  href="{{ aux.get_absolute_url }}" class="nav-link">
-<!--              <i class="bi bi-binoculars color-cyan"></i>-->
-              <img src="{{ aux.group_img.url }}" alt="" height="75">
-              <h4>{{aux.name}}</h4>
-            </a>
-          </li><!-- End Tab 1 Nav -->
-          {% endfor %}
-        </ul>
-      </div>
-    </section><!-- End Features Section -->
+    </section>
+    <!-- End Tabs Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
+    <section id="services" class="services section-bg ">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>Our Services</h2>
+        <div class="section-title">
+          <h2>Services</h2>
           <p>These are the various services held by the church every week if there is no major event.</p>
         </div>
 
-        <div class="row gy-5">
+        <div class="row">
           {% for service in services %}
-          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="service-item">
-              <div class="img">
-                <img src="{{service.image.url}}" class="img-fluid" alt="">
-              </div>
-              <div class="details position-relative">
-                <div class="icon">
-                  <i class="bi bi-book"></i>
-                </div>
-                <a href="{{service.get_absolute_url}}" class="stretched-link">
-                  <h3>{{service.name}}</h3>
-                </a>
-                <p>{{service.times}}</p>
-                <p>{{service.days}}</p>
-              </div>
+            <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-card-checklist"></i>
+              <h4><a href="{{service.get_absolute_url}}">{{service.name}}</a></h4>
+              <p>{{service.times}}</p>
+              <p>{{service.days}}</p>
             </div>
-          </div><!-- End Service Item -->
+          </div>
           {% empty %}
           <p>No service added yet</p>
           {% endfor %}
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+    </section>
+    <!-- End Services Section -->
 
+
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <p>Below are some of the testimonials of members. Click <a href="">here</a> to add a testimonial.</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Saul Goodman</h3>
+                  <h4>Ceo &amp; Founder</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Sara Wilsson</h3>
+                  <h4>Designer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Jena Karlis</h3>
+                  <h4>Store Owner</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Matt Brandon</h3>
+                  <h4>Freelancer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                  <h3>John Larson</h3>
+                  <h4>Entrepreneur</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat esse veniam culpa fore nisi cillum quid.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
 
     <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
+    <section id="pricing" class="pricing section-bg">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
+        <div class="section-title">
           <h2>Sunday Services</h2>
           <p>Below are our Sunday activities</p>
         </div>
 
-        <div class="row gy-4">
+        <div class="row">
 
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="pricing-item">
-
-              <div class="pricing-header">
-                <h3>Sunday 1st Service</h3>
-                <h4>7:00<sup>am</sup><span> to 8:30</span></h4>
-              </div>
-
+          <div class="col-lg-4 col-md-6">
+            <div class="box" data-aos="fade-up" data-aos-delay="100">
+              <h3>1st (English) Service</h3>
+              <h4>7:00<sup> am</sup> - 8:30<sup> am</sup></h4>
               <ul>
-                <li><i class="bi bi-dot"></i> <span>Worship & Praise</span></li>
-                <li><i class="bi bi-dot"></i> <span>Tithe and Offering</span></li>
-                <li><i class="bi bi-dot"></i> <span>Sermon</span></li>
-                <li><i class="bi bi-dot"></i> <span>Announcement(s)</span></li>
+                <li>Worship & Praise</li>
+                <li>Tithe and Offering</li>
+                <li>Sermon</li>
+                <li>Announcement(s)</li>
               </ul>
-
             </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="400">
-            <div class="pricing-item featured">
-
-              <div class="pricing-header">
-                <h3>Family Meeting</h3>
-                <h4>8:30<sup>am</sup><span> to 9:30</span></h4>
-              </div>
-
-              <ul>
-                <li><i class="bi bi-dot"></i> <span>Introduction</span></li>
-                <li><i class="bi bi-dot"></i> <span>Bible Studies</span></li>
-                  <li><i class="bi bi-dot"></i> <span>Announcement(s)</span></li>
-              </ul>
-
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="600">
-            <div class="pricing-item">
-
-              <div class="pricing-header">
-                <h3>Sunday 2nd Service</h3>
-                <h4>9:30<sup>am</sup><span> to 11:30</span></h4>
-              </div>
-
-              <ul>
-                <li><i class="bi bi-dot"></i> <span>Worship & Praise</span></li>
-                <li><i class="bi bi-dot"></i> <span>Tithe and Offering</span></li>
-                <li><i class="bi bi-dot"></i> <span>Sermon</span></li>
-                <li><i class="bi bi-dot"></i> <span>Announcement(s)</span></li>
-              </ul>
-
-            </div>
-          </div><!-- End Pricing Item -->
-
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
-
-    <!-- ======= F.A.Q Section ======= -->
-    <section id="faq" class="faq">
-      <div class="container-fluid" data-aos="fade-up">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-
-            <div class="content px-xl-5">
-              <h3>Frequently Asked <strong>Questions</strong></h3>
-              <p>
-                Here are some answers to some commonly asked questions and answers.
-              </p>
-            </div>
-
-            <div class="accordion accordion-flush px-xl-5" id="faqlist">
-
-              {% for faq in faqs %}
-                <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-{{faq.id}}">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    {{faq.question}}
-                  </button>
-                </h3>
-                <div id="faq-content-{{faq.id}}" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    {{faq.answer}}
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-              {% empty  %}
-                <p>No Questions</p>
-              {% endfor %}
-
-
-            </div>
-
           </div>
 
-          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style="background-image: url('{% static 'assets/img/shalom_2023.jpg' %}');">&nbsp;</div>
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
+              <h3>Family Meeting</h3>
+              <h4>8:30<sup> am</sup> - 9:30<sup> am</sup></h4>
+              <ul>
+                <li>Introduction</li>
+                <li>Bible Studies</li>
+                <li>Announcement(s)</li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+            <div class="box" data-aos="fade-up" data-aos-delay="300">
+              <h3>2nd (Twi) Service</h3>
+              <h4>9:30<sup> am</sup> - 11:30<sup> am</sup></h4>
+              <ul>
+                <li>Worship & Praise</li>
+                <li>Tithe and Offering</li>
+                <li>Sermon</li>
+                <li>Announcement(s)</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
 
       </div>
     </section>
-      <!-- End F.A.Q Section -->
+    <!-- End Pricing Section -->
 
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>Our Leadership</h2>
-          <p>Below is the leadership of the Shalom Baptist Church</p>
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
         </div>
 
-        <div class="row gy-5">
+        <ul class="faq-list accordion" data-aos="fade-up">
+          {% for faq in faqs %}
+            <li>
+            <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-content-{{faq.id}}">{{faq.question}} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <div id="faq-content-{{faq.id}}" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                {{faq.answer}}
+              </p>
+            </div>
+          </li>
+          {% empty  %}
+            <p>No Questions</p>
+          {% endfor %}
 
-          <div class="col-xl-6 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
-            <div class="team-member">
+
+        </ul>
+
+      </div>
+    </section>
+    <!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Our Leadership</h2>
+          <p>Below is the leadership of the Shalom Baptist Church.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
                 <img src="{% static 'assets/img/pastor_.png' %}" class="img-fluid" alt="">
-              </div>
-              <div class="member-info">
                 <div class="social">
                   <a href="tel:+233244627253" class="google-plus"><i class="bi bi-phone"></i></a>
                   <a href="https://api.whatsapp.com/send?phone=233244627253" class="google-plus"><i class="bi bi-whatsapp"></i></a>
                   <a href="https://web.facebook.com/eaappiah" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
                 </div>
+              </div>
+              <div class="member-info">
                 <h4>Rev. Ernest Amoah Appiah</h4>
                 <span>Head Pastor</span>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>
 
-          <div class="col-xl-6 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
-            <div class="team-member">
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
               <div class="member-img">
                 <img src="{% static 'assets/img/oye_3.png' %}" class="img-fluid" alt="">
-              </div>
-              <div class="member-info">
                 <div class="social">
                   <a href="tel:+2233244630012" class="google-plus"><i class="bi bi-phone"></i></a>
                   <a href="https://api.whatsapp.com/send?phone=233244630012" class="google-plus"><i class="bi bi-whatsapp"></i></a>
                   <a href="https://web.facebook.com/enoch.oye.5" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
                 </div>
+              </div>
+              <div class="member-info">
                 <h4>Deacon Oye Enoch</h4>
                 <span>Deacon Head</span>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>
 
-<!--          <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">-->
-<!--            <div class="team-member">-->
-<!--              <div class="member-img">-->
-<!--                <img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt="">-->
-<!--              </div>-->
-<!--              <div class="member-info">-->
-<!--                <div class="social">-->
-<!--                  <a href=""><i class="bi bi-twitter"></i></a>-->
-<!--                  <a href=""><i class="bi bi-facebook"></i></a>-->
-<!--                  <a href=""><i class="bi bi-instagram"></i></a>-->
-<!--                  <a href=""><i class="bi bi-linkedin"></i></a>-->
-<!--                </div>-->
-<!--                <h4>William Anderson</h4>-->
-<!--                <span>CTO</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>&lt;!&ndash; End Team Member &ndash;&gt;-->
 
         </div>
 
       </div>
     </section>
-      <!-- End Team Section -->
+    <!-- End Team Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-      <div class="container">
+      <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>Contact Us</h2>
+        <div class="section-title">
+          <h2>Contact</h2>
         </div>
 
-      </div>
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="map">
-<!--        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>-->
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9423.66263821907!2d-1.5734697022284996!3d6.750080318721933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdbbf0ef83097e9%3A0x3a8c20b6f8522e65!2sShalom%20Baptist%20Church!5e0!3m2!1sen!2sgh!4v1670070436803!5m2!1sen!2sgh" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div><!-- End Google Maps -->
+          <div class="col-lg-6">
 
-      <div class="container">
-
-        <div class="row gy-5 gx-lg-5">
-
-          <div class="col-lg-4">
-
-            <div class="info">
-              <h3>Get in touch</h3>
-              <p>Reach Us via the following</p>
-
-              <div class="info-item d-flex">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h4>Location:</h4>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3>Our Address</h3>
                   <p>Adwuman, Kenyase-Fawode Stretch, Kumasi</p>
                 </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h4>Email:</h4>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Email Us</h3>
                   <p>info@example.com</p>
                 </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-phone flex-shrink-0"></i>
-                <div>
-                  <h4>Call:</h4>
-                  <p>+233 244 627253</p>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Call Us</h3>
+                  <p>+233 24 462 7253</p>
                 </div>
-              </div><!-- End Info Item -->
-
+              </div>
             </div>
 
           </div>
 
-          <div class="col-lg-8">
-            <form action="{% url 'home' %}" method="post" role="form" class="php-email-form">
-              {% csrf_token %}
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
-                <div class="col-md-6 form-group">
+                <div class="col form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="text" class="form-control" name="phone" id="text" placeholder="Your Phone Number" required>
+                <div class="col form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
               </div>
-              <div class="form-group mt-3">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-              </div>
-              <div class="form-group mt-3">
+              <div class="form-group">
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
               </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
@@ -609,7 +582,7 @@ independent financially, to have abundance in their socio-economic life and look
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
-          </div><!-- End Contact Form -->
+          </div>
 
         </div>
 

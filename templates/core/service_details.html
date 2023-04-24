@@ -4,20 +4,19 @@
 
 
 {% block content %}
-<!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
       <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>{{ service.name }}</h2>
-          <ol>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li>{{ service.name }}</li>
-          </ol>
-        </div>
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>{{ service.name }}</li>
+        </ol>
+        <h2>{{ service.name }}</h2>
 
       </div>
-    </div><!-- End Breadcrumbs -->
+    </section>
+    <!-- End Breadcrumbs -->
 
 
     <!-- ======= Call To Action Section ======= -->
@@ -44,29 +43,34 @@
     </section>
       <!-- End Call To Action Section -->
 
-
-    <section id="features" class="features">
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
-        <div class="section-header">
-          <h2>Sermon Collections</h2>
-          <p>Below are the past sermons. You can listen to the audio or download them</p>
-        </div>
-        <ul class="nav nav-tabs row gy-4 d-flex">
+          <div class="section-title">
+              <h2>Sermon Collections</h2>
+              <p>Below are the past sermons. You can listen to the audio or download them.</p>
+          </div>
+
+        <div class="row">
             {% for sermon in sermons %}
-            <li class="nav-item col-6 col-md-6 col-lg-4">
-            <a  class="nav-link" href="{{sermon.file.url}}" target="_blank">
-              <i class="bi bi-cassette color-cyan"></i>
-<!--              <img src="{{ aux.group_img.url }}" alt="" height="75">-->
-              <h4>{{sermon.title}}</h4>
-              <p>By: {{sermon.preacher}}</p>
-              <p>On: {{sermon.date}}</p>
-            </a>
-          </li>
+                <div class="col-lg-3 col-md-6">
+                    <a href="{{sermon.file.url}}" target="_blank">
+                        <div class="count-box">
+                          <i class="bi bi-cassette color-cyan"></i>
+                            <h4>{{sermon.title}}</h4>
+                          <p>By: {{sermon.preacher}}</p>
+                          <p>On: {{sermon.date}}</p>
+                        </div>
+                    </a>
+                  </div>
             {% empty %}
               <p>No Sermon Added</p>
             {% endfor %}
-        </ul>
+
+        </div>
+
       </div>
-    </section><!-- End Features Section -->
+    </section>
+    <!-- End Counts Section -->
 
 {% endblock content %}

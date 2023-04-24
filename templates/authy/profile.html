@@ -4,20 +4,20 @@
 
 
 {% block content %}
-<!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-      <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>{{ profile.full_name }} (SBC-00{{profile.id}})</h2>
+    <!-- ======= Breadcrumbs ======= -->
+      <section class="breadcrumbs">
+        <div class="container">
+
           <ol>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li>{{ profile.user.username }}</li>
           </ol>
-        </div>
+          <h2>{{ profile.full_name }} (SBC-00{{profile.id}})</h2>
 
-      </div>
-    </div><!-- End Breadcrumbs -->
+        </div>
+      </section>
+    <!-- End Breadcrumbs -->
 
 
     <!-- ======= Call To Action Section ======= -->
@@ -57,28 +57,30 @@
     </section>
       <!-- End Call To Action Section -->
 
-
-    <section id="features" class="features">
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
-        <div class="section-header">
-          <h2>My Contributions</h2>
-          <p>Below are the summary of all your contributions.</p>
-        </div>
-        <ul class="nav nav-tabs row gy-4 d-flex">
+          <div class="section-title">
+              <h2>My Contributions</h2>
+              <p>Below are the summary of all your contributions.</p>
+            </div>
+
+        <div class="row">
             {% for payments in payment_summary %}
-            <li class="nav-item col-6 col-md-4 col-lg-3">
-            <a  class="nav-link">
-              <i class="bi bi-cash color-cyan"></i>
-<!--              <img src="{{ aux.group_img.url }}" alt="" height="75">-->
-              <h4>{{payments.item_name}}</h4>
-              <p>GHS {{payments.dcount}}</p>
-            </a>
-          </li>
+                  <div class="col-lg-3 col-md-6">
+                    <div class="count-box">
+                      <i class="bi bi-cash color-cyan"></i>
+                        <h4>{{payments.item_name}}</h4>
+                        <p>GHS {{payments.dcount}}</p>
+                    </div>
+                  </div>
             {% empty %}
               <p>No payments recorded</p>
             {% endfor %}
-        </ul>
+        </div>
+
       </div>
-    </section><!-- End Features Section -->
+    </section>
+    <!-- End Counts Section -->
 
 {% endblock content %}

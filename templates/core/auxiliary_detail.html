@@ -4,181 +4,225 @@
 
 
 {% block content %}
+  <main id="main">
 
-   <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
       <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>{{auxiliary.name}}</h2>
-          <ol>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li>{{auxiliary.name}}</li>
-          </ol>
-        </div>
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>About {{auxiliary.name}}</li>
+        </ol>
+        <h2>{{auxiliary.name}}</h2>
 
       </div>
-    </div><!-- End Breadcrumbs -->
+    </section>
+    <!-- End Breadcrumbs -->
 
-    <!-- ======= About Section ======= -->
-    <section class="inner-page about" id="about">
+    <!-- ======= Tabs Section ======= -->
+    <section id="tabs" class="tabs">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>About {{auxiliary.name}}</h2>
-          <p>{{auxiliary.name}}</p>
-        </div>
+        <ul class="nav nav-tabs row d-flex">
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+              <i class="ri-gps-line"></i>
+              <h4 class="d-none d-lg-block">{{auxiliary.name}} President's Speech</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+              <i class="ri-body-scan-line"></i>
+              <h4 class="d-none d-lg-block">Mission</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+              <i class="ri-sun-line"></i>
+              <h4 class="d-none d-lg-block">Upcoming Events</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+              <i class="ri-store-line"></i>
+              <h4 class="d-none d-lg-block">This Weeks Birthdays</h4>
+            </a>
+          </li>
+        </ul>
 
-        <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-5">
-            <div class="about-img">
-              <img src="{{auxiliary.deacon.url}}" class="img-fluid" alt="">
+        <div class="tab-content">
+          <div class="tab-pane active show" id="tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                <img src="{% static 'assets/img/tabs-1.jpg' %}" alt="" class="img-fluid">
+              </div>
             </div>
           </div>
-
-          <div class="col-lg-7">
-            <!-- Tabs -->
-            <ul class="nav nav-pills mb-3">
-              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">About Us</a></li>
-              <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Mission</a></li>
-              <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">{{family.name}} Leader's Speech</a></li>
-            </ul><!-- End Tabs -->
-
-            <!-- Tab Content -->
-            <div class="tab-content">
-
-              <div class="tab-pane fade show active" id="tab1">
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>{{auxiliary.about_us}}</h4>
-                </div>
-              </div><!-- End Tab 1 Content -->
-
-              <div class="tab-pane fade show" id="tab2">
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>{{auxiliary.mission}}</h4>
-                </div>
-              </div><!-- End Tab 2 Content -->
-
-              <div class="tab-pane fade show" id="tab3">
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>{{auxiliary.speech}}</h4>
-                </div>
-              </div><!-- End Tab 3 Content -->
-
+          <div class="tab-pane" id="tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
+                <p>
+                  The prophet Isaiah wrote: “Seek the LORD while He may be found, call upon Him while He is near. Let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the LORD, and He will have mercy on him; and to our God, for He will abundantly pardon” (Isaiah 55:6-7).
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-2.jpg' %}" alt="" class="img-fluid">
+              </div>
             </div>
-
           </div>
-
+          <div class="tab-pane" id="tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                </ul>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-3.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-4">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-4.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
     </section>
-    <!-- End About Section -->
+    <!-- End Tabs Section -->
 
     <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
+    <section id="pricing" class="pricing section-bg">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
+        <div class="section-title">
           <h2>Meeting Days and Time</h2>
         </div>
 
-        <div class="row gy-4">
+        <div class="row">
 
-          <div class="col-lg-12" data-aos="zoom-in" data-aos-delay="200">
-            <div class="pricing-item">
-
-              <div class="pricing-header">
-
-                {% if  meeting_time.days is not None %}
-                  <h3>{{meeting_time.days}}</h3>
-                  <h4>{{meeting_time.time}}</h4>
-                {% endif %}
-
-              </div>
-
+          <div class="col-lg-12 col-md-6 mt-4 mt-md-0">
+            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
+              {% if  meeting_time.days %}
+                <h3>{{meeting_time.days}}</h3>
+                <h4>{{meeting_time.time}}</h4>
+              {% else %}
+                <h3>Meeting time not added yet</h3>
+              {% endif %}
             </div>
-          </div><!-- End Pricing Item -->
+          </div>
 
         </div>
-
       </div>
     </section>
     <!-- End Pricing Section -->
 
-    <!-- ======= F.A.Q Section ======= -->
+    <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq">
-      <div class="container-fluid" data-aos="fade-up">
+      <div class="container" data-aos="fade-up">
 
-        <div class="row gy-4">
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+        </div>
 
-          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-
-            <div class="content px-xl-5">
-              <h3>Frequently Asked <strong>Questions</strong></h3>
+        <ul class="faq-list accordion" data-aos="fade-up">
+          {% for faq in faqs %}
+            <li>
+            <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-content-{{faq.id}}">{{faq.question}} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <div id="faq-content-{{faq.id}}" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Common questions and answers of the {{auxiliary.name}} ministry.
+                {{faq.answer}}
               </p>
             </div>
-
-            <div class="accordion accordion-flush px-xl-5" id="faqlist">
-
-              {% for faq in faqs %}
-                <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-{{faq.id}}">
-                    <i class="bi bi-question-circle question-icon"></i>
-                    {{faq.question}}
-                  </button>
-                </h3>
-                <div id="faq-content-{{faq.id}}" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    {{faq.answer}}
-                  </div>
-                </div>
-              </div><!-- # Faq item-->
-              {% empty  %}
-                <p>No Questions</p>
-              {% endfor %}
+          </li>
+          {% empty  %}
+            <p>No Questions</p>
+          {% endfor %}
 
 
-            </div>
-
-          </div>
-
-          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("{{auxiliary.group_img.url}}");'>&nbsp;</div>
-        </div>
+        </ul>
 
       </div>
     </section>
-      <!-- End F.A.Q Section -->
+    <!-- End Frequently Asked Questions Section -->
 
-
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
+        <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>{{auxiliary.name}}'s Executives</h2>
-          <p>Below are the executives of {{auxiliary.name}}</p>
+        <div class="section-title">
+          <h2>{{auxiliary.name}} Leadership</h2>
+          <p>Below is the leadership of the Shalom Baptist Church.</p>
         </div>
 
-        <div class="row gy-5">
-
+        <div class="row">
           {% for executive in  executives%}
-          <div class="col-xl-3 col-md-4 d-flex" data-aos="zoom-in" data-aos-delay="200">
-            <div class="team-member">
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="{{executive.image.url}}" class="img-fluid" alt="">
-              </div>
-              <div class="member-info">
+                <img src="{% static 'assets/img/pastor_.png' %}" class="img-fluid" alt="">
                 <div class="social">
                   <a href="tel:+233{{executive.phone_no}}"><i class="bi bi-phone"></i></a>
                   {% if executive.facebook %}
@@ -188,27 +232,29 @@
                     <a href="{{executive.facebook}}"><i class="bi bi-facebook"></i></a>
                   {% endif %}
                 </div>
+              </div>
+              <div class="member-info">
                 <h4>{{executive.full_name}}</h4>
                 <span>{{executive.position}}</span>
               </div>
             </div>
           </div>
-          <!-- End Team Member -->
           {% empty %}
             <p class="text text-center">No executive added yet</p>
           {% endfor %}
+
         </div>
 
       </div>
     </section>
-      <!-- End Team Section -->
+    <!-- End Team Section -->
 
     <section class="inner-page">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
+        <div class="section-title">
           <h2>{{auxiliary.name}} Members</h2>
-          <p>Below are the {{auxiliary.name}} lists</p>
+          <p>Below are the {{auxiliary.name}} lists.</p>
         </div>
 
         {% if member in auxiliary.profile_set.all %}
@@ -236,10 +282,12 @@
           </tbody>
         </table>
         {% else %}
-          <p class="text text-center">No member registered yet</p>
+          <p class="text text-center">No {{auxiliary.name}} registered yet</p>
         {% endif %}
 
       </div>
-    </section><!-- End Inner Page --
+    </section>
+    <!-- End Inner Page -->
 
+  </main>
 {% endblock content %}

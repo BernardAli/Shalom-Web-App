@@ -5,89 +5,150 @@
 
 {% block content %}
 
-<!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
       <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>{{ministry.name}}</h2>
-          <ol>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li>{{ministry.name}}</li>
-          </ol>
-        </div>
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>About {{ministry.name}}</li>
+        </ol>
+        <h2>{{ministry.name}}</h2>
 
       </div>
-    </div><!-- End Breadcrumbs -->
+    </section><!-- End Breadcrumbs -->
 
-    <!-- ======= About Section ======= -->
-    <section class="inner-page about" id="about">
+    <!-- ======= Tabs Section ======= -->
+    <section id="tabs" class="tabs">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-          <h2>About {{ministry.name}}</h2>
-          <p>{{ministry.name}}</p>
-        </div>
+        <ul class="nav nav-tabs row d-flex">
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+              <i class="ri-gps-line"></i>
+              <h4 class="d-none d-lg-block">Leader's Speech</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+              <i class="ri-body-scan-line"></i>
+              <h4 class="d-none d-lg-block">Description</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+              <i class="ri-store-line"></i>
+              <h4 class="d-none d-lg-block">Goals</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+              <i class="ri-sun-line"></i>
+              <h4 class="d-none d-lg-block">Upcoming Events</h4>
+            </a>
+          </li>
+        </ul>
 
-        <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-5">
-            <div class="about-img">
-              <img src="{{ministry.image.url}}" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <!-- Tabs -->
-            <ul class="nav nav-pills mb-3">
-              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1">Descriptions</a></li>
-              <li><a class="nav-link" data-bs-toggle="pill" href="#tab2">Goals</a></li>
-              <li><a class="nav-link" data-bs-toggle="pill" href="#tab3">{{ministry.name}} Leader's Speech</a></li>
-            </ul><!-- End Tabs -->
-
-            <!-- Tab Content -->
-            <div class="tab-content">
-
-              <div class="tab-pane fade show active" id="tab1">
-
-                <p class="fst-italic">Description</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>{{ministry.description}}</h4>
-                </div>
-              </div><!-- End Tab 1 Content -->
-
-              <div class="tab-pane fade show" id="tab2">
-
-                <p class="fst-italic">Goal</p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>{{ministry.goal}}</h4>
-                </div>
-              </div><!-- End Tab 2 Content -->
-
-              <div class="tab-pane fade show" id="tab3">
-
+        <div class="tab-content">
+          <div class="tab-pane active show" id="tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
                 <p class="fst-italic">
-                  Speech
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
                 </p>
-
-                <div class="d-flex align-items-center mt-4">
-                  <i class="bi bi-check2"></i>
-                  <h4>{{ministry.speech}}</h4>
-                </div>
-              </div><!-- End Tab 3 Content -->
-
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                <img src="{% static 'assets/img/tabs-1.jpg' %}" alt="" class="img-fluid">
+              </div>
             </div>
-
           </div>
-
+          <div class="tab-pane" id="tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
+                <p>
+                  The prophet Isaiah wrote: “Seek the LORD while He may be found, call upon Him while He is near. Let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the LORD, and He will have mercy on him; and to our God, for He will abundantly pardon” (Isaiah 55:6-7).
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-2.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                </ul>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-3.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-4">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/tabs-4.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
     </section>
-    <!-- End About Section -->
+    <!-- End Tabs Section -->
 
 {% endblock content %}
