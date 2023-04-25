@@ -37,9 +37,9 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="{% url 'home' %}">SBC<span>.</span></a></h1>
+<!--      <h1 class="logo me-auto"><a href="{% url 'home' %}">SBC<span>.</span></a></h1>-->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="{% static 'assets/img/logo.png' %}" alt=""></a>-->
+       <a href="{% url 'home' %}" class="logo me-auto"><img src="{% static 'assets/img/shalom_logo.png' %}" alt=""></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -95,8 +95,9 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       {% if user.is_authenticated%}
+        <a href="" class="get-started-btn scrollto">Donate Now</a>
       {% else %}
-        <a href="#about" class="get-started-btn scrollto">Join Now</a>
+        <a href="{% url 'join' %}" class="get-started-btn scrollto">Join Now</a>
       {% endif %}
     </div>
   </header><!-- End Header -->
@@ -128,7 +129,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>SBC<span>.</span></h3>
+            <a href="{% url 'home' %}" class="logo me-auto"><img src="{% static 'assets/img/shalom_logo.png' %}" alt="" height="50"></a>
             <p>
               Meduma New Site <br>
               Kumasi, Fawoade - Kenyasi Stretch<br>

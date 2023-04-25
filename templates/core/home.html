@@ -10,7 +10,12 @@
         <div class="col-xl-6">
           <h1>Shalom Baptist Church</h1>
           <h2>Home of Possibilities</h2>
-          <a href="#about" class="btn-get-started scrollto">Join Now</a>
+
+          {% if user.is_authenticated%}
+            <a href="" class="btn-get-started scrollto">Donate Now</a>
+          {% else %}
+            <a href="{% url 'join' %}" class="btn-get-started scrollto">Join Now</a>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -97,7 +102,7 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="250" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{member_count}}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Members</p>
             </div>
           </div>
@@ -158,7 +163,7 @@
         <div class="tab-content">
           <div class="tab-pane active show" id="tab-1">
             <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
                 <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
                 <p class="fst-italic">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -175,21 +180,20 @@
                   culpa qui officia deserunt mollit anim id est laborum
                 </p>
               </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+              <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
                 <img src="{% static 'assets/img/tabs-1.jpg' %}" alt="" class="img-fluid">
               </div>
             </div>
           </div>
           <div class="tab-pane" id="tab-2">
             <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
+              <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>The prophet Isaiah wrote: </h3>
                 <p>
-                  The prophet Isaiah wrote: “Seek the LORD while He may be found, call upon Him while He is near. Let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the LORD, and He will have mercy on him; and to our God, for He will abundantly pardon” (Isaiah 55:6-7).
+                  “Seek the LORD while He may be found, call upon Him while He is near. Let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the LORD, and He will have mercy on him; and to our God, for He will abundantly pardon”.
                 </p>
                 <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
+                  (Isaiah 55:6-7)
                 </p>
                 <ul>
                   <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
@@ -197,56 +201,46 @@
                   <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
                   <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
                 </ul>
+                <a href="{% static 'assets/Evangelism-Tracts.pdf' %}" class="read-more align-self-start"><span>How Can I Stop This? </span><i class="bi bi-download"></i></a>
               </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
+              <div class="col-lg-4 order-1 order-lg-2 text-center">
                 <img src="{% static 'assets/img/tabs-2.jpg' %}" alt="" class="img-fluid">
               </div>
             </div>
           </div>
           <div class="tab-pane" id="tab-3">
             <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
+              <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Our Upcoming Events</h3>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+                  Below are the major upcoming events.
                 </p>
                 <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                  {% for event in upcoming_events %}
+                    <li><i class="ri-check-double-line"></i>{{event.event}} on {{event.date}}</li>
+                  {% empty %}
+                    <p>No upcoming events</p>
+                  {% endfor %}
                 </ul>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
+                <a href="#" class="read-more align-self-start"><span>Sunday Service Slides </span><i class="bi bi-download"></i></a>
               </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
+              <div class="col-lg-4 order-1 order-lg-2 text-center">
                 <img src="{% static 'assets/img/tabs-3.jpg' %}" alt="" class="img-fluid">
               </div>
             </div>
           </div>
           <div class="tab-pane" id="tab-4">
             <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
+              <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Birthdays for this week</h3>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
+                  The Shalom Family wishes you a happy birthday. May our God continue to bless you.
                 </p>
                 <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                  <li><i class="ri-check-double-line"></i>Bernard Ali on Tuesday</li>
                 </ul>
               </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
+              <div class="col-lg-4 order-1 order-lg-2 text-center">
                 <img src="{% static 'assets/img/tabs-4.jpg' %}" alt="" class="img-fluid">
               </div>
             </div>

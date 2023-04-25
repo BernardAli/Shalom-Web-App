@@ -22,6 +22,7 @@ def home_page(request):
     services = Services.objects.all()
     upcoming_events = UpcomingEvents.objects.filter(completed=False)
     testimonials = Testimony.objects.all()
+    member_count = User.objects.all().count()
 
     form = SubscribeForm()
     if request.method == 'POST':
@@ -63,7 +64,8 @@ def home_page(request):
         'upcoming_events': upcoming_events,
         'faqs': faqs,
         'services': services,
-        'testimonials': testimonials
+        'testimonials': testimonials,
+        "member_count": member_count
     }
     return render(request, 'core/home.html', context)
 
