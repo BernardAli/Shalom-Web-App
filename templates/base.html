@@ -47,31 +47,31 @@
           <li><a href="{% url 'home' %}#about">About Us</a></li>
           <li><a href="{% url 'home' %}#services">Services</a></li>
           <li><a href="{% url 'home' %}#team">Leadership</a></li>
-          <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a><span>Gallery</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url 'gallery' %}">Pictures</a></li>
               <li><a href="#">Videos</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a><span>Groups</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Church Council</a></li>
-              <li><a href="#">Deacons</a></li>
-              <li class="dropdown"><a href="#"><span>Families</span> <i class="bi bi-chevron-right"></i></a>
+              <li><a href="{% url 'council' %}">Church Council</a></li>
+              <li><a href="{% url 'deacons' %}">Deacons</a></li>
+              <li class="dropdown"><a><span>Families</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   {% for fam in families %}
                       <li><a href="{{ fam.get_absolute_url }}">{{fam.name}}</a></li>
                   {% endfor %}
                 </ul>
               </li>
-              <li class="dropdown"><a href="#"><span>Auxiliaries</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a><span>Auxiliaries</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   {% for aux in auxiliaries %}
                       <li><a href="{{ aux.get_absolute_url }}">{{aux.name}}</a></li>
                   {% endfor %}
                 </ul>
               </li>
-              <li class="dropdown"><a href="#"><span>Ministries</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a><span>Ministries</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   {% for min in ministries %}
                       <li><a href="{{ min.get_absolute_url }}">{{min.name}}</a></li>

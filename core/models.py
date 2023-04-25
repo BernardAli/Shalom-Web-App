@@ -243,3 +243,23 @@ class Gallery(models.Model):
             output_size = (500, 500)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+class Testimony(models.Model):
+    full_name = models.CharField(max_length=55)
+    added_date = models.DateField(auto_now_add=True)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics', null=True, blank=True)
+    testimony = models.TextField()
+
+    def __str__(self):
+        return self.full_name
+
+    def save(self, *args, **kwargs):
+        super(Testimony, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 800 or img.width > 700:
+            output_size = (500, 500)
+            img.thumbnail(output_size)
+            img.save(self.image.path)

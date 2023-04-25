@@ -90,6 +90,8 @@ class Profile(models.Model):
     family = models.ForeignKey(Family, on_delete=models.DO_NOTHING, null=True, blank=True, related_name='family')
     auxiliary = models.ForeignKey(Auxiliaries, on_delete=models.DO_NOTHING, null=True, blank=True)
     ministry = models.ForeignKey(Ministries, on_delete=models.DO_NOTHING, null=True, blank=True)
+    is_deacon = models.BooleanField(default=False)
+    is_council_member = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse('profile', args=[str(self.id)])

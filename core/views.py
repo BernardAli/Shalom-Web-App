@@ -1,12 +1,14 @@
 from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import CreateView
 
 from mysite.settings import EMAIL_HOST_USER
 from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
     AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
-    Services, Sermon, Subscribers, Gallery, GalleryCategory
+    Services, Sermon, Subscribers, Gallery, GalleryCategory, Testimony
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm, SubscribeForm
+from authy.models import User, Profile
 
 
 # Create your views here.
@@ -19,6 +21,7 @@ def home_page(request):
     ministries = Ministries.objects.all()
     services = Services.objects.all()
     upcoming_events = UpcomingEvents.objects.filter(completed=False)
+    testimonials = Testimony.objects.all()
 
     form = SubscribeForm()
     if request.method == 'POST':
@@ -59,7 +62,8 @@ def home_page(request):
         'ministries': ministries,
         'upcoming_events': upcoming_events,
         'faqs': faqs,
-        'services': services
+        'services': services,
+        'testimonials': testimonials
     }
     return render(request, 'core/home.html', context)
 
@@ -326,3 +330,38 @@ def subscribers_mail(request):
         return redirect("home")
 
     return render(request, 'core/sub_mail.html')
+
+
+def deacons_view(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    deacons = Profile.objects.filter(is_deacon=True)
+    context = {
+        'deacons': deacons,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/deacons.html', context)
+
+
+def council_view(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    councils = Profile.objects.filter(is_council_member=True)
+    context = {
+        'councils': councils,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/councils.html', context)
+
+
+class CreateTestimonyView(CreateView):
+    model = Testimony
+    fields = "__all__"
+    template_name = 'core/create_testimony.html'
+    success_url = 'home'

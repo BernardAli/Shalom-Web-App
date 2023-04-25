@@ -26,4 +26,4 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        exclude = ('user', )
+        exclude = ('user', 'is_deacon', 'ministry')

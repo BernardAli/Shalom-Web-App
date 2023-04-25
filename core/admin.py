@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import InterestedMember, InterestedMemberAcceptance, Family, Auxiliaries, Ministries, \
     AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
-    Services, Sermon, GalleryCategory, Gallery
+    Services, Sermon, GalleryCategory, Gallery, Testimony
 
 # Register your models here.
 
@@ -22,3 +22,4 @@ admin.site.register(Services)
 admin.site.register(Sermon)
 admin.site.register(GalleryCategory)
 admin.site.register(Gallery)
+admin.site.register(Testimony)
