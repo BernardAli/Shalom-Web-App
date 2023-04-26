@@ -144,7 +144,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'alibernard.1992@gmail.com'
-EMAIL_HOST_PASSWORD = 'fbdawrtjpvpxkiwx'
+EMAIL_HOST_PASSWORD = 'cjxphwjvlagczyqb'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 

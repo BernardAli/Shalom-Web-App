@@ -82,6 +82,20 @@ def history(request):
     return render(request, 'core/history.html', context)
 
 
+def members(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    members = Profile.objects.all()
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+        'members': members
+    }
+    return render(request, 'core/members.html', context)
+
+
 def service_details(request, id):
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
@@ -137,6 +151,32 @@ def gallery(request):
         'gallery_cat': gallery_cat
     }
     return render(request, 'core/gallery.html', context)
+
+
+def ministries(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries
+    }
+    return render(request, 'core/ministries.html', context)
+
+
+def families(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries
+    }
+    return render(request, 'core/families.html', context)
 
 
 def aux_details(request, id):

@@ -77,8 +77,7 @@ class InterestedMemberAcceptance(models.Model):
 class Family(models.Model):
     name = models.CharField(max_length=255)
     contact = models.CharField(max_length=13, blank=True, null=True)
-    vision = models.TextField(blank=True, null=True)
-    mission = models.TextField(blank=True, null=True)
+    location = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
     deacon = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
     group_img = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)

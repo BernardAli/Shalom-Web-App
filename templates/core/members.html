@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Members</li>
+        </ol>
+        <h2>Members</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+
+    <!-- Start Inner Page -->
+    <section class="inner-page">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Our Members</h2>
+          <p>Below are the membership lists.</p>
+        </div>
+
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Full Name</th>
+              <th>Gender</th>
+              <th>Address</th>
+              <th>Phone No.</th>
+              <th>Family</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for member in members %}
+              <tr>
+                <td>SBC-00{{member.id}}</td>
+                <td>{{member.full_name}}</td>
+                <td>{{member.gender}}</td>
+                <td>{{member.place_of_residence}}</td>
+                <td>{{member.phone_no}}</td>
+                <td>{{member.family.name}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+    <!-- End Inner Page -->
+
+{% endblock content %}

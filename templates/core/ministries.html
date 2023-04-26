@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Ministries</li>
+        </ol>
+        <h2>Ministries</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            {% for fam in  ministries %}
+              <div class="swiper-slide">
+                <a href="{{fam.get_absolute_url}}">
+                  <img src="{% static 'assets/img/clients/client-1.png' %}" class="img-fluid" alt="">
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg ">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Ministries</h2>
+          <p>Our ministries.</p>
+        </div>
+
+        <div class="row">
+          {% for ministry in ministries %}
+            <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-card-checklist"></i>
+              <h4><a href="{{ministry.get_absolute_url}}">{{ministry.name}}</a></h4>
+              <p>{{ministry.description}}</p>
+              <p>{{ministry.days}}</p>
+            </div>
+          </div>
+          {% empty %}
+          <p>No ministry added yet</p>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+    <!-- End Services Section -->
+
+{% endblock content %}
