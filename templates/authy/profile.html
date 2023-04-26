@@ -79,6 +79,10 @@
             {% endfor %}
         </div>
 
+          {% if user.is_authenticated and request.user.id == profile.user.id %}
+            <p style="text-align:center;">Click <a href="{% url 'statements' profile.id %}">HERE</a> to see your statements</p>
+          {% endif %}
+
       </div>
     </section>
     <!-- End Counts Section -->

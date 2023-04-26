@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Statement</li>
+        </ol>
+        <h2>SBC-00{{member.id}} Statement</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+
+    <!-- Start Inner Page -->
+    <section class="inner-page">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Your Statement</h2>
+          <p>Below is your statement with the church. Kindly read through and get back to us in case of any anomaly</p>
+        </div>
+
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Item Name</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for payment in payments %}
+              <tr>
+                <td>P00{{payment.id}}</td>
+                <td>{{payment.created_on|date:"D, d M Y"}}</td>
+                <td>{{payment.category}}</td>
+                <td>{{payment.item_name}}</td>
+                <td>{{payment.amount}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+    <!-- End Inner Page -->
+
+{% endblock content %}

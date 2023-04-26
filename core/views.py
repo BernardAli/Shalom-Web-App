@@ -3,6 +3,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
 
+from accounts.models import CashFlowHistory
 from mysite.settings import EMAIL_HOST_USER
 from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
     AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
@@ -80,6 +81,18 @@ def history(request):
         'ministries': ministries,
     }
     return render(request, 'core/history.html', context)
+
+
+def branches(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/branches.html', context)
 
 
 def members(request):
@@ -407,3 +420,20 @@ class CreateTestimonyView(CreateView):
     fields = "__all__"
     template_name = 'core/create_testimony.html'
     success_url = 'home'
+
+
+def statements(request, id):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    member = Profile.objects.get(id=id)
+    payments = CashFlowHistory.objects.filter(received_from=member)
+
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+        'payments': payments,
+        'member': member
+    }
+    return render(request, 'core/statements.html', context)

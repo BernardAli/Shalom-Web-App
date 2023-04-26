@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Our Branches</li>
+        </ol>
+        <h2>Our Branches</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Our Branches</h2>
+          <p>Below are the branches of our church</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+              <h3>Main Shalom</h3>
+              <h4>Meduma New Site</h4>
+              <ul>
+                <li>Head Pastor: Rev. Ernest A. Appiah</li>
+                <li>+233 24 462 7253</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 mt-4 mt-md-0">
+            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
+              <h3>Shalom B</h3>
+              <h4>Asenua</h4>
+              <ul>
+                <li>Head Pastor: Rev. Ernest O. Manu</li>
+                <li>+233 24 461 5715</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Pricing Section -->
+
+{% endblock content %}

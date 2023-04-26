@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.home_page, name='home'),
     path('deacons/', views.deacons_view, name='deacons'),
+    path('branches/', views.branches, name='branches'),
     path('council/', views.council_view, name='council'),
     path('ministries/', views.ministries, name='ministries'),
     path('families/', views.families, name='families'),
@@ -19,5 +20,6 @@ urlpatterns = [
     path('subscribers/', views.subscribers, name='subscribers'),
     path('create_testimony/', views.CreateTestimonyView.as_view(), name='create_testimony'),
     path('history/', views.history, name='history'),
+    path('statements/<int:id>/', views.statements, name='statements'),
     path('subscribers_mail/', views.subscribers_mail, name='subscribers_mail'),
 ]
