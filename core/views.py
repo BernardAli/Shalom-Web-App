@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
@@ -13,17 +15,28 @@ from authy.models import User, Profile
 
 
 # Create your views here.
+def this_week(birth_date):
+    today = datetime.now()
+    birth_date = birth_date.replace(year=today.year)
+    return birth_date.weekday() if today.isocalendar()[1] == birth_date.isocalendar()[1] else None
 
 
 def home_page(request):
+    today = datetime.today()
     faqs = FAQ.objects.all()
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
     ministries = Ministries.objects.all()
     services = Services.objects.all()
-    upcoming_events = UpcomingEvents.objects.filter(completed=False)
+    upcoming_events = UpcomingEvents.objects.filter(completed=False).filter(date__lt=today)
     testimonials = Testimony.objects.all()
     member_count = User.objects.all().count()
+    family_count = Family.objects.all().count()
+    ministries_count = Ministries.objects.all().count()
+    # average_rating([review.rating for review in reviews])
+    birthdays = Profile.objects.filter(birth_date__week=today.isocalendar()[1])
+    # birthday = Profile.objects.all()
+    # birthdays = [this_week(bb['birth_date']) for bb in birthday]
 
     form = SubscribeForm()
     if request.method == 'POST':
@@ -66,7 +79,10 @@ def home_page(request):
         'faqs': faqs,
         'services': services,
         'testimonials': testimonials,
-        "member_count": member_count
+        "member_count": member_count,
+        'family_count': family_count,
+        'ministries_count': ministries_count,
+        'birthdays': birthdays
     }
     return render(request, 'core/home.html', context)
 

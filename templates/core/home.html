@@ -105,7 +105,7 @@
             <a href="{% url 'ministries' %}">
               <div class="count-box">
                 <i class="bi bi-headset"></i>
-                <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="{{ministries_count}}" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Ministries</p>
               </div>
             </a>
@@ -115,7 +115,7 @@
             <a href="{% url 'families' %}">
               <div class="count-box">
                 <i class="bi bi-people"></i>
-                <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="{{family_count}}" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Families</p>
               </div>
             </a>
@@ -172,7 +172,7 @@
           <div class="tab-pane active show" id="tab-1">
             <div class="row">
               <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
-                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                <h3>Rev's Welcome Speech</h3>
                 <p class="fst-italic">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
                   magna aliqua.
@@ -182,14 +182,9 @@
                   <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
                   <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
                 </ul>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
               </div>
               <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                <img src="{% static 'assets/img/tabs-1.jpg' %}" alt="" class="img-fluid">
+                <img src="{% static 'assets/img/rev2.jpg' %}" alt="" class="img-fluid">
               </div>
             </div>
           </div>
@@ -206,13 +201,11 @@
                 <ul>
                   <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
                   <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
                 </ul>
                 <a href="{% static 'assets/Evangelism-Tracts.pdf' %}" class="read-more align-self-start"><span>How Can I Stop This? </span><i class="bi bi-download"></i></a>
               </div>
               <div class="col-lg-4 order-1 order-lg-2 text-center">
-                <img src="{% static 'assets/img/tabs-2.jpg' %}" alt="" class="img-fluid">
+                <img src="{% static 'assets/img/bible.jpg' %}" alt="" class="img-fluid">
               </div>
             </div>
           </div>
@@ -233,7 +226,7 @@
                 <a href="#" class="read-more align-self-start"><span>Sunday Service Slides </span><i class="bi bi-download"></i></a>
               </div>
               <div class="col-lg-4 order-1 order-lg-2 text-center">
-                <img src="{% static 'assets/img/tabs-3.jpg' %}" alt="" class="img-fluid">
+                <img src="{% static 'assets/img/shalom_2023.jpg' %}" alt="" class="img-fluid">
               </div>
             </div>
           </div>
@@ -245,11 +238,16 @@
                   The Shalom Family wishes you a happy birthday. May our God continue to bless you.
                 </p>
                 <ul>
-                  <li><i class="ri-check-double-line"></i>Bernard Ali on Tuesday</li>
+                  {% for birthday in birthdays %}
+                    <li><i class="ri-check-double-line"></i>{{birthday.full_name}} on {{birthday.birth_date|date:"l"}}.
+                      <a href="tel:{{birthday.phone_no}}" title="{{birthday.phone_no}}">Call</a> to wish him/her.</li>
+                  {% empty %}
+                    <p>No birthdays</p>
+                  {% endfor %}
                 </ul>
               </div>
               <div class="col-lg-4 order-1 order-lg-2 text-center">
-                <img src="{% static 'assets/img/tabs-4.jpg' %}" alt="" class="img-fluid">
+                <img src="{% static 'assets/img/bday.jpg' %}" alt="" class="img-fluid">
               </div>
             </div>
           </div>
