@@ -5,13 +5,13 @@ from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
 
-from accounts.models import CashFlowHistory
+from accounts.models import CashFlowHistory, Cash, CashHistory
 from mysite.settings import EMAIL_HOST_USER
 from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, Family, Ministries, \
     AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
-    Services, Sermon, Subscribers, Gallery, GalleryCategory, Testimony
+    Services, Sermon, Subscribers, Gallery, GalleryCategory, Testimony, BooksCategory, Books
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm, SubscribeForm
-from authy.models import User, Profile
+from authy.models import User, Profile, Employees
 
 
 # Create your views here.
@@ -99,6 +99,36 @@ def history(request):
     return render(request, 'core/history.html', context)
 
 
+def account(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    accounts = Cash.objects.all()
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+        'accounts': accounts
+    }
+    return render(request, 'core/accounts.html', context)
+
+
+def account_statement(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    accounts = Cash.objects.all()
+    cash_history = CashHistory.objects.all()
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+        'accounts': accounts,
+        'cash_history': cash_history
+    }
+    return render(request, 'core/account_statement.html', context)
+
+
 def branches(request):
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
@@ -109,6 +139,18 @@ def branches(request):
         'ministries': ministries,
     }
     return render(request, 'core/branches.html', context)
+
+
+def working_hours(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/working_hours.html', context)
 
 
 def members(request):
@@ -123,6 +165,20 @@ def members(request):
         'members': members
     }
     return render(request, 'core/members.html', context)
+
+
+def employees(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    employees = Employees.objects.all()
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+        'employees': employees
+    }
+    return render(request, 'core/employees.html', context)
 
 
 def service_details(request, id):
@@ -180,6 +236,23 @@ def gallery(request):
         'gallery_cat': gallery_cat
     }
     return render(request, 'core/gallery.html', context)
+
+
+def books(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    book_cat = BooksCategory.objects.all()
+    books = Books.objects.all()
+
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+        'books': books,
+        'book_cat': book_cat
+    }
+    return render(request, 'core/books.html', context)
 
 
 def ministries(request):
@@ -401,6 +474,38 @@ def subscribers_mail(request):
         return redirect("home")
 
     return render(request, 'core/sub_mail.html')
+
+
+def contact(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    deacons = Profile.objects.filter(is_deacon=True)
+    councils = Profile.objects.filter(is_council_member=True)
+    context = {
+        'deacons': deacons,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+        'councils': councils,
+    }
+    return render(request, 'core/contact.html', context)
+
+
+def leadership(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+    deacons = Profile.objects.filter(is_deacon=True)
+    councils = Profile.objects.filter(is_council_member=True)
+    context = {
+        'deacons': deacons,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+        'councils': councils,
+    }
+    return render(request, 'core/leadership.html', context)
 
 
 def deacons_view(request):

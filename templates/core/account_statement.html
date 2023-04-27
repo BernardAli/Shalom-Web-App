@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Bank Summary</li>
+        </ol>
+        <h2>Bank Summary</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+
+    <!-- Start Inner Page -->
+    <section class="inner-page">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Bank Summary</h2>
+          <p>Below is your Bank Summary with the church.</p>
+        </div>
+
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Item Name</th>
+              <th>Received</th>
+              <th>Paid</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for payment in cash_history %}
+              <tr>
+                <td>{{payment.created_on|date:"D, d M Y"}}</td>
+                <td>{{payment.category}}</td>
+                <td>{{payment.detail}}</td>
+                <td>{{payment.amount_in}}</td>
+                <td>{{payment.amount_out}}</td>
+                <td>{{payment.balance}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+    <!-- End Inner Page -->
+
+{% endblock content %}

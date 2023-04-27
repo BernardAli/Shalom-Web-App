@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile
+from .models import Profile, Employees
 
 # Register your models here.
 
@@ -9,3 +9,6 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'full_name', 'phone_no', 'family', 'auxiliary')
     list_filter = ('family', 'auxiliary')
     search_fields = ('user__username', )
+
+
+admin.site.register(Employees)

@@ -135,7 +135,7 @@ def login(request):
             # return redirect(f'home')
         else:
             messages.info(request, "Credentials Invalid")
-            return redirect(f'home')
+            return redirect(f'login')
     else:
         context = {
             'auxiliaries': auxiliaries,

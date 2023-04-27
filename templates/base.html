@@ -43,10 +43,10 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="{% url 'home' %}#hero">Home</a></li>
-          <li><a href="{% url 'home' %}#about">About Us</a></li>
-          <li><a href="{% url 'home' %}#services">Services</a></li>
-          <li><a href="{% url 'home' %}#team">Leadership</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="/#about">About Us</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="{% url 'leadership' %}">Leadership</a></li>
           <li class="dropdown"><a><span>Groups</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url 'council' %}">Church Council</a></li>
@@ -74,16 +74,22 @@
               </li>
             </ul>
           </li>
-          <li><a href="{% url 'home' %}#contact">Contact Us</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
           <li class="dropdown"><a><span>Others</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url 'gallery' %}">Pictures</a></li>
-              <li><a href="{% url 'gallery' %}">Books</a></li>
+              <li><a href="{% url 'books' %}">Books</a></li>
               <li class="dropdown"><a><span>Member Relations</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="">Office Hours</a></li>
-                  <li><a href="">Welfare</a></li>
-                  <li><a href="">Accounts</a></li>
+                  <li><a href="{% url 'working_hours' %}">Office Hours</a></li>
+                  <li><a href="{% url 'min_details' 3 %}">Welfare</a></li>
+                  {% if user.is_authenticated%}
+                    <li><a href="{% url 'employees' %}">Workers 🔓</a></li>
+                    <li><a href="{% url 'account' %}">Accounts 🔓</a></li>
+                  {% else %}
+                    <li><a>Workers 🔒</a></li>
+                    <li><a>Accounts 🔒</a></li>
+                  {% endif %}
                 </ul>
               </li>
             </ul>

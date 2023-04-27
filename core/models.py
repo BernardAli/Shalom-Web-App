@@ -244,6 +244,42 @@ class Gallery(models.Model):
             img.save(self.image.path)
 
 
+BOOK_CATEGORY = (
+    ('Sermon', 'Sermon'),
+    ('Salvation', 'Salvation'),
+    ('Marriages', 'Marriages'),
+    ('Others', 'Others'),
+)
+
+
+class BooksCategory(models.Model):
+    category = models.CharField(max_length=50, choices=BOOK_CATEGORY)
+
+    def __str__(self):
+        return self.category
+
+
+class Books(models.Model):
+    category = models.ForeignKey(BooksCategory, on_delete=models.CASCADE)
+    image = models.ImageField(default='book_cover.jpg', upload_to='books_pics', null=True, blank=True)
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    file = models.FileField()
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        super(Books, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 800 or img.width > 700:
+            output_size = (500, 500)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+
+
 class Testimony(models.Model):
     full_name = models.CharField(max_length=55)
     added_date = models.DateField(auto_now_add=True)

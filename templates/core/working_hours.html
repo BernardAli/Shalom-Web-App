@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Working Hours</li>
+        </ol>
+        <h2>Working Hours</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Working Hours</h2>
+          <p>You can contact us during these times</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+              <h3>Head Pastor</h3>
+              <h4>Rev. Ernest A. Appiah</h4>
+              <ul>
+                <li>Wednesdays: 9:00am - 6:00pm</li>
+                <li>+233 24 462 7253</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 mt-4 mt-md-0">
+            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
+              <h3>Administrator</h3>
+              <h4>Mr. Alex Gyamfi</h4>
+              <ul>
+                <li>Thursday: 9:00am - 6:00pm</li>
+                <li>+233 54 727 4902</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Pricing Section -->
+
+{% endblock content %}

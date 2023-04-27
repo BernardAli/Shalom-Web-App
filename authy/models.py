@@ -108,3 +108,37 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+class Employees(models.Model):
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics', null=True, blank=True)
+    full_name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    phone_no = models.CharField(max_length=20)
+    gender = models.CharField(max_length=50, choices=GENDER_CHOICES, null=True, blank=True)
+    blood_group = models.CharField(max_length=50, choices=BLOOD_CHOICES, null=True, blank=True)
+    place_of_residence = models.CharField(max_length=50)
+    birth_date = models.DateField(null=True, blank=True)
+    education_level = models.CharField(max_length=50, choices=EDUCATION_LEVEL_CHOICES, null=True, blank=True)
+    created = models.DateField(auto_now_add=True)
+    hometown = models.CharField(max_length=50, null=True, blank=True)
+    marital_status = models.CharField(max_length=20, choices=MARRIAGE_STATUS_CHOICE, default='Single')
+    next_of_kin_contact = models.CharField(max_length=20, null=True, blank=True)
+    ssnit = models.CharField(max_length=50, null=True, blank=True)
+    tin = models.CharField(max_length=50, null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('full_name', args=[str(self.id)])
+
+    def __str__(self):
+        return str(self.user.username)
+
+    def save(self, *args, **kwargs):
+        super(Employees, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
