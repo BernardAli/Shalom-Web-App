@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Workers</li>
+        </ol>
+        <h2>Workers</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Church Workers</h2>
+          <p>Below are the workers of the Shalom Baptist Church.</p>
+        </div>
+
+        <div class="row">
+            {% for employee in employees %}
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="{{employee.name.image.url}}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href="tel:+233{{employee.name.phone_no}}" class="google-plus"><i class="bi bi-phone"></i></a>
+                  <a href="https://api.whatsapp.com/send?phone=233{{employee.name.phone_no}}" class="google-plus"><i class="bi bi-whatsapp"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>{{employee.name}}</h4>
+                <span>{{employee.position}}</span>
+                  <p>{{employee.name.email}}</p>
+              </div>
+            </div>
+          </div>
+            {% empty %}
+                <p style="text-align:center;">No Worker Added Yet</p>
+            {% endfor %}
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Team Section -->
+{% endblock content %}

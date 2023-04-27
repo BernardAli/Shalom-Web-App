@@ -131,7 +131,7 @@ class Employees(models.Model):
         return reverse('full_name', args=[str(self.id)])
 
     def __str__(self):
-        return str(self.user.username)
+        return str(self.full_name)
 
     def save(self, *args, **kwargs):
         super(Employees, self).save(*args, **kwargs)
@@ -142,3 +142,13 @@ class Employees(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+class Position(models.Model):
+    name = models.ForeignKey(Employees, on_delete=models.CASCADE)
+    position = models.CharField(max_length=50)
+    salary = models.IntegerField(default=0)
+    appointment_letter = models.FileField()
+
+    def __str__(self):
+        return str(self.position)

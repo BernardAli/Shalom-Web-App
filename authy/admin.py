@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Employees
+from .models import Profile, Employees, Position
 
 # Register your models here.
 
@@ -12,3 +12,4 @@ class ProfileAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Employees)
+admin.site.register(Position)

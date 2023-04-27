@@ -11,7 +11,7 @@ from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, F
     AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
     Services, Sermon, Subscribers, Gallery, GalleryCategory, Testimony, BooksCategory, Books
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm, SubscribeForm
-from authy.models import User, Profile, Employees
+from authy.models import User, Profile, Employees, Position
 
 
 # Create your views here.
@@ -171,12 +171,12 @@ def employees(request):
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
     ministries = Ministries.objects.all()
-    employees = Employees.objects.all()
+    position = Position.objects.all()
     context = {
         'auxiliaries': auxiliaries,
         'families': families,
         'ministries': ministries,
-        'employees': employees
+        'employees': position
     }
     return render(request, 'core/employees.html', context)
 
