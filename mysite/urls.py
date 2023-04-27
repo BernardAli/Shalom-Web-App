@@ -36,6 +36,7 @@ urlpatterns = [
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(
         template_name='authy/password_reset_complete.html'), name='password_reset_complete'),
     path("", include("core.urls")),
+    path('payment/', include('payment.urls')),
     path('<username>/', authy_views.profile, name='profile'),
     path('<username>/edit/', authy_views.edit_profile, name='edit_profile'),
 ]

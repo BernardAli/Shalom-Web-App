@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Make Donations</li>
+        </ol>
+        <h2>Make Donations</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+
+<section id="featured-services" class="featured-services">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Make Donations</h2>
+          <p>Fill the form below Make Donations.</p>
+        </div>
+
+        <div>
+            <form action="" method="post">
+                {% csrf_token%}
+                {{payment_form|crispy}}
+                <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

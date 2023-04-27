@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "core",
     "authy",
     "accounts",
+    "payment",
 
     # Third Party Apps
     'crispy_forms',
@@ -151,3 +152,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGOUT_REDIRECT_URL = "home"
+
+PAYSTACK_SECRET_KEY = "sk_test_809c72a11144c8bf68652259e0de558d0e38f64f"
+PAYSTACK_PUBLIC_KEY = "pk_test_94e7fe2247c0868761da07b4cb2c3858b65c010e"

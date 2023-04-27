@@ -108,7 +108,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       {% if user.is_authenticated%}
-        <a href="" class="get-started-btn scrollto">Donate Now</a>
+        <a href="{% url 'initiate-payment'  %}" class="get-started-btn scrollto">Donate Now</a>
       {% else %}
         <a href="{% url 'join' %}" class="get-started-btn scrollto">Join Now</a>
       {% endif %}

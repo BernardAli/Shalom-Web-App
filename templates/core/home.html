@@ -11,11 +11,12 @@
           <h1>Shalom Baptist Church</h1>
           <h2>Home of Possibilities</h2>
 
-          {% if user.is_authenticated%}
-            <a href="" class="btn-get-started scrollto">Donate Now</a>
-          {% else %}
-            <a href="{% url 'join' %}" class="btn-get-started scrollto">Join Now</a>
-          {% endif %}
+<!--          {% if user.is_authenticated%}-->
+<!--            <a href="" class="btn-get-started scrollto">Donate Now</a>-->
+<!--          {% else %}-->
+<!--            <a href="{% url 'join' %}" class="btn-get-started scrollto">Join Now</a>-->
+<!--          {% endif %}-->
+          <a href="{% url 'initiate-payment'  %}" class="btn-get-started scrollto">Donate Now</a>
         </div>
       </div>
     </div>

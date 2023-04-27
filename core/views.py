@@ -42,7 +42,7 @@ def home_page(request):
     if request.method == 'POST':
         form = SubscribeForm(request.POST)
         if form.is_valid():
-            subject = 'Thanks for subscribing to Real Estates'
+            subject = 'Thanks for subscribing to Shalom Baptist\'s newsletter'
             message = "We'll update you on all latest developments"
             recipient = form.cleaned_data.get('email')
             # print(recipient)
@@ -366,13 +366,20 @@ def join_view(request):
                             f"Email: {recipient} \n"
 
             # print(recipient)
-            send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
-            send_mail(admin_subject, admin_message, EMAIL_HOST_USER, [admin_email], fail_silently=False)
-            form = InterestedMember.objects.create(full_name=full_name, contact=contact,
-                                                   email=recipient, member_status=member_status)
-            form.save()
-            messages.success(request, f'Details sent successfully!, Kindly check your email')
-            return redirect("home")
+            if InterestedMember.objects.filter(contact=contact).exists():
+                messages.success(request, f'Already requested to join!')
+            elif InterestedMember.objects.filter(full_name=full_name).exists():
+                messages.success(request, f'Already requested to join!')
+            elif InterestedMember.objects.filter(email=recipient).exists():
+                messages.success(request, f'Already requested to join!')
+            else:
+                send_mail(subject, message, EMAIL_HOST_USER, [recipient], fail_silently=False)
+                send_mail(admin_subject, admin_message, EMAIL_HOST_USER, [admin_email], fail_silently=False)
+                form = InterestedMember.objects.create(full_name=full_name, contact=contact,
+                                                       email=recipient, member_status=member_status)
+                form.save()
+                messages.success(request, f'Details sent successfully!, Kindly check your email')
+                return redirect("home")
         else:
             form = InterestedMemberForm(request.POST)
     context = {

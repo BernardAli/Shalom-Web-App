@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Confirm Donations</li>
+        </ol>
+        <h2>Confirm Donations</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+
+<section id="featured-services" class="featured-services">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Confirm Donations for: GHS {{ payment.amount }}</h2>
+            <hr>
+                <script src="https://js.paystack.co/v1/inline.js"></script>
+                <button id="django-paystack-button" onclick="payWithPayStack()" class="btn btn-success">Confirm</button>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    function payWithPayStack(){
+        let currency = "GHS";
+        let plan = "";
+        let ref = "{{ payment.ref }}"
+        let obj = {
+            key: "{{ paystack_public_key }}",
+            email: '{{ payment.email }}',
+            amount: "{{ payment.amount_value }}",
+            ref: ref,
+            callback: function(response) {
+                window.location.href = "{% url 'verify_payment' payment.ref %}"
+            }
+        }
+
+        if (Boolean(currency)) {
+            obj.currency = currency.toUpperCase()
+        }
+        if (Boolean(plan)){
+            obj.plan = plan;
+        }
+
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+    }
+</script>
+
+
+{% endblock content %}
