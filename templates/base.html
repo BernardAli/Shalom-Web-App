@@ -86,9 +86,11 @@
                   {% if user.is_authenticated%}
                     <li><a href="{% url 'employees' %}">Workers 🔓</a></li>
                     <li><a href="{% url 'account' %}">Accounts 🔓</a></li>
+                    <li><a>Building Project 🔓</a></li>
                   {% else %}
                     <li><a>Workers 🔒</a></li>
                     <li><a>Accounts 🔒</a></li>
+                    <li><a>Building Project 🔓</a></li>
                   {% endif %}
                 </ul>
               </li>

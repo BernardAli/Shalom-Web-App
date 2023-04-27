@@ -106,7 +106,7 @@ class Auxiliaries(models.Model):
     about_us = models.TextField(blank=True, null=True)
     mission = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
-    deacon = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
+    president_picture = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
     group_img = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
@@ -148,16 +148,6 @@ class AuxiliaryExecutives(models.Model):
     def __str__(self):
         return self.auxiliary.name
 
-    def save(self, *args, **kwargs):
-        super(AuxiliaryExecutives, self).save(*args, **kwargs)
-
-        img = Image.open(self.image.path)
-
-        if img.height > 600 or img.width > 500:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
-
 
 class AuxiliariesFAQ(models.Model):
     auxiliary = models.ForeignKey(Auxiliaries, on_delete=models.DO_NOTHING, related_name='auxiliary_faqs')
@@ -182,24 +172,15 @@ class Ministries(models.Model):
     goal = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
-    image = models.ImageField(default='group.png', upload_to='ministries')
+    deacon_picture = models.ImageField(default='default.png', upload_to='ministries')
+    group_img = models.ImageField(default='group.png', upload_to='ministries', blank=True, null=True)
+    image = models.ImageField(default='default.png', upload_to='ministries')
 
     def get_absolute_url(self):
         return reverse('min_details', args=[str(self.id)])
 
     def __str__(self):
         return self.name
-
-    def save(self, *args, **kwargs):
-        super(Ministries, self).save(*args, **kwargs)
-
-        img = Image.open(self.image.path)
-
-        if img.height > 600 or img.width > 500:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
-
 
 class UpcomingEvents(models.Model):
     event = models.CharField(max_length=255, blank=True, null=True)

@@ -13,6 +13,7 @@ class Payment(models.Model):
     email = models.EmailField()
     verified = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(null=True, blank=True)
 
     class Meta:
         ordering = ('-date_created', )

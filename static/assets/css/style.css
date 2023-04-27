@@ -66,6 +66,27 @@ h6 {
   opacity: 1;
 }
 
+.family {
+    font-size: 1.3rem;
+    font-weight: bolder;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    box-shadow: 2px 4px 5px #ccc;
+}
+
+.auxiliaries {
+    width: 12rem;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    box-shadow: 2px 4px 5px #ccc;
+}
+
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/

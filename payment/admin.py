@@ -6,6 +6,6 @@ from .models import Payment
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('amount', 'email', 'verified')
-    list_filter = ('amount', 'email', 'verified')
+    list_display = ('amount', 'email', 'verified', 'description')
+    list_filter = ('verified', 'email', 'amount', )
     search_fields = ('amount', )
