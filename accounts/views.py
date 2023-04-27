@@ -11,7 +11,7 @@ from accounts.forms import CashFlowCreateForm, CashFlowUpdateForm, InflowForm, O
     CashHistorySearchForm, IssueCashForm, ReceiveCashForm
 from accounts.models import Category, CashFlow, CashFlowHistory, CashHistory, Cash
 from core.models import Family, Auxiliaries, Ministries
-from authy.models import User, Profile
+from authy.models import User, Profile, Employees, Position
 
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 
@@ -432,3 +432,19 @@ def cash_history(request):
             "queryset": queryset,
         }
     return render(request, "accounts/cash_history.html", context)
+
+
+def all_employees(request):
+    position = Position.objects.all()
+    context = {
+        "employees": position,
+    }
+    return render(request, "accounts/employees.html", context)
+
+
+def employees_details(request, id):
+    employee = Position.objects.get(id=id)
+    context = {
+        "employee": employee,
+    }
+    return render(request, "accounts/employee_details.html", context)

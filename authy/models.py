@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from PIL import Image
+from django.utils import timezone
+
 from core.models import Family, Auxiliaries, Ministries
 
 # Create your models here.
@@ -149,6 +151,7 @@ class Position(models.Model):
     position = models.CharField(max_length=50)
     salary = models.IntegerField(default=0)
     appointment_letter = models.FileField()
+    appointed_date = models.DateField(default=timezone.now)
 
     def __str__(self):
         return str(self.position)

@@ -75,7 +75,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-members" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>Members</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-people"></i><span>Members</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-members" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -88,7 +88,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>Cash Centers</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-cash"></i><span>Cash Centers</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -106,7 +106,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-inventory" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-people"></i><span>Cash Flow</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-cash"></i><span>Cash Flow</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-inventory" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -141,6 +141,19 @@
           <li>
             <a href="{% url 'cash_history' %}">
               <i class="bi bi-circle"></i><span>cash history</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-employees" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Employees</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-employees" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'all_employees' %}">
+              <i class="bi bi-circle"></i><span>All Employees</span>
             </a>
           </li>
         </ul>

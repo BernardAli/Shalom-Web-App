@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CashFlow, CashFlowHistory, Cash
+from .models import CashFlow, CashFlowHistory, Cash, CashHistory
 
 # Register your models here.
 
@@ -7,3 +7,4 @@ from .models import CashFlow, CashFlowHistory, Cash
 admin.site.register(CashFlow)
 admin.site.register(CashFlowHistory)
 admin.site.register(Cash)
+admin.site.register(CashHistory)
