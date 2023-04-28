@@ -47,14 +47,14 @@
             <div class="icon-boxes d-flex flex-column justify-content-center">
               <div class="row">
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <i class="bx bx-receipt"></i>
+                  <i class="bi bi-stars"></i>
                   <h4>Mision</h4>
                   <p>Our purpose is to exalt God and to honour our Lord and Saviour Jesus Christ, carry out his command to
                     make disciples of all nations and also teach them to obey all that He commands <b>(Matt 28:18-20)</b> and to
                   grow into maturity.</p>
                 </div>
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-                  <i class="bx bx-cube-alt"></i>
+                  <i class="bi bi-0-circle-fill"></i>
                   <h4>Vision</h4>
                   <p>Be people-friendly, creative and have inspiring worship through teaching and preaching that is biblical
                   and relevant to life. Have vital and supportive fellowship through the creation of outreach opportunities
@@ -79,7 +79,7 @@
           <div class="col-lg-3 col-md-6">
             <a href="{% url 'branches' %}">
               <div class="count-box">
-                <i class="bi bi-emoji-smile"></i>
+                <i class="bi bi-buildings-fill"></i>
                 <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Branches</p>
               </div>
@@ -89,7 +89,7 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <a href="{% url 'ministries' %}">
               <div class="count-box">
-                <i class="bi bi-headset"></i>
+                <i class="bi bi-grid-3x2-gap-fill"></i>
                 <span data-purecounter-start="0" data-purecounter-end="{{ministries_count}}" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Ministries</p>
               </div>
@@ -99,7 +99,7 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <a href="{% url 'families' %}">
               <div class="count-box">
-                <i class="bi bi-people"></i>
+                <i class="bi bi-person-hearts"></i>
                 <span data-purecounter-start="0" data-purecounter-end="{{family_count}}" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Families</p>
               </div>
@@ -109,7 +109,7 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <a href="{% url 'members' %}">
               <div class="count-box">
-                <i class="bi bi-people"></i>
+                <i class="bi bi-people-fill"></i>
                 <span data-purecounter-start="0" data-purecounter-end="{{member_count}}" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Members</p>
               </div>
@@ -129,25 +129,25 @@
         <ul class="nav nav-tabs row d-flex">
           <li class="nav-item col-3">
             <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-              <i class="ri-gps-line"></i>
+              <i class="bi bi-mic-fill"></i>
               <h4 class="d-none d-lg-block">Head Pastor's Speech</h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-              <i class="ri-body-scan-line"></i>
+              <i class="bi bi-megaphone-fill"></i>
               <h4 class="d-none d-lg-block">Our Evangelism Team</h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-              <i class="ri-sun-line"></i>
+              <i class="bi bi-calendar-check"></i>
               <h4 class="d-none d-lg-block">Upcoming Events</h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-              <i class="ri-store-line"></i>
+              <i class="bi bi-balloon-fill"></i>
               <h4 class="d-none d-lg-block">This Weeks Birthdays</h4>
             </a>
           </li>
@@ -255,7 +255,7 @@
           {% for service in services %}
             <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-card-checklist"></i>
+              <i class="bi bi-journal-album"></i>
               <h4><a href="{{service.get_absolute_url}}">{{service.name}}</a></h4>
               <p>{{service.times}}</p>
               <p>{{service.days}}</p>

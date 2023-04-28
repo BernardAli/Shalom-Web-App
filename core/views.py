@@ -394,6 +394,9 @@ def join_view(request):
 
 
 def join_accepted(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
     form = InterestedMemberAcceptanceForm()
     if request.method == 'POST':
         form = InterestedMemberAcceptanceForm(request.POST)
@@ -451,11 +454,17 @@ def join_accepted(request):
 
     context = {
         'form': form,
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
     }
     return render(request, 'core/join_accepted.html', context)
 
 
 def subscribers_mail(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
     subscribers = Subscribers.objects.all()
     if request.method == 'POST':
         subject = request.POST['subject']
@@ -481,8 +490,12 @@ def subscribers_mail(request):
 
         messages.success(request, f'Message Successfully sent')
         return redirect("home")
-
-    return render(request, 'core/sub_mail.html')
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/sub_mail.html', context)
 
 
 def contact(request):
