@@ -155,3 +155,13 @@ class Position(models.Model):
 
     def __str__(self):
         return str(self.position)
+
+
+class OfficeHours(models.Model):
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
+    office_hours = models.CharField(max_length=20)
+    office_days = models.CharField(max_length=20)
+    at_office = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.position)

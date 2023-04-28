@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Employees, Position
+from .models import Profile, Employees, Position, OfficeHours
 
 # Register your models here.
 
@@ -13,3 +13,4 @@ class ProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(Employees)
 admin.site.register(Position)
+admin.site.register(OfficeHours)

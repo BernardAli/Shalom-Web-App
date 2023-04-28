@@ -11,7 +11,7 @@ from .models import InterestedMember, InterestedMemberAcceptance, Auxiliaries, F
     AuxiliaryMeetings, UpcomingEvents, AuxiliaryExecutives, FAQ, AuxiliariesFAQ, FamilyFAQ, Subscribers, \
     Services, Sermon, Subscribers, Gallery, GalleryCategory, Testimony, BooksCategory, Books
 from .forms import InterestedMemberForm, InterestedMemberAcceptanceForm, SubscribeForm
-from authy.models import User, Profile, Employees, Position
+from authy.models import User, Profile, Employees, Position, OfficeHours
 
 
 # Create your views here.
@@ -145,10 +145,12 @@ def working_hours(request):
     auxiliaries = Auxiliaries.objects.all()
     families = Family.objects.all()
     ministries = Ministries.objects.all()
+    office_hours = OfficeHours.objects.all()
     context = {
         'auxiliaries': auxiliaries,
         'families': families,
         'ministries': ministries,
+        'office_hours': office_hours
     }
     return render(request, 'core/working_hours.html', context)
 

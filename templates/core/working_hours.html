@@ -29,29 +29,31 @@
         </div>
 
         <div class="row">
-
-          <div class="col-lg-6 col-md-6">
-            <div class="box featured" data-aos="fade-up" data-aos-delay="100">
-              <h3>Head Pastor</h3>
-              <h4>Rev. Ernest A. Appiah</h4>
-              <ul>
-                <li>Wednesdays: 9:00am - 6:00pm</li>
-                <li>+233 24 462 7253</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 mt-4 mt-md-0">
-            <div class="box featured" data-aos="fade-up" data-aos-delay="200" style="background-color: green;">
-              <h3>Administrator</h3>
-              <h4>Mr. Alex Gyamfi</h4>
-              <ul>
-                <li>Thursday: 9:00am - 6:00pm</li>
-                <li>+233 54 727 4902</li>
-              </ul>
-            </div>
-          </div>
-
+          {% for hours in office_hours %}
+            <div class="col-lg-6 col-md-6">
+              {% if hours.at_office %}
+                <div class="box featured" data-aos="fade-up" data-aos-delay="100" style="background-color: green;">
+                  <h3>{{hours.position}}</h3>
+                  <h4>{{hours.position.name.full_name}}</h4>
+                  <ul>
+                    <li>{{hours.office_days}}: {{hours.office_hours}}</li>
+                    <li>{{hours.position.name.phone_no}}</li>
+                  </ul>
+                </div>
+              {% else %}
+                <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+                  <h3>{{hours.position}}</h3>
+                  <h4>{{hours.position.name.full_name}}</h4>
+                  <ul>
+                    <li>{{hours.office_days}}: {{hours.office_hours}}</li>
+                    <li>{{hours.position.name.phone_no}}</li>
+                  </ul>
+                </div>
+              {% endif %}
+              </div>
+          {% empty %}
+            <p>No worker added yet</p>
+          {% endfor %}
         </div>
 
       </div>
