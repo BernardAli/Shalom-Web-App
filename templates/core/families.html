@@ -20,24 +20,8 @@
 
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="clients-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            {% for fam in  families %}
-              <div class="swiper-slide">
-                <a href="{{fam.get_absolute_url}}">
-                  <img src="{% static 'assets/img/clients/client-1.png' %}" class="img-fluid" alt="">
-                </a>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
+    {% include 'helpers/families.html' %}
+    <!-- End Clients Section -->
 
 
     <!-- ======= Services Section ======= -->
@@ -67,5 +51,9 @@
       </div>
     </section>
     <!-- End Services Section -->
+
+  <!-- ======= Clients Section ======= -->
+    {% include 'helpers/aux.html' %}
+    <!-- End Clients Section -->
 
 {% endblock content %}
