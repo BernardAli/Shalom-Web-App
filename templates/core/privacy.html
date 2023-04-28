@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Privacy Policy</li>
+        </ol>
+        <h2>Privacy Policy Statement</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+
+    <!-- ======= Tabs Section ======= -->
+    <section id="tabs" class="tabs">
+      <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+          <h2>Our Privacy Policy Statement</h2>
+          <p>Carefully read through to be sure before you submit any sensitive information.</p>
+        </div>
+
+        <ul class="nav nav-tabs row d-flex">
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+              <i class="bi bi-database"></i>
+              <h4 class="d-none d-lg-block">Members' Personal Info.</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+              <i class="bi bi-database-fill-lock"></i>
+              <h4 class="d-none d-lg-block">Employees Details</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+              <i class="bi bi-device-hdd-fill"></i>
+              <h4 class="d-none d-lg-block">Data Storage</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+              <i class="bi bi-database-fill-gear"></i>
+              <h4 class="d-none d-lg-block">General Policy</h4>
+            </a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active show" id="tab-1">
+            <div class="row">
+              <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <h6>How members data are stored and shared</h6>
+                <ul>
+                  <li><i class="ri-check-double-line"></i>All data are never shared with any third party.</li>
+                  <li><i class="ri-check-double-line"></i>The church keep all info in the cloud which are accessed wholly by the admin only</li>
+                  <li><i class="ri-check-double-line"></i>No one can see your contributions to the church.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-2">
+            <div class="row">
+              <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h6>How employees data are stored and shared</h6>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> All data are never shared with any third party..</li>
+                  <li><i class="ri-check-double-line"></i> Only head pastor and personnel ministry head has access to your collected data.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-3">
+            <div class="row">
+              <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h6>General Data Storage Policy</h6>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Stored in the cloud.</li>
+                  <li><i class="ri-check-double-line"></i> Backed up unto a local storage every Tuesdays.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-4">
+            <div class="row">
+              <div class="col-lg-8 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h6>General Privacy Policy</h6>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Only the user can log into his/her accounts.</li>
+                  <li><i class="ri-check-double-line"></i> All passwords and sensitive data are hashed.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Tabs Section -->
+
+{% endblock content %}

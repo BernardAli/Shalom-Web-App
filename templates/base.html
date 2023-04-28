@@ -86,14 +86,17 @@
                   {% if user.is_authenticated%}
                     <li><a href="{% url 'employees' %}">Workers 🔓</a></li>
                     <li><a href="{% url 'account' %}">Accounts 🔓</a></li>
+                    <li><a href="{% url 'assets' %}">Assets 🔓</a></li>
                     <li><a>Building Project 🔓</a></li>
                   {% else %}
                     <li><a>Workers 🔒</a></li>
                     <li><a>Accounts 🔒</a></li>
+                    <li><a>Assets 🔒</a></li>
                     <li><a>Building Project 🔓</a></li>
                   {% endif %}
                 </ul>
               </li>
+              <li><a href="{% url 'career' %}">Career</a></li>
             </ul>
           </li>
            {% if user.is_authenticated%}
@@ -161,7 +164,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}#services">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{% url 'gallery' %}">Gallery</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'history' %}">History</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'privacy' %}">Privacy Policy</a></li>
               {% if user.is_authenticated and  user.is_staff %}
                 <li><i class="bx bx-chevron-right"></i> <a href="{% url 'join_accepted' %}">New Members</a></li>
                 <li><i class="bx bx-chevron-right"></i> <a href="{% url 'account_home' %}">Accounts</a></li>

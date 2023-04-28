@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Career</li>
+        </ol>
+        <h2>Career</h2>
+
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+
+    <!-- ======= Tabs Section ======= -->
+    <section id="tabs" class="tabs">
+      <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+          <h2>Career</h2>
+          <p>Shalom Baptist Church is currently not employing.</p>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Tabs Section -->
+
+{% endblock content %}

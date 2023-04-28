@@ -580,3 +580,29 @@ def statements(request, id):
         'member': member
     }
     return render(request, 'core/statements.html', context)
+
+
+def privacy(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/privacy.html', context)
+
+
+def career(request):
+    auxiliaries = Auxiliaries.objects.all()
+    families = Family.objects.all()
+    ministries = Ministries.objects.all()
+
+    context = {
+        'auxiliaries': auxiliaries,
+        'families': families,
+        'ministries': ministries,
+    }
+    return render(request, 'core/career.html', context)
