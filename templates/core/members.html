@@ -25,7 +25,7 @@
 
         <div class="section-title">
           <h2>Our Members</h2>
-          <p>Below are the membership lists.</p>
+          <p>Below is the membership lists.</p>
         </div>
 
         <table class="table table-hover table-bordered">
@@ -47,7 +47,7 @@
                 <td>{{member.full_name}}</td>
                 <td>{{member.gender}}</td>
                 <td>{{member.place_of_residence}}</td>
-                <td>{{member.phone_no}}</td>
+                <td><a href="tel:{{member.phone_no}}">{{member.phone_no}}</a></td>
                 <td>{{member.family.name}}</td>
               </tr>
             {% endfor %}

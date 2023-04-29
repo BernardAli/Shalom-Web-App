@@ -28,7 +28,7 @@ def home_page(request):
     families = Family.objects.all()
     ministries = Ministries.objects.all()
     services = Services.objects.all()
-    upcoming_events = UpcomingEvents.objects.filter(completed=False).filter(date__lt=today)
+    upcoming_events = UpcomingEvents.objects.filter(completed=False).filter(date__gt=today)
     testimonials = Testimony.objects.all()
     member_count = User.objects.all().count()
     family_count = Family.objects.all().count()

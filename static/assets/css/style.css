@@ -2095,10 +2095,34 @@ section {
 }
 }
 /*--------------------------------------------------------------
-# Histor
+# History
 --------------------------------------------------------------*/
 .history p {
     text-align: justify;
+}
+
+/*--------------------------------------------------------------
+# table
+--------------------------------------------------------------*/
+table{
+    font-size: 0.9rem;
+    font-family: "Raleway", sans-serif;
+    text-align:center;
+}
+
+thead {
+    background-color: #515151;
+    color: #fff;
+    text-align:center;
+}
+
+tbody {
+    font-style: none;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #eee;
 }
 
 /*--------------------------------------------------------------

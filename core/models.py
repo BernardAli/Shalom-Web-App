@@ -79,7 +79,7 @@ class Family(models.Model):
     contact = models.CharField(max_length=13, blank=True, null=True)
     location = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
-    deacon = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
+    deacon_img = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
     group_img = models.ImageField(default='group.png', upload_to='auxiliaries', blank=True, null=True)
     contribution_target = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
 
@@ -169,6 +169,7 @@ class FamilyFAQ(models.Model):
 
 class Ministries(models.Model):
     name = models.CharField(max_length=255)
+    contact = models.CharField(max_length=13, blank=True, null=True)
     goal = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     speech = models.TextField(blank=True, null=True)
@@ -181,6 +182,7 @@ class Ministries(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class UpcomingEvents(models.Model):
     event = models.CharField(max_length=255, blank=True, null=True)
