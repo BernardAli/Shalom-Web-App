@@ -88,6 +88,34 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+.preloaderBg {
+	position: fixed;
+    z-index: 9999;
+    top: 10%;
+	background: #fff;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.preloader {
+    margin: 4.0rem auto;
+  	background: url("../img/shalom_logo.png") no-repeat center;
+    background-size: 150px;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    animation: spin 2s ease-in-out infinite ;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(180deg); }
+}
+
+/*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
@@ -2287,4 +2315,13 @@ tbody tr:hover {
   background: #e42417;
   color: #fff;
   text-decoration: none;
+}
+
+.alert {
+    margin-top: 6rem;
+    margin-bottom: -5rem;
+}
+
+.email-message {
+ margin-top: -2rem;
 }

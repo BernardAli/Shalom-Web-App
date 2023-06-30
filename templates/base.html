@@ -121,19 +121,14 @@
   </header><!-- End Header -->
 
   {% if messages %}
-              <ul class="messages">
-                     {% for message in messages %}
-                      <section id="team" class="team">
-                        <div class="container" data-aos="fade-up">
-                          <div class="alert border-primary alert-dismissible fade show" role="alert">
-                              {{ message }}
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                         </div>
-                          </div>
-                      </section>
-                     {% endfor %}
-             </ul>
-          {% endif %}
+          {% for message in messages %}
+              <div class="alert alert-success alert-dismissible fade show text text-center" role="alert">
+                {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          {% endfor %}
+    {% endif %}
+
   {% block content %}
   {% endblock content %}
 
@@ -218,6 +213,14 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+
+
+<!--  <div id="preloader"></div>-->
+
+  <div class="preloaderBg" id="preloader" onload="preloader()">
+    <div class="preloader"></div>
+    <div class="preloader2"></div>
+  </div>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
